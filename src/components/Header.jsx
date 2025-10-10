@@ -10,6 +10,7 @@ import {
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import styles from './Header.module.css'
+import ThemeProvider from '../theme/index'
 
 export default function Header() {
     const pathname = usePathname()
@@ -38,25 +39,27 @@ export default function Header() {
     ]
 
     return (
-        <header className={styles.header}>
-            <div className={styles.container}>
+        <ThemeProvider>
+            <header className={styles.header}>
+                <div className={styles.container}>
 
-                {/* Logo/Título */}
-                <Link href="/" className={styles.logo}>
-                    <h2 className={styles.logoText}>
-                        Sistema de Franquias
-                    </h2>
-                </Link>
+                    {/* Logo/Título */}
+                    <Link href="/" className={styles.logo}>
+                        <h2 className={styles.logoText}>
+                            Sistema de Franquias
+                        </h2>
+                    </Link>
 
-                {/* Menu de navegação */}
-                <Menu
-                    mode="horizontal"
-                    selectedKeys={[pathname]}
-                    items={menuItems}
-                    className={styles.menu}
-                />
+                    {/* Menu de navegação */}
+                    <Menu
+                        mode="horizontal"
+                        selectedKeys={[pathname]}
+                        items={menuItems}
+                        className={styles.menu}
+                    />
 
-            </div>
-        </header>
+                </div>
+            </header>
+        </ThemeProvider>
     )
 }

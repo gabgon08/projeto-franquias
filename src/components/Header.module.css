@@ -1,11 +1,11 @@
 .header {
-    background: white !important;
+    background: #f05e23 !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    border-bottom: 1px solid #f0f0f0;
     position: sticky;
     top: 0;
     z-index: 100;
     width: 100%;
+    font-family: 'Trebuchet MS';
 }
 
 .container {
@@ -16,7 +16,6 @@
     align-items: center;
     justify-content: space-between;
     height: 64px;
-    background: white;
 }
 
 .logo {
@@ -33,9 +32,9 @@
 
 .logoText {
     margin: 0 !important;
-    font-size: 1.4rem !important;
+    font-size: 1.7rem !important;
     font-weight: bold !important;
-    background: linear-gradient(45deg, #667eea, #764ba2) !important;
+    background: #ffffff !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     background-clip: text !important;
@@ -47,7 +46,7 @@
     border: none !important;
     background: transparent !important;
     flex: 1;
-    justify-content: flex-end;
+    justify-content: center;
     max-width: 500px;
 }
 
