@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@ant-design/colors": "^7.2.1",
     "@prisma/client": "^6.16.3",
     "antd": "^5.27.4",
     "lucide-react": "^0.545.0",
