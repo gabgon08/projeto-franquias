@@ -33,7 +33,7 @@ export default function Header() {
         },
         {
             key: '/dashboard',
-            label: <Link href="/dashboard">Dashboard</Link>,
+            label: <Link href="/teste">Dashboard</Link>,
             icon: <DashboardOutlined />
         }
     ]
