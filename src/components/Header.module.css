@@ -1,6 +1,7 @@
 .header {
     background: #f05e23 !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.329);
+    border-bottom: 0px solid #f0f0f0;
     position: sticky;
     top: 0;
     z-index: 100;
