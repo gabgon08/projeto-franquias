@@ -48,6 +48,17 @@ export async function POST(request) {
             )
         }
 
+        const franquia = await prisma.franquia.create({
+            data: {
+                nome,
+                cidade,
+                endereco,
+                telefone
+            }
+        })
+
+        return NextResponse.json(franquia, { status: 201 })
+
     } catch (error) {
         console.error('Erro ao criar franquia: ', error)
         return NextResponse.json(
