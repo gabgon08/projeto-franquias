@@ -7,7 +7,13 @@ export async function GET(request, { params }) {
     try {
         const id = parseInt(params.id)
         const franquia = await prisma.franquia.findUnique({
-            where: { id }
+            where: { id },
+            include: {
+                funcionarios: true,
+                _count: {
+                    select: { funcionarios: true }
+                }
+            }
         })
 
         if (!franquia) {

@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient()
 
-//GET ALL: Pegar todas as franquias
+//GET ALL
 export async function GET() {
     try {
         const franquias = await prisma.franquia.findMany({
@@ -29,6 +29,27 @@ export async function GET() {
 
     } catch (error) {
         console.log('Erro ao buscar franquias: ', error)
+        return NextResponse.json(
+            { error: 'Erro interno de servidor' },
+            { status: 500 }
+        )
+    }
+}
+
+export async function POST(request) {
+    try {
+        const data = await request.json();
+        const { nome, cidade, endereco, telefone } = data
+
+        if (!nome || !cidade || !endereco || !telefone) {
+            return NextResponse.json(
+                { error: 'Todos os campos são obrigatórios: nome, cidade, endereco, telefone' },
+                { status: 400 }
+            )
+        }
+
+    } catch (error) {
+        console.error('Erro ao criar franquia: ', error)
         return NextResponse.json(
             { error: 'Erro interno de servidor' },
             { status: 500 }
