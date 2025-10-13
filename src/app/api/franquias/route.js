@@ -28,7 +28,7 @@ export async function GET() {
         return NextResponse.json(franquias)
 
     } catch (error) {
-        console.log('Erro ao buscar franquias: ', error)
+        console.error('Erro ao buscar franquias: ', error)
         return NextResponse.json(
             { error: 'Erro interno de servidor' },
             { status: 500 }
