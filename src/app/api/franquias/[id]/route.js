@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient()
 
+// GET - Listar franquia específica
 export async function GET(request, { params }) {
     try {
         const id = parseInt(params.id)
@@ -32,5 +33,59 @@ export async function GET(request, { params }) {
             { status: 500 }
         )
 
+    }
+}
+
+// PUT - Atualizar franquia
+export async function PUT(request, { params }) {
+    try {
+        const id = parseInt(params.id)
+        const data = await request.json()
+
+        const { nome, cidade, endereco, telefone } = data
+
+        // Verificar se a franquia existe
+        const franquiaExiste = await prisma.franquia.findUnique({
+            where: { id }
+        })
+
+        if (!franquiaExiste) {
+            return NextResponse.json(
+                { error: 'Franquia não encontrada' },
+                { status: 404 }
+            )
+        }
+
+        // Validação básica
+        if (!nome || !cidade || !endereco || !telefone) {
+            return NextResponse.json(
+                { error: 'Todos os campos são obrigatórios' },
+                { status: 400 }
+            )
+        }
+
+        const franquia = await prisma.franquia.update({
+            where: { id },
+            data: {
+                nome,
+                cidade,
+                endereco,
+                telefone
+            },
+            include: {
+                funcionarios: true,
+                _count: {
+                    select: { funcionarios: true }
+                }
+            }
+        })
+
+        return NextResponse.json(franquia)
+    } catch (error) {
+        console.error('Erro ao atualizar franquia:', error)
+        return NextResponse.json(
+            { error: 'Erro interno do servidor' },
+            { status: 500 }
+        )
     }
 }
