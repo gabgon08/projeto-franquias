@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
+import { message } from "antd";
 
 const prisma = new PrismaClient()
 
@@ -36,6 +37,8 @@ export async function GET(request, { params }) {
     }
 }
 
+
+
 // PUT - Atualizar franquia
 export async function PUT(request, { params }) {
     try {
@@ -43,6 +46,14 @@ export async function PUT(request, { params }) {
         const data = await request.json()
 
         const { nome, cidade, endereco, telefone } = data
+
+        // Ou Object.keys(data).length === 0
+        if (!data?.nome && !data?.cidade && !data?.endereco && !data?.telefone) {
+            return NextResponse.json(
+                { error: 'Voce precisa enviar algum dado' },
+                { status: 400 }
+            )
+        }
 
         // Verificar se a franquia existe
         const franquiaExiste = await prisma.franquia.findUnique({
@@ -56,31 +67,22 @@ export async function PUT(request, { params }) {
             )
         }
 
-        // Validação básica
-        if (!nome || !cidade || !endereco || !telefone) {
-            return NextResponse.json(
-                { error: 'Todos os campos são obrigatórios' },
-                { status: 400 }
-            )
-        }
-
         const franquia = await prisma.franquia.update({
             where: { id },
             data: {
-                nome,
-                cidade,
-                endereco,
-                telefone
-            },
-            include: {
-                funcionarios: true,
-                _count: {
-                    select: { funcionarios: true }
-                }
+                nome: nome ?? franquiaExiste.nome,
+                cidade: cidade ?? franquiaExiste.cidade,
+                endereco: endereco ?? franquiaExiste.endereco,
+                telefone: telefone ?? franquiaExiste.telefone
             }
         })
 
-        return NextResponse.json(franquia)
+        // Retorna a resposta
+        return NextResponse.json({
+            franquia: franquia,
+            msg: 'Franquia atualizada com sucesso!'
+        })
+
     } catch (error) {
         console.error('Erro ao atualizar franquia:', error)
         return NextResponse.json(
@@ -124,7 +126,11 @@ export async function DELETE(request, { params }) {
             where: { id }
         })
 
-        return NextResponse.json({ message: 'Franquia deletada com sucesso' })
+        return NextResponse.json({
+            apagado: franquia,
+            message: 'Franquia deletada com sucesso'
+        })
+
     } catch (error) {
         console.error('Erro ao deletar franquia:', error)
         return NextResponse.json(
