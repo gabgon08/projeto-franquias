@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import styles from './franquias.module.css'
+import { Table } from 'antd'
 
 function Franquias() {
 
@@ -9,19 +10,64 @@ function Franquias() {
 
     const [loading, setLoading] = useState(true)
 
-    async function CarregarFranquias(params) {
+    async function carregarFranquias(params) {
         console.log('BUSCAR FRANQUIAS')
-        setLoading(false)
 
-        useEffect(() => {
-            CarregarFranquias()
-        }, [])
+        try {
+            const response = await fetch('/api/franquias')
+            const data = await response.json()
+            setFranquias(data)
+
+        } catch (error) {
+            console.error('Erro ao carregar franquias', error)
+        } finally {
+            setLoading(false)
+        }
+
     }
 
+    useEffect(() => {
+        carregarFranquias()
+    }, [])
+
+    const colunas = [
+        {
+            title: 'Nome',
+            dataIndex: 'nome',
+            key: 'id'
+        },
+        {
+            title: 'Cidade',
+            dataIndex: 'cidade',
+            key: 'id'
+        },
+        {
+            title: 'Endereço',
+            dataIndex: 'endereco',
+            key: 'id'
+        },
+        {
+            title: 'Telefone',
+            dataIndex: 'telefone',
+            key: 'id'
+        }
+    ]
+
     return (
-        <div className={styles.main}>
+        <div className={styles.container}>
             <h1>FRANQUIAS</h1>
-            <p>{JSON.stringify(franquias)}</p>
+            <div className={styles.tableContainer}>
+                <Table
+                    columns={colunas} // montada anteriormente
+                    dataSource={franquias} // que vem da API
+                    loading={{
+                        spinning: loading,
+                        tip: 'Carregando franquias, aguarde...'
+                    }} // Controla o preenchimento da tabela
+                    rowKey="id"
+                    pagination={{ pageSize: 10 }}
+                />
+            </div>
         </div>
     )
 }

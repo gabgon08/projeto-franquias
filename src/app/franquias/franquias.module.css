@@ -1,4 +1,16 @@
-.main {
+.container {
     background-color: #8dd3c6;
     height: 100vh;
+    padding: 2rem;
+    height: 100vh;
+}
+
+.tableContainer {
+    background: rgb(255, 255, 255);
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.title {
+    padding: 1rem;
 }
