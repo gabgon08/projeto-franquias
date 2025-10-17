@@ -22,7 +22,7 @@ const MainTheme = ({ children }) => {
 export default MainTheme
 
 export const HeaderTheme = ({ children }) => {
-  const primaryColorCode = '#000000'
+  const primaryColorCode = '#6e290f'
   const secondaryColor = '#dffcf9'
 
   return (

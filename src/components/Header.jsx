@@ -19,7 +19,7 @@ export default function Header() {
         {
             key: '/',
             label: <Link href="/">Home</Link>,
-            icon: <HomeOutlined />
+            icon: <HomeOutlined />,
         },
         {
             key: '/funcionarios',

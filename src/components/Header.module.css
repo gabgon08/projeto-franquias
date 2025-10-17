@@ -6,6 +6,7 @@
     top: 0;
     z-index: 100;
     width: 100%;
+    padding: 0;
 }
 
 .container {
@@ -22,6 +23,8 @@
     cursor: pointer;
     transition: opacity 0.3s ease;
     text-decoration: none;
+    margin: 0;
+    padding: 0;
 }
 
 .logo:hover {
@@ -34,7 +37,7 @@
     font-size: 1.7rem !important;
     font-weight: bold !important;
     user-select: none;
-    color: #dffcf9de !important;
+    color: #6e290f !important;
 }
 
 .menu {
@@ -44,6 +47,7 @@
     justify-content: center;
     max-width: 500px;
 }
+
 
 /* Evitar flash nos links */
 .menu a {
