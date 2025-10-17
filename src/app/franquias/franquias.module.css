@@ -6,9 +6,11 @@
 }
 
 .tableContainer {
-    background: rgb(255, 255, 255);
-    border-radius: 1rem;
-    padding: 2rem;
+    background-color: rgb(255, 255, 255, 0.8);
+    border-radius: 2rem;
+    padding: 1.5rem;
+    transition: 0.3s ease;
+    box-shadow: 0 0 10px 7px #00000011;
 }
 
 .top {
