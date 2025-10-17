@@ -10,7 +10,7 @@ import {
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import styles from './Header.module.css'
-import ThemeProvider from '../theme/index'
+import { HeaderTheme } from '../theme/index'
 
 export default function Header() {
     const pathname = usePathname()
@@ -39,7 +39,7 @@ export default function Header() {
     ]
 
     return (
-        <ThemeProvider>
+        <HeaderTheme>
             <header className={styles.header}>
                 <div className={styles.container}>
 
@@ -60,6 +60,6 @@ export default function Header() {
 
                 </div>
             </header>
-        </ThemeProvider>
+        </HeaderTheme>
     )
 }

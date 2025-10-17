@@ -30,17 +30,17 @@
     text-decoration: none;
 }
 
-.logoText {
+/* .logoText {
     margin: 0 !important;
     font-size: 1.7rem !important;
     font-weight: bold !important;
     background: #000000 !important;
     -webkit-background-clip: text !important;
     /* -webkit-text-fill-color: transparent !important; */
-    background-clip: text !important;
-    user-select: none;
-    color: transparent !important;
-}
+/* background-clip: text !important;
+    user-select: none; */
+/* color: transparent !important; */
+/* } */
 
 .menu {
     border: none !important;

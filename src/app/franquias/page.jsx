@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import styles from './franquias.module.css'
-import ThemeProvider from '@/theme'
+import MainTheme from '@/theme'
 import { Table, Button, Modal, Form, message, Input } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 
@@ -94,7 +94,7 @@ function Franquias() {
 
 
     return (
-        <ThemeProvider>
+        <MainTheme>
             <div className={styles.container}>
                 {contextHolder}
                 <div className={styles.top}>
@@ -158,7 +158,7 @@ function Franquias() {
                 </Modal>
 
             </div>
-        </ThemeProvider >
+        </MainTheme >
     )
 }
 
