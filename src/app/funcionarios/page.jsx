@@ -96,7 +96,7 @@ function Funcionarios() {
         setModalVisible(true)
     }
 
-    const columns = [
+    const colunas = [
         {
             title: 'Nome',
             dataIndex: 'nome',
@@ -166,34 +166,39 @@ function Funcionarios() {
     return (
         <MainTheme>
             <div className={common.container}>
-                <div className={common.top}>
-                    <div className={common.topTitle}>
-                        <UserOutlined className={common.topTitleIcon} />
+                <div className={common.top}> {/*header*/}
+                    <div className={common.topTitleBox}> {/*title*/}
+                        <UserOutlined className={common.topTitleIcon} /> {/*titleIcon*/}
 
                         <Title
                             level={3}
-                            style={{
-                                fontWeight: 'bold',
-                                color: '#e2fffa'
-                            }}
+                            className={common.topTitleText}
                         >FUNCIONÁRIOS
                         </Title>
                     </div>
                     <Button
                         type='primary'
                         icon={<PlusOutlined />}
-                        className={styles.addButton}
+                        className={common.addButton}
+                        shape='round'
                         size='large'
-                    >
-                        Adicionar
+                        onClick={() => setModalVisible(true)}
+                    >Adicionar
                     </Button>
                 </div>
 
-                <Table
-                    columns={columns}
-                    dataSource={funcionarios}
-                    rowKey='id'
-                />
+                <div className={common.containerTable}>
+                    <Table
+                        columns={colunas}
+                        dataSource={funcionarios}
+                        loading={{
+                            spinning: loading,
+                            tip: 'Carrengando funcionários, aguarde...'
+                        }}
+                        rowKey='id'
+                        pagination={{ pageSize: 6 }}
+                    />
+                </div>
             </div>
         </MainTheme>
     )
