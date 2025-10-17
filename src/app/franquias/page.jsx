@@ -2,13 +2,17 @@
 
 import React, { useState, useEffect } from 'react'
 import styles from './franquias.module.css'
-import { Table } from 'antd'
+import ThemeProvider from '@/theme'
+import { Table, Button, Modal, Form, message, Input } from 'antd'
+import { PlusOutlined } from '@ant-design/icons'
 
 function Franquias() {
 
     const [franquias, setFranquias] = useState([])
-
     const [loading, setLoading] = useState(true)
+    const [modalVisible, setModalVisible] = useState(false)
+    const [form] = Form.useForm()
+    const [messageApi, contextHolder] = message.useMessage()
 
     async function carregarFranquias(params) {
         console.log('BUSCAR FRANQUIAS')
@@ -25,6 +29,28 @@ function Franquias() {
         }
 
     }
+
+    async function salvarFranquia(values) {
+        try {
+            const response = await fetch('/api/franquias', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(values)
+            })
+
+            if (response.ok) {
+                messageApi.success('Franquia criada com sucesso!')
+                setModalVisible(false)
+                form.resetFields()
+                carregarFranquias()
+            } else {
+                messageApi.error('Erro ao salvar franquia')
+            }
+        } catch (error) {
+            messageApi.error('Erro ao salvar franquia')
+        }
+    }
+
 
     useEffect(() => {
         carregarFranquias()
@@ -53,22 +79,86 @@ function Franquias() {
         }
     ]
 
+    const showModal = () => {
+        setModalVisible(true)
+    }
+
+    const closeModal = () => {
+        setModalVisible(false)
+        form.resetFields()
+    }
+
+    const okModal = () => {
+        form.submit()
+    }
+
+
     return (
-        <div className={styles.container}>
-            <h1>FRANQUIAS</h1>
-            <div className={styles.tableContainer}>
-                <Table
-                    columns={colunas} // montada anteriormente
-                    dataSource={franquias} // que vem da API
-                    loading={{
-                        spinning: loading,
-                        tip: 'Carregando franquias, aguarde...'
-                    }} // Controla o preenchimento da tabela
-                    rowKey="id"
-                    pagination={{ pageSize: 10 }}
-                />
+        <ThemeProvider>
+            <div className={styles.container}>
+                {contextHolder}
+                <div className={styles.top}>
+                    <h1 className={styles.title}>FRANQUIAS</h1>
+
+                    <Button
+                        type='primary'
+                        icon={<PlusOutlined />}
+                        onClick={showModal}
+                        className={styles.addButton}
+                    >
+                        Adicionar
+                    </Button>
+
+                </div>
+                <div className={styles.tableContainer}>
+
+                    <Table
+                        columns={colunas}
+                        dataSource={franquias}
+                        loading={{
+                            spinning: loading,
+                            tip: 'Carregando franquias, aguarde...'
+                        }}
+                        rowKey='id'
+                        pagination={{ pageSize: 10 }}
+                    />
+
+                </div>
+
+                <Modal
+                    title='Nova Franquia'
+                    open={modalVisible}
+                    onCancel={closeModal}
+                    onOk={okModal}
+                >
+
+                    <Form
+                        form={form}
+                        layout='vertical'
+                        onFinish={salvarFranquia}
+                        className={styles.modalForm}
+                    >
+                        <Form.Item name='nome' label='Nome' rules={[{ required: true, message: 'Digita o nome' }]}>
+                            <Input />
+                        </Form.Item>
+
+                        <Form.Item name='cidade' label='Cidade' rules={[{ required: true, message: 'Digita a cidade' }]}>
+                            <Input />
+                        </Form.Item>
+
+                        <Form.Item name='endereco' label='Endereço' rules={[{ required: true, message: 'Digita o endereço' }]}>
+                            <Input />
+                        </Form.Item>
+
+                        <Form.Item name='telefone' label='Telefone' rules={[{ required: true, message: 'Digita o telefone' }]}>
+                            <Input />
+                        </Form.Item>
+
+                    </Form>
+                </Modal>
+
             </div>
-        </div>
+        </ThemeProvider >
     )
 }
 
