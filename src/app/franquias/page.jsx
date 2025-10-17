@@ -61,22 +61,22 @@ function Franquias() {
         {
             title: 'Nome',
             dataIndex: 'nome',
-            key: 'id'
+            key: 'nome'
         },
         {
             title: 'Cidade',
             dataIndex: 'cidade',
-            key: 'id'
+            key: 'cidade'
         },
         {
             title: 'País',
             dataIndex: 'pais',
-            key: 'id'
+            key: 'pais'
         },
         {
             title: 'Telefone',
             dataIndex: 'telefone',
-            key: 'id'
+            key: 'telefone'
         }
     ]
 

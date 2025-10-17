@@ -1,10 +1,9 @@
 import React from 'react'
 import { ConfigProvider } from 'antd'
-import { lime } from '@ant-design/colors'
 
 const MainTheme = ({ children }) => {
   const primaryColorCode = '#35725f'
-  const textColor = '#22493dff'
+  const textBaseColor = '#1c3b32ff'
   const headerBgColor = '#35725f'
   const headerTextColor = '#e2fffa'
   const tableBgColor = 'rgba(255, 255, 255, 0)'
@@ -14,7 +13,7 @@ const MainTheme = ({ children }) => {
       theme={{
         token: {
           colorPrimary: primaryColorCode,
-          colorTextBase: textColor,
+          colorTextBase: textBaseColor,
         },
         components: {
           Table: {
