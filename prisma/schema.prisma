@@ -14,7 +14,7 @@ model Franquia {
   id           Int           @id @default(autoincrement())
   nome         String
   cidade       String
-  endereco     String
+  pais         String
   telefone     String
   funcionarios Funcionario[]
   createdAt    DateTime      @default(now())
