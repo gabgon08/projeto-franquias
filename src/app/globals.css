@@ -7,3 +7,9 @@
     'Noto Color Emoji';
 
 }
+
+.ant-typography {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}

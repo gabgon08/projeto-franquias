@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './franquias.module.css'
 import MainTheme from '@/theme'
-import { Table, Button, Modal, Form, message, Input } from 'antd'
+import { Table, Button, Modal, Form, message, Input, Typography } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 
 function Franquias() {
@@ -13,6 +13,7 @@ function Franquias() {
     const [modalVisible, setModalVisible] = useState(false)
     const [form] = Form.useForm()
     const [messageApi, contextHolder] = message.useMessage()
+    const { Title, Paragraph } = Typography
 
     async function carregarFranquias(params) {
         console.log('BUSCAR FRANQUIAS')
@@ -98,7 +99,14 @@ function Franquias() {
             <div className={styles.container}>
                 {contextHolder}
                 <div className={styles.top}>
-                    <h1 className={styles.title}>FRANQUIAS</h1>
+                    <Title
+                        level={2}
+                        style={{
+                            fontWeight: 'bold'
+                        }}
+                    >
+                        FRANQUIAS
+                    </Title>
 
                     <Button
                         type='primary'
@@ -111,7 +119,6 @@ function Franquias() {
 
                 </div>
                 <div className={styles.tableContainer}>
-
                     <Table
                         columns={colunas}
                         dataSource={franquias}
