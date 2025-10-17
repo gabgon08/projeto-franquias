@@ -81,33 +81,46 @@ function Franquias() {
         carregarFranquias()
     }, [])
 
+    const gerarFiltros = (key) => {
+        const uniqueValues = [...new Set(franquias.map((item) => item[key]))];
+        return uniqueValues.map((value) => ({ text: value, value }));
+    };
+
     const colunas = [
         {
             title: 'Nome',
             dataIndex: 'nome',
-            key: 'nome'
+            key: 'nome',
+            defaultSortOrder: 'descend',
+            sorter: (a, b) => a.nome.localeCompare(b.nome)
         },
         {
             title: 'Cidade',
             dataIndex: 'cidade',
-            key: 'cidade'
+            key: 'cidade',
+            sorter: (a, b) => a.cidade.localeCompare(b.cidade),
+            filters: gerarFiltros('cidade'),
+            onFilter: (value, record) => record.cidade === value
         },
         {
             title: 'País',
             dataIndex: 'pais',
-            key: 'pais'
+            key: 'pais',
+            sorter: (a, b) => a.pais.localeCompare(b.pais),
+            filters: gerarFiltros('pais'),
+            onFilter: (value, record) => record.pais === value
         },
         {
             title: 'Telefone',
             dataIndex: 'telefone',
-            key: 'telefone'
+            key: 'telefone',
         },
         {
             title: 'Funcionários',
             dataIndex: ['_count', 'funcionarios'],
             key: 'funcionarios_count',
-            render: (count) =>
-                count || 0
+            render: (count) => count || 0,
+            sorter: (a, b) => a._count.funcionarios - b._count.funcionarios,
         },
         {
             title: 'Ações',
