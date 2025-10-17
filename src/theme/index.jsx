@@ -1,6 +1,6 @@
 import React from 'react'
 import { ConfigProvider } from 'antd'
-import { volcano } from '@ant-design/colors'
+import { lime } from '@ant-design/colors'
 
 const MainTheme = ({ children }) => {
   const primaryColorCode = '#35725f'
@@ -37,17 +37,19 @@ export default MainTheme
 export const HeaderTheme = ({ children }) => {
   const primaryColorCode = '#6e290f'
   const textColor = '#ffffffff'
+  const menuItemHoverBgColor = '#c94f1c'
 
   return (
     <ConfigProvider
       theme={{
         token: {
           colorPrimary: primaryColorCode,
-          colorTextBase: textColor
         },
         components: {
           Menu: {
-            // activeBarHeight: 2
+            horizontalItemHoverBg: menuItemHoverBgColor,
+            itemColor: textColor,
+            itemHoverColor: textColor,
           }
         }
       }}

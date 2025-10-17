@@ -16,7 +16,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 64px;
 }
 
 .logo {
@@ -28,7 +27,7 @@
 }
 
 .logo:hover {
-    opacity: 0.8;
+    opacity: 0.6;
     text-decoration: none;
 }
 
@@ -45,9 +44,10 @@
     background: transparent !important;
     flex: 1;
     justify-content: center;
-    max-width: 500px;
+    max-width: 50%;
+    line-height: 60px;
+    font-size: 1rem;
 }
-
 
 /* Evitar flash nos links */
 .menu a {
