@@ -138,7 +138,7 @@ function Funcionarios() {
                     <Button
                         icon={<EditOutlined />}
                         variant='solid'
-                        color='current'
+                        color='primary'
                         shape='circle'
                         onClick={() => editar(record)}
                         size="default"
@@ -148,6 +148,8 @@ function Funcionarios() {
                         onConfirm={() => removerFuncionario(record.id)}
                         okText="Sim"
                         cancelText="Não"
+                        okButtonProps={{ shape: 'round' }}
+                        cancelButtonProps={{ shape: 'round' }}
                     >
                         <Button
                             icon={<DeleteOutlined />}
@@ -162,6 +164,19 @@ function Funcionarios() {
             ),
         }
     ]
+
+    const showModal = () => {
+        setModalVisible(true)
+    }
+
+    const closeModal = () => {
+        setModalVisible(false)
+        form.resetFields()
+    }
+
+    const okModal = () => {
+        form.submit()
+    }
 
     return (
         <MainTheme>
@@ -183,7 +198,7 @@ function Funcionarios() {
                         className={common.addButton}
                         shape='round'
                         size='large'
-                        onClick={() => setModalVisible(true)}
+                        onClick={showModal}
                     >Adicionar
                     </Button>
                 </div>
@@ -194,7 +209,7 @@ function Funcionarios() {
                         dataSource={funcionarios}
                         loading={{
                             spinning: loading,
-                            tip: 'Carrengando funcionários, aguarde...'
+                            tip: 'Carregando funcionários, aguarde...'
                         }}
                         rowKey='id'
                         pagination={{ pageSize: 6 }}
@@ -204,12 +219,8 @@ function Funcionarios() {
                 <Modal
                     title={editandoId ? 'Editar Funcionário' : 'Novo Funcionário'}
                     open={modalVisible}
-                    onCancel={() => {
-                        setModalVisible(false)
-                        setEditandoId(null)
-                        form.resetFields()
-                    }}
-                    onOk={() => form.submit()}
+                    onCancel={closeModal}
+                    onOk={okModal}
                     okText="Salvar"
                     cancelText="Cancelar"
                     okButtonProps={{ shape: 'round' }}
@@ -223,8 +234,7 @@ function Funcionarios() {
                         <Form.Item
                             name="nome"
                             label="Nome"
-                            rules={[{ required: true, message: 'Campo obrigatório' }]}
-                        >
+                            rules={[{ required: true, message: 'Campo obrigatório' }]}>
                             <Input />
                         </Form.Item>
 
@@ -234,24 +244,22 @@ function Funcionarios() {
                             rules={[
                                 { required: true, message: 'Campo obrigatório' },
                                 { type: 'email', message: 'Email inválido' }
-                            ]}
-                        >
+                            ]}>
                             <Input />
                         </Form.Item>
 
                         <Form.Item
                             name="cargo"
                             label="Cargo"
-                            rules={[{ required: true, message: 'Campo obrigatório' }]}
-                        >
+                            rules={[{ required: true, message: 'Campo obrigatório' }]}>
                             <Input />
                         </Form.Item>
 
                         <Form.Item
                             name="salario"
                             label="Salário"
-                            rules={[{ required: true, message: 'Campo obrigatório' }]}
-                        >
+                            rules={[{ required: true, message: 'Campo obrigatório' }]}>
+
                             <InputNumber
                                 style={{ width: '100%' }}
                                 prefix="$"
@@ -265,13 +273,13 @@ function Funcionarios() {
                         <Form.Item
                             name="franquiaId"
                             label="Franquia"
-                            rules={[{ required: true, message: 'Campo obrigatório' }]}
-                        >
+                            rules={[{ required: true, message: 'Campo obrigatório' }]}>
+
                             <Select
                                 placeholder="Selecione uma franquia"
                                 showSearch
-                                optionFilterProp="children"
-                            >
+                                optionFilterProp="children">
+
                                 {franquias.map(franquia => (
                                     <Select.Option key={franquia.id} value={franquia.id}>
                                         {franquia.nome} - {franquia.cidade}
