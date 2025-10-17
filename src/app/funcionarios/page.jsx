@@ -49,6 +49,7 @@ function Funcionarios() {
             key: 'id',
             render: (valor) =>
                 valor.toLocaleString('en', {
+                    minimumFractionDigits: 2,
                     style: 'currency',
                     currency: 'USD',
                 }),
