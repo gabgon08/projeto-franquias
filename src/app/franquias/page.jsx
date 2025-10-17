@@ -68,8 +68,8 @@ function Franquias() {
             key: 'id'
         },
         {
-            title: 'Endereço',
-            dataIndex: 'endereco',
+            title: 'País',
+            dataIndex: 'pais',
             key: 'id'
         },
         {
@@ -138,19 +138,19 @@ function Franquias() {
                         onFinish={salvarFranquia}
                         className={styles.modalForm}
                     >
-                        <Form.Item name='nome' label='Nome' rules={[{ required: true, message: 'Digita o nome' }]}>
+                        <Form.Item name='nome' label='Nome' rules={[{ required: true, message: 'Digite o nome' }]}>
                             <Input />
                         </Form.Item>
 
-                        <Form.Item name='cidade' label='Cidade' rules={[{ required: true, message: 'Digita a cidade' }]}>
+                        <Form.Item name='cidade' label='Cidade' rules={[{ required: true, message: 'Digite a cidade' }]}>
                             <Input />
                         </Form.Item>
 
-                        <Form.Item name='endereco' label='Endereço' rules={[{ required: true, message: 'Digita o endereço' }]}>
+                        <Form.Item name='pais' label='País' rules={[{ required: true, message: 'Digite o país' }]}>
                             <Input />
                         </Form.Item>
 
-                        <Form.Item name='telefone' label='Telefone' rules={[{ required: true, message: 'Digita o telefone' }]}>
+                        <Form.Item name='telefone' label='Telefone' rules={[{ required: true, message: 'Digite o telefone' }]}>
                             <Input />
                         </Form.Item>
 

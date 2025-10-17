@@ -39,11 +39,11 @@ export async function GET() {
 export async function POST(request) {
     try {
         const data = await request.json();
-        const { nome, cidade, endereco, telefone } = data
+        const { nome, cidade, pais, telefone } = data
 
-        if (!nome || !cidade || !endereco || !telefone) {
+        if (!nome || !cidade || !pais || !telefone) {
             return NextResponse.json(
-                { error: 'Todos os campos são obrigatórios: nome, cidade, endereco, telefone' },
+                { error: 'Todos os campos são obrigatórios: nome, cidade, pais, telefone' },
                 { status: 400 }
             )
         }
@@ -52,7 +52,7 @@ export async function POST(request) {
             data: {
                 nome,
                 cidade,
-                endereco,
+                pais,
                 telefone
             }
         })

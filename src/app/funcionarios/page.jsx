@@ -48,9 +48,9 @@ function Funcionarios() {
             dataIndex: 'salario',
             key: 'id',
             render: (valor) =>
-                valor.toLocaleString('pt-BR', {
+                valor.toLocaleString('en', {
                     style: 'currency',
-                    currency: 'BRL',
+                    currency: 'USD',
                 }),
         },
         {

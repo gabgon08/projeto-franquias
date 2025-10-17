@@ -45,10 +45,10 @@ export async function PUT(request, { params }) {
         const id = parseInt(params.id)
         const data = await request.json()
 
-        const { nome, cidade, endereco, telefone } = data
+        const { nome, cidade, pais, telefone } = data
 
         // Ou Object.keys(data).length === 0
-        if (!data?.nome && !data?.cidade && !data?.endereco && !data?.telefone) {
+        if (!data?.nome && !data?.cidade && !data?.pais && !data?.telefone) {
             return NextResponse.json(
                 { error: 'Voce precisa enviar algum dado' },
                 { status: 400 }
@@ -72,7 +72,7 @@ export async function PUT(request, { params }) {
             data: {
                 nome: nome ?? franquiaExiste.nome,
                 cidade: cidade ?? franquiaExiste.cidade,
-                endereco: endereco ?? franquiaExiste.endereco,
+                pais: pais ?? franquiaExiste.pais,
                 telefone: telefone ?? franquiaExiste.telefone
             }
         })
