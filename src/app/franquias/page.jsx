@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import common from './../../theme/common.module.css'
 import styles from './franquias.module.css'
 import MainTheme from '@/theme'
 import { Table, Button, Modal, Form, message, Input, Typography } from 'antd'
@@ -13,7 +14,7 @@ function Franquias() {
     const [modalVisible, setModalVisible] = useState(false)
     const [form] = Form.useForm()
     const [messageApi, contextHolder] = message.useMessage()
-    const { Title, Paragraph } = Typography
+    const { Title } = Typography
 
     async function carregarFranquias(params) {
         console.log('BUSCAR FRANQUIAS')

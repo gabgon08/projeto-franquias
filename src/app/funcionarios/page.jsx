@@ -9,7 +9,7 @@ import { PlusOutlined, UserOutlined, EditOutlined, DeleteOutlined } from '@ant-d
 
 function Funcionarios() {
 
-    const { Title, Paragraph } = Typography
+    const { Title } = Typography
     const [funcionarios, setFuncionarios] = useState([])
     const [franquias, setFranquias] = useState([])
     const [loading, setLoading] = useState(true)
@@ -166,6 +166,7 @@ function Funcionarios() {
     return (
         <MainTheme>
             <div className={common.container}>
+                {contextHolder}
                 <div className={common.top}> {/*header*/}
                     <div className={common.topTitleBox}> {/*title*/}
                         <UserOutlined className={common.topTitleIcon} /> {/*titleIcon*/}
@@ -199,8 +200,90 @@ function Funcionarios() {
                         pagination={{ pageSize: 6 }}
                     />
                 </div>
+
+                <Modal
+                    title={editandoId ? 'Editar Funcionário' : 'Novo Funcionário'}
+                    open={modalVisible}
+                    onCancel={() => {
+                        setModalVisible(false)
+                        setEditandoId(null)
+                        form.resetFields()
+                    }}
+                    onOk={() => form.submit()}
+                    okText="Salvar"
+                    cancelText="Cancelar"
+                    okButtonProps={{ shape: 'round' }}
+                    cancelButtonProps={{ shape: 'round' }}
+                >
+                    <Form
+                        form={form}
+                        layout="vertical"
+                        onFinish={salvarFuncionario}
+                    >
+                        <Form.Item
+                            name="nome"
+                            label="Nome"
+                            rules={[{ required: true, message: 'Campo obrigatório' }]}
+                        >
+                            <Input />
+                        </Form.Item>
+
+                        <Form.Item
+                            name="email"
+                            label="E-mail"
+                            rules={[
+                                { required: true, message: 'Campo obrigatório' },
+                                { type: 'email', message: 'Email inválido' }
+                            ]}
+                        >
+                            <Input />
+                        </Form.Item>
+
+                        <Form.Item
+                            name="cargo"
+                            label="Cargo"
+                            rules={[{ required: true, message: 'Campo obrigatório' }]}
+                        >
+                            <Input />
+                        </Form.Item>
+
+                        <Form.Item
+                            name="salario"
+                            label="Salário"
+                            rules={[{ required: true, message: 'Campo obrigatório' }]}
+                        >
+                            <InputNumber
+                                style={{ width: '100%' }}
+                                prefix="$"
+                                min={0}
+                                precision={2}
+                                decimalSeparator="."
+                                step={100}
+                            />
+                        </Form.Item>
+
+                        <Form.Item
+                            name="franquiaId"
+                            label="Franquia"
+                            rules={[{ required: true, message: 'Campo obrigatório' }]}
+                        >
+                            <Select
+                                placeholder="Selecione uma franquia"
+                                showSearch
+                                optionFilterProp="children"
+                            >
+                                {franquias.map(franquia => (
+                                    <Select.Option key={franquia.id} value={franquia.id}>
+                                        {franquia.nome} - {franquia.cidade}
+                                    </Select.Option>
+                                ))}
+                            </Select>
+                        </Form.Item>
+                    </Form>
+                </Modal>
+
             </div>
-        </MainTheme>
+        </MainTheme >
     )
 }
 
