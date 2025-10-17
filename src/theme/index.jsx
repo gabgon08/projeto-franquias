@@ -3,12 +3,14 @@ import { ConfigProvider } from 'antd'
 
 const MainTheme = ({ children }) => {
   const primaryColorCode = '#35725f'
+  const secondaryColor = '#000000'
 
   return (
     <ConfigProvider
       theme={{
         token: {
           colorPrimary: primaryColorCode,
+          colorTextBase: secondaryColor
         },
       }}
     >

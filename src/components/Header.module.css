@@ -22,7 +22,6 @@
     cursor: pointer;
     transition: opacity 0.3s ease;
     text-decoration: none;
-    color: inherit;
 }
 
 .logo:hover {
@@ -30,17 +29,13 @@
     text-decoration: none;
 }
 
-/* .logoText {
+.logoText {
     margin: 0 !important;
     font-size: 1.7rem !important;
     font-weight: bold !important;
-    background: #000000 !important;
-    -webkit-background-clip: text !important;
-    /* -webkit-text-fill-color: transparent !important; */
-/* background-clip: text !important;
-    user-select: none; */
-/* color: transparent !important; */
-/* } */
+    user-select: none;
+    color: #dffcf9de !important;
+}
 
 .menu {
     border: none !important;
