@@ -119,7 +119,9 @@ function Funcionarios() {
             dataIndex: 'cargo',
             key: 'cargo',
             showSorterTooltip: { title: 'Clique para ordenar' },
-            sorter: (a, b) => a.cargo.localeCompare(b.cargo)
+            sorter: (a, b) => a.cargo.localeCompare(b.cargo),
+            filters: gerarFiltros('cargo'),
+            onFilter: (value, record) => record.cargo === value
         },
         {
             title: 'Salário',
@@ -140,7 +142,7 @@ function Funcionarios() {
             key: 'franquia',
             showSorterTooltip: { title: 'Clique para ordenar' },
             render: (nome) => nome || 'Sem franquia',
-            sorter: (a, b) => a.franquia.nome.localeCompare(b.franquia.nome)
+            sorter: (a, b) => a.franquia.nome.localeCompare(b.franquia.nome),
         },
         {
             title: 'Ações',
