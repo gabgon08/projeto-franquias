@@ -106,18 +106,21 @@ function Funcionarios() {
             title: 'Nome',
             dataIndex: 'nome',
             key: 'nome',
+            align: 'center',
             showSorterTooltip: { title: 'Clique para ordenar' },
             sorter: (a, b) => a.nome.localeCompare(b.nome),
         },
         {
             title: 'E-mail',
             dataIndex: 'email',
-            key: 'email'
+            key: 'email',
+            align: 'center',
         },
         {
             title: 'Cargo',
             dataIndex: 'cargo',
             key: 'cargo',
+            align: 'center',
             showSorterTooltip: { title: 'Clique para ordenar' },
             sorter: (a, b) => a.cargo.localeCompare(b.cargo),
             filters: gerarFiltros('cargo'),
@@ -127,6 +130,7 @@ function Funcionarios() {
             title: 'Salário',
             dataIndex: 'salario',
             key: 'salario',
+            align: 'center',
             showSorterTooltip: { title: 'Clique para ordenar' },
             render: (valor) =>
                 valor.toLocaleString('en', {
@@ -140,6 +144,7 @@ function Funcionarios() {
             title: 'Franquia',
             dataIndex: ['franquia', 'nome'],
             key: 'franquia',
+            align: 'center',
             showSorterTooltip: { title: 'Clique para ordenar' },
             render: (nome) => nome || 'Sem franquia',
             sorter: (a, b) => a.franquia.nome.localeCompare(b.franquia.nome),
@@ -147,6 +152,7 @@ function Funcionarios() {
         {
             title: 'Ações',
             key: 'acoes',
+            align: 'center',
             render: (_, record) => (
                 <Space>
                     <Button
