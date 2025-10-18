@@ -4,8 +4,11 @@ import React, { useState, useEffect } from 'react'
 import common from './../../theme/common.module.css'
 import styles from './franquias.module.css'
 import MainTheme from '@/theme'
-import { Table, Button, Modal, Form, message, Input, Space, Typography, Popconfirm, Tooltip } from 'antd'
+import { Table, Button, Modal, Form, message, Input, Space, Typography, Popconfirm, Tooltip, Select } from 'antd'
 import { PlusOutlined, ShopOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
+import countries from 'i18n-iso-countries'
+import pt from 'i18n-iso-countries/langs/pt.json'
+countries.registerLocale(pt)
 
 function Franquias() {
 
@@ -16,6 +19,8 @@ function Franquias() {
     const [form] = Form.useForm()
     const [messageApi, contextHolder] = message.useMessage()
     const { Title } = Typography
+    const { Option } = Select
+    const paises = Object.entries(countries.getNames('pt', { select: 'official' }))
 
     async function carregarFranquias() {
 
@@ -199,7 +204,7 @@ function Franquias() {
                             level={3}
                             className={common.topTitleText}
                         >
-                            FRANQUIAS
+                            FRANUIAS
                         </Title>
                     </div>
                     <Button
@@ -264,7 +269,20 @@ function Franquias() {
                             name='pais'
                             label='País'
                             rules={[{ required: true, message: 'Digite o país' }]}>
-                            <Input />
+
+                            <Select
+                                showSearch
+                                placeholder='Selecione um país'
+                                optionFilterProp='children'
+                                filterOption={(input, option) =>
+                                    option.children.toLowerCase().includes(input.toLowerCase())
+                                }
+                            >
+                                {paises.map(([code, name]) => (
+                                    <Option key={code} value={name}>{name}</Option>
+                                ))}
+
+                            </Select>
                         </Form.Item>
 
                         <Form.Item
