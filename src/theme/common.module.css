@@ -2,16 +2,6 @@
     padding: 2rem;
 }
 
-.containerTable {
-    background-color: rgb(255, 255, 255, 0.8);
-    border-radius: 0 2rem 2rem 2rem;
-    padding: 1.5rem;
-    transition: 0.3s ease;
-    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.200);
-    z-index: 2;
-    position: relative;
-}
-
 .top {
     display: flex;
     justify-content: space-between;
@@ -52,4 +42,18 @@
 
 .addButton {
     color: #e2fffa;
+}
+
+.containerTable {
+    background-color: rgb(255, 255, 255, 0.8);
+    border-radius: 0 2rem 2rem 2rem;
+    padding: 1.5rem;
+    transition: 0.3s ease;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.200);
+    z-index: 2;
+    position: relative;
+}
+
+.header :global(.ant-table-thead > tr > th) {
+    font-size: 1.1rem;
 }

@@ -219,6 +219,7 @@ function Franquias() {
                             pageSize: 6,
                             position: ['bottomCenter']
                         }}
+                        className={common.header}
                     />
                 </div>
 

@@ -29,7 +29,8 @@ const MainTheme = ({ children }) => {
             rowHoverBg: tableRowHoverBg,
             rowExpandedBg: tableRowExpandedBg,
             headerSortActiveBg: tableHeaderSortActiveBg,
-            headerSortHoverBg: tableHeaderSortHoverBg
+            headerSortHoverBg: tableHeaderSortHoverBg,
+            cellFontSize: 15
           },
         }
       }}
