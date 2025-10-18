@@ -215,7 +215,10 @@ function Franquias() {
                             tip: 'Carregando franquias, aguarde...'
                         }}
                         rowKey='id'
-                        pagination={{ pageSize: 6 }}
+                        pagination={{
+                            pageSize: 6,
+                            position: ['bottomCenter']
+                        }}
                     />
                 </div>
 
