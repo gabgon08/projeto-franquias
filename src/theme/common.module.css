@@ -1,6 +1,12 @@
+/* GENERAL */
+
 .container {
+    margin: auto;
     padding: 2rem;
+    max-width: min(90vw, 1400px);
 }
+
+/* TABLE */
 
 .top {
     display: flex;
