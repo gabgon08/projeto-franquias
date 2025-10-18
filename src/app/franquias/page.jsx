@@ -91,13 +91,14 @@ function Franquias() {
             title: 'Nome',
             dataIndex: 'nome',
             key: 'nome',
-            defaultSortOrder: 'ascend',
+            showSorterTooltip: { title: 'Clique para ordenar' },
             sorter: (a, b) => a.nome.localeCompare(b.nome)
         },
         {
             title: 'Cidade',
             dataIndex: 'cidade',
             key: 'cidade',
+            showSorterTooltip: { title: 'Clique para ordenar' },
             sorter: (a, b) => a.cidade.localeCompare(b.cidade),
             filters: gerarFiltros('cidade'),
             onFilter: (value, record) => record.cidade === value
@@ -106,6 +107,7 @@ function Franquias() {
             title: 'País',
             dataIndex: 'pais',
             key: 'pais',
+            showSorterTooltip: { title: 'Clique para ordenar' },
             sorter: (a, b) => a.pais.localeCompare(b.pais),
             filters: gerarFiltros('pais'),
             onFilter: (value, record) => record.pais === value
@@ -119,6 +121,7 @@ function Franquias() {
             title: 'Funcionários',
             dataIndex: ['_count', 'funcionarios'],
             key: 'funcionarios_count',
+            showSorterTooltip: { title: 'Clique para ordenar' },
             render: (count) => count || 0,
             sorter: (a, b) => a._count.funcionarios - b._count.funcionarios,
         },

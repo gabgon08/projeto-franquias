@@ -106,7 +106,7 @@ function Funcionarios() {
             title: 'Nome',
             dataIndex: 'nome',
             key: 'nome',
-            defaultSortOrder: 'ascend',
+            showSorterTooltip: { title: 'Clique para ordenar' },
             sorter: (a, b) => a.nome.localeCompare(b.nome),
         },
         {
@@ -118,12 +118,14 @@ function Funcionarios() {
             title: 'Cargo',
             dataIndex: 'cargo',
             key: 'cargo',
+            showSorterTooltip: { title: 'Clique para ordenar' },
             sorter: (a, b) => a.cargo.localeCompare(b.cargo)
         },
         {
             title: 'Salário',
             dataIndex: 'salario',
             key: 'salario',
+            showSorterTooltip: { title: 'Clique para ordenar' },
             render: (valor) =>
                 valor.toLocaleString('en', {
                     minimumFractionDigits: 2,
@@ -136,6 +138,7 @@ function Funcionarios() {
             title: 'Franquia',
             dataIndex: ['franquia', 'nome'],
             key: 'franquia',
+            showSorterTooltip: { title: 'Clique para ordenar' },
             render: (nome) => nome || 'Sem franquia',
             sorter: (a, b) => a.franquia.nome.localeCompare(b.franquia.nome)
         },
