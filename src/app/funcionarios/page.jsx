@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './funcionarios.module.css'
 import common from './../../theme/common.module.css'
 import MainTheme from '@/theme'
-import { Table, Button, Modal, Form, message, Input, Typography, InputNumber, Select, Space, Popconfirm } from 'antd'
+import { Table, Button, Modal, Form, message, Input, Typography, InputNumber, Select, Space, Popconfirm, Tooltip } from 'antd'
 import { PlusOutlined, UserOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
 function Funcionarios() {
@@ -155,14 +155,18 @@ function Funcionarios() {
             align: 'center',
             render: (_, record) => (
                 <Space>
-                    <Button
-                        icon={<EditOutlined />}
-                        variant='solid'
-                        color='primary'
-                        shape='circle'
-                        onClick={() => editar(record)}
-                        size="default"
-                    />
+                    <Tooltip
+                        title='Editar funcionário'>
+                        <Button
+                            icon={<EditOutlined />}
+                            variant='solid'
+                            color='primary'
+                            shape='circle'
+                            onClick={() => editar(record)}
+                            size="default"
+                        />
+                    </Tooltip>
+
                     <Popconfirm
                         title="Confirma remover?"
                         onConfirm={() => removerFuncionario(record.id)}
@@ -171,14 +175,17 @@ function Funcionarios() {
                         okButtonProps={{ shape: 'round' }}
                         cancelButtonProps={{ shape: 'round' }}
                     >
-                        <Button
-                            icon={<DeleteOutlined />}
-                            danger
-                            color='danger'
-                            shape='circle'
-                            variant='solid'
-                            size="default"
-                        />
+                        <Tooltip
+                            title='Deletar funcionário'>
+                            <Button
+                                icon={<DeleteOutlined />}
+                                danger
+                                color='danger'
+                                shape='circle'
+                                variant='solid'
+                                size="default"
+                            />
+                        </Tooltip>
                     </Popconfirm>
                 </Space>
             ),

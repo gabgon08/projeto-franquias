@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import common from './../../theme/common.module.css'
 import styles from './franquias.module.css'
 import MainTheme from '@/theme'
-import { Table, Button, Modal, Form, message, Input, Space, Typography, Popconfirm } from 'antd'
+import { Table, Button, Modal, Form, message, Input, Space, Typography, Popconfirm, Tooltip } from 'antd'
 import { PlusOutlined, ShopOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
 function Franquias() {
@@ -136,13 +136,17 @@ function Franquias() {
             align: 'center',
             render: (_, record) => (
                 <Space>
-                    <Button
-                        icon={<EditOutlined />}
-                        variant='solid'
-                        color='primary'
-                        shape='circle'
-                        onClick={() => editar(record)}
-                        size="default" />
+
+                    <Tooltip
+                        title='Editar franquia'>
+                        <Button
+                            icon={<EditOutlined />}
+                            variant='solid'
+                            color='primary'
+                            shape='circle'
+                            onClick={() => editar(record)}
+                            size="default" />
+                    </Tooltip>
 
                     <Popconfirm
                         title="Confirma remover?"
@@ -150,17 +154,20 @@ function Franquias() {
                         okText="Sim"
                         cancelText="Não"
                         okButtonProps={{ shape: 'round' }}
-                        cancelButtonProps={{ shape: 'round' }}
-                    >
-                        <Button
-                            icon={<DeleteOutlined />}
-                            danger
-                            color='danger'
-                            shape='circle'
-                            variant='solid'
-                            size="default"
-                        />
+                        cancelButtonProps={{ shape: 'round' }}>
+                        <Tooltip
+                            title='Deletar franquia'>
+                            <Button
+                                icon={<DeleteOutlined />}
+                                danger
+                                color='danger'
+                                shape='circle'
+                                variant='solid'
+                                size="default"
+                            />
+                        </Tooltip>
                     </Popconfirm>
+
                 </Space>
             ),
 

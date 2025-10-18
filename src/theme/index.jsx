@@ -1,6 +1,6 @@
 import React from 'react'
 import { ConfigProvider } from 'antd'
-import { yellow } from '@ant-design/colors'
+import { lime } from '@ant-design/colors'
 
 const MainTheme = ({ children }) => {
   // cores principais
@@ -33,6 +33,9 @@ const MainTheme = ({ children }) => {
             headerSortHoverBg: tableHeaderSortHoverBg,
             cellFontSize: 15
           },
+          Tooltip: {
+            colorBgSpotlight: textBaseColor
+          }
         }
       }}
     >
