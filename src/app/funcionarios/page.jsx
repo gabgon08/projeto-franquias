@@ -48,6 +48,11 @@ function Funcionarios() {
         carregarFranquias()
     }, [])
 
+    const gerarFiltros = (key) => {
+        const uniqueValues = [...new Set(funcionarios.map((item) => item[key]))];
+        return uniqueValues.map((value) => ({ text: value, value }));
+    };
+
     async function salvarFuncionario(values) {
         try {
             const url = editandoId ? `/api/funcionarios/${editandoId}` : '/api/funcionarios'
@@ -100,7 +105,9 @@ function Funcionarios() {
         {
             title: 'Nome',
             dataIndex: 'nome',
-            key: 'nome'
+            key: 'nome',
+            defaultSortOrder: 'ascend',
+            sorter: (a, b) => a.nome.localeCompare(b.nome),
         },
         {
             title: 'E-mail',
@@ -110,7 +117,8 @@ function Funcionarios() {
         {
             title: 'Cargo',
             dataIndex: 'cargo',
-            key: 'cargo'
+            key: 'cargo',
+            sorter: (a, b) => a.cargo.localeCompare(b.cargo)
         },
         {
             title: 'Salário',
@@ -122,13 +130,14 @@ function Funcionarios() {
                     style: 'currency',
                     currency: 'USD',
                 }),
+            sorter: (a, b) => a.salario - b.salario,
         },
         {
             title: 'Franquia',
             dataIndex: ['franquia', 'nome'],
             key: 'franquia',
-            render: (nome) =>
-                nome || 'Sem franquia'
+            render: (nome) => nome || 'Sem franquia',
+            sorter: (a, b) => a.franquia.nome.localeCompare(b.franquia.nome)
         },
         {
             title: 'Ações',

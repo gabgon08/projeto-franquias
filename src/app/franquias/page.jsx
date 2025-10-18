@@ -91,7 +91,7 @@ function Franquias() {
             title: 'Nome',
             dataIndex: 'nome',
             key: 'nome',
-            defaultSortOrder: 'descend',
+            defaultSortOrder: 'ascend',
             sorter: (a, b) => a.nome.localeCompare(b.nome)
         },
         {
