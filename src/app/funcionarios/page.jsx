@@ -233,7 +233,7 @@ function Funcionarios() {
                         }}
                         rowKey='id'
                         pagination={{
-                            pageSize: 6,
+                            pageSize: 10,
                             position: ['bottomCenter']
                         }}
                         className={common.header}
