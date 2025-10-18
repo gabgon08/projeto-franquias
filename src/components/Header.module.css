@@ -1,84 +1,44 @@
 .header {
-    background: #f05e23 !important;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.329);
-    border-bottom: 0px solid #f0f0f0;
+    background-color: #f05e23;
     position: sticky;
     top: 0;
-    z-index: 100;
-    width: 100%;
-    padding: 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.329);
+    border-bottom: 0;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
     display: flex;
-    align-items: center;
+    margin: 0 auto;
+    padding: 0 1rem;
+    height: 4rem;
     justify-content: space-between;
+    max-width: min(90vw, 1440px);
+    align-items: center;
 }
 
-.logo {
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-    text-decoration: none;
+.headerLink {
+    max-width: fit-content;
+    align-content: center;
+    justify-items: center;
     margin: 0;
-    padding: 0;
-}
-
-.logo:hover {
-    opacity: 0.6;
+    transition: 0.3s ease;
     text-decoration: none;
 }
 
-.logoText {
-    margin: 0 !important;
-    font-size: 2rem !important;
-    font-weight: bold !important;
-    user-select: none;
-    color: #6e290f !important;
+.headerLink:hover {
+    opacity: 0.6;
 }
 
-.menu {
-    border: none !important;
-    background: transparent !important;
-    flex: 1;
+.headerMenu {
     justify-content: center;
-    max-width: 50%;
-    line-height: 60px;
+    min-width: 38%;
+    width: auto;
+    line-height: 4rem;
+    border: 0;
+    margin: 0;
     font-size: 1rem;
 }
 
-/* Evitar flash nos links */
-.menu a {
-    color: inherit !important;
-    text-decoration: none !important;
-}
-
-.menu a:hover {
-    text-decoration: none !important;
-}
-
-/* Responsivo */
-@media (max-width: 768px) {
-    .container {
-        padding: 0 16px;
-        flex-direction: column;
-        height: auto;
-        padding-top: 12px;
-        padding-bottom: 8px;
-    }
-
-    .logo {
-        margin-bottom: 8px;
-    }
-
-    .logoText {
-        font-size: 1.2rem !important;
-    }
-
-    .menu {
-        width: 100%;
-        justify-content: center;
-    }
+.headerTitle {
+    font-weight: bold !important;
 }

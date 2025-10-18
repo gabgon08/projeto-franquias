@@ -1,5 +1,6 @@
 import React from 'react'
 import { ConfigProvider } from 'antd'
+import { yellow } from '@ant-design/colors'
 
 const MainTheme = ({ children }) => {
   // cores principais
@@ -44,20 +45,24 @@ export default MainTheme
 
 export const HeaderTheme = ({ children }) => {
   const primaryColorCode = '#6e290f'
+  const orangeLight = '#f05e23'
+  const orangeDark = 'rgba(201, 80, 28, 0.81)'
   const textColor = '#ffffffff'
-  const menuItemHoverBgColor = '#c94f1c'
 
   return (
     <ConfigProvider
       theme={{
         token: {
           colorPrimary: primaryColorCode,
+          colorText: primaryColorCode
         },
         components: {
           Menu: {
-            horizontalItemHoverBg: menuItemHoverBgColor,
+            horizontalItemHoverBg: orangeDark,
             itemColor: textColor,
             itemHoverColor: textColor,
+            itemBg: orangeLight,
+            popupBg: orangeLight
           }
         }
       }}
