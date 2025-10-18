@@ -204,7 +204,7 @@ function Franquias() {
                             level={3}
                             className={common.topTitleText}
                         >
-                            FRANUIAS
+                            FRANQUIAS
                         </Title>
                     </div>
                     <Button
