@@ -1,17 +1,20 @@
 'use client'
 
-import { Menu } from "antd"
+import { Flex, Layout, Menu } from "antd"
 import { HomeOutlined, UserOutlined, ShopOutlined, DashboardOutlined } from '@ant-design/icons'
 import { usePathname } from "next/navigation"
 import Link from 'next/link'
 import styles from './Header.module.css'
 import { HeaderTheme } from "../theme/index"
 import Title from "antd/es/typography/Title"
+import { startTransition } from "react"
 
 
-export default function Header() {
+const { Header } = Layout;
+
+const App = () => {
     const pathname = usePathname()
-    const menuItems = [
+    const itens = [
         {
             label: <Link href='/'>Home</Link>,
             key: '/',
@@ -36,26 +39,33 @@ export default function Header() {
 
     return (
         <HeaderTheme>
-            <header className={styles.header}>
-                <div className={styles.container}>
+            <Layout className={styles.layout}>
+                <Header className={styles.header}>
+                    <Flex className={styles.flexContainer}>
 
-                    <Link href='/' className={styles.headerLink}>
-                        <Title
-                            level={2}
-                            className={styles.headerTitle}>
-                            Sistema de Franquias
-                        </Title>
-                    </Link>
+                        <Link href='/' className={styles.flexLink}>
 
-                    <Menu
-                        mode="horizontal"
-                        selectedKeys={[pathname]}
-                        items={menuItems}
-                        className={styles.headerMenu}
-                    />
+                            <Title
+                                level={2}
+                                className={styles.flexTitle}
+                            >
+                                Sistema de Franquias
+                            </Title>
 
-                </div>
-            </header>
-        </HeaderTheme>
+                        </Link>
+
+                        <Menu
+                            mode="horizontal"
+                            selectedKeys={[pathname]}
+                            items={itens}
+                            className={styles.flexMenu}
+                        />
+
+                    </Flex>
+                </Header>
+            </Layout >
+        </HeaderTheme >
     )
 }
+
+export default App

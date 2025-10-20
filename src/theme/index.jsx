@@ -1,8 +1,9 @@
+'use client'
+
 import React from 'react'
 import { ConfigProvider } from 'antd'
-import { lime } from '@ant-design/colors'
 
-const MainTheme = ({ children }) => {
+export function GreenTheme({ children }) {
   // cores principais
   const primaryColorCode = '#35725f'
   const textBaseColor = '#1c3b32ff'
@@ -21,6 +22,7 @@ const MainTheme = ({ children }) => {
         token: {
           colorPrimary: primaryColorCode,
           colorTextBase: textBaseColor,
+          colorBgContainer: '#9fff51ff'
         },
         components: {
           Table: {
@@ -44,28 +46,25 @@ const MainTheme = ({ children }) => {
   )
 }
 
-export default MainTheme
-
-export const HeaderTheme = ({ children }) => {
-  const primaryColorCode = '#6e290f'
-  const orangeLight = '#f05e23'
-  const orangeDark = 'rgba(201, 80, 28, 0.81)'
-  const textColor = '#ffffffff'
+export function HeaderTheme({ children }) {
 
   return (
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: primaryColorCode,
-          colorText: primaryColorCode
+          colorPrimary: '#6e290f',
+          colorText: '#fddcd0ff',
         },
         components: {
           Menu: {
-            horizontalItemHoverBg: orangeDark,
-            itemColor: textColor,
-            itemHoverColor: textColor,
-            itemBg: orangeLight,
-            popupBg: orangeLight
+            horizontalItemHoverBg: '#c9501ccf',
+            itemColor: '#fddcd0ff',
+            itemHoverColor: '#fddcd0ff',
+            itemBg: '#f05e23',
+            popupBg: '#f05e23',
+          },
+          Layout: {
+            headerBg: '#f05e23',
           }
         }
       }}

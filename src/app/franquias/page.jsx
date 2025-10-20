@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import common from './../../theme/common.module.css'
 import styles from './franquias.module.css'
-import MainTheme from '@/theme'
+import GreenTheme from '@/theme'
 import { Table, Button, Modal, Form, message, Input, Space, Typography, Popconfirm, Tooltip, Select } from 'antd'
 import { PlusOutlined, ShopOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import countries from 'i18n-iso-countries'
@@ -194,7 +194,7 @@ function Franquias() {
 
 
     return (
-        <MainTheme>
+        <GreenTheme>
             <div className={common.container}>
                 {contextHolder}
                 <div className={common.top}>
@@ -218,22 +218,20 @@ function Franquias() {
                     </Button>
                 </div>
 
-                <div className={common.containerTable}>
-                    <Table
-                        columns={colunas}
-                        dataSource={franquias}
-                        loading={{
-                            spinning: loading,
-                            tip: 'Carregando franquias, aguarde...'
-                        }}
-                        rowKey='id'
-                        pagination={{
-                            pageSize: 10,
-                            position: ['bottomCenter']
-                        }}
-                        className={common.header}
-                    />
-                </div>
+                <Table
+                    className={common.containerTable}
+                    columns={colunas}
+                    dataSource={franquias}
+                    loading={{
+                        spinning: loading,
+                        tip: 'Carregando franquias, aguarde...'
+                    }}
+                    rowKey='id'
+                    pagination={{
+                        pageSize: 10,
+                        position: ['bottomCenter']
+                    }}
+                />
 
                 <Modal
                     title={editandoId ? 'Editar franquia' : 'Nova Franquia'}
@@ -296,7 +294,7 @@ function Franquias() {
                 </Modal>
 
             </div>
-        </MainTheme >
+        </GreenTheme >
     )
 }
 

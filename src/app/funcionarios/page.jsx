@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react'
 import styles from './funcionarios.module.css'
 import common from './../../theme/common.module.css'
-import MainTheme from '@/theme'
-import { Table, Button, Modal, Form, message, Input, Typography, InputNumber, Select, Space, Popconfirm, Tooltip } from 'antd'
+import { GreenTheme } from './../../theme/index'
+import { Table, Button, Modal, Form, message, Input, Typography, InputNumber, Select, Space, Popconfirm, Tooltip, theme, Flex } from 'antd'
 import { PlusOutlined, UserOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
 function Funcionarios() {
@@ -17,6 +17,7 @@ function Funcionarios() {
     const [editandoId, setEditandoId] = useState(null)
     const [form] = Form.useForm()
     const [messageApi, contextHolder] = message.useMessage()
+    const { token } = theme.useToken()
 
 
     async function carregarFuncionarios() {
@@ -205,17 +206,24 @@ function Funcionarios() {
         form.submit()
     }
 
+
     return (
-        <MainTheme>
+        <GreenTheme>
             <div className={common.container}>
                 {contextHolder}
-                <div className={common.top}> {/*header*/}
-                    <div className={common.topTitleBox}> {/*title*/}
-                        <UserOutlined className={common.topTitleIcon} /> {/*titleIcon*/}
+                <div className={common.topBox}>
+                    <div className={common.topBoxIconTitle}>
+
+                        <UserOutlined
+                            className={common.topBoxIcon}
+                            style={{
+                                color: token.colorBgContainer
+                            }}
+                        />
 
                         <Title
                             level={3}
-                            className={common.topTitleText}
+                            className={common.topBoxTitle}
                         >FUNCIONÁRIOS
                         </Title>
                     </div>
@@ -230,22 +238,20 @@ function Funcionarios() {
                     </Button>
                 </div>
 
-                <div className={common.containerTable}>
-                    <Table
-                        columns={colunas}
-                        dataSource={funcionarios}
-                        loading={{
-                            spinning: loading,
-                            tip: 'Carregando funcionários, aguarde...'
-                        }}
-                        rowKey='id'
-                        pagination={{
-                            pageSize: 10,
-                            position: ['bottomCenter']
-                        }}
-                        className={common.header}
-                    />
-                </div>
+                <Table
+                    className={common.containerTable}
+                    columns={colunas}
+                    dataSource={funcionarios}
+                    loading={{
+                        spinning: loading,
+                        tip: 'Carregando funcionários, aguarde...'
+                    }}
+                    rowKey='id'
+                    pagination={{
+                        pageSize: 10,
+                        position: ['bottomCenter']
+                    }}
+                />
 
                 <Modal
                     title={editandoId ? 'Editar Funcionário' : 'Novo Funcionário'}
@@ -322,7 +328,7 @@ function Funcionarios() {
                 </Modal>
 
             </div>
-        </MainTheme >
+        </GreenTheme >
     )
 }
 

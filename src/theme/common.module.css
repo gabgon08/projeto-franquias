@@ -8,14 +8,14 @@
 
 /* TABLE */
 
-.top {
+.topBox {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem
 }
 
-.topTitleBox {
+.topBoxIconTitle {
+    background-color: #35725f;
     display: flex;
     padding: 1.2rem;
     gap: 0.7rem;
@@ -29,19 +29,17 @@
         /* right */
         -1px 0px 10px rgba(0, 0, 0, 0.200);
     /* left */
-    background-color: #35725f;
     z-index: 1;
     position: relative;
 }
 
-.topTitleIcon {
+.topBoxIcon {
     font-size: 35px;
     border-color: black;
     border-radius: 50%;
-    color: #e2fffa;
 }
 
-.topTitleText {
+.topBoxTitle {
     font-weight: bold !important;
     color: #e2fffa !important;
 }
@@ -51,15 +49,13 @@
 }
 
 .containerTable {
-    background-color: rgb(255, 255, 255, 0.8);
+    background-color: #ffffff88;
     border-radius: 0 2rem 2rem 2rem;
-    padding: 1.5rem;
-    transition: 0.3s ease;
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.200);
-    z-index: 2;
-    position: relative;
+    padding: 1.5rem;
+    z-index: 20;
 }
 
-.header :global(.ant-table-thead > tr > th) {
+.containerTable :global(.ant-table-thead > tr > th) {
     font-size: 1.1rem;
 }

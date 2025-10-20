@@ -3,7 +3,7 @@ body,
 #root {
   height: 100%;
   margin: 0;
-  background-color: #8dd3c6;
+  /* background-color: #8dd3c6; */
 }
 
 * {
@@ -18,5 +18,4 @@ body,
 .ant-typography {
   margin: 0 !important;
   padding: 0 !important;
-  /* line-height: 0 !important; */
 }
