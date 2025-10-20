@@ -22,7 +22,8 @@
 .flexLink {
     align-content: center;
     justify-items: center;
-    padding: 0 2rem;
+    padding: 0;
+    margin: 0 4rem;
     transition: 0.3s ease;
     text-decoration: none;
 }
