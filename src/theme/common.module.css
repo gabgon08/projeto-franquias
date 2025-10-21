@@ -1,10 +1,15 @@
 /* GENERAL */
 
+.layout {
+    min-height: 100vh
+}
+
 .container {
     margin: auto;
     padding: 2rem;
     width: 80vw;
     max-width: 1300px;
+    height: 100%;
 }
 
 /* TABLE */

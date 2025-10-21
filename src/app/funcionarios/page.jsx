@@ -20,7 +20,6 @@ function Funcionarios() {
     const [messageApi, contextHolder] = message.useMessage()
     const { token } = theme.useToken()
 
-
     async function carregarFuncionarios() {
         try {
             setLoading(true)
@@ -210,7 +209,9 @@ function Funcionarios() {
 
     return (
         <GreenTheme>
-            <Layout style={{ backgroundColor: token.colorBgContainer }}>
+            <Layout className={common.layout}
+                style={{ backgroundColor: token.colorBgContainer }}>
+
                 <Content className={common.container}>
                     {contextHolder}
 
@@ -242,8 +243,13 @@ function Funcionarios() {
                             onClick={showModal}
                         >Adicionar
                         </Button>
+
                     </div>
-                    <div className={common.containerTable}>
+
+                    <div
+                        className={common.containerTable}
+                        style={{ backgroundColor: token.colorTableBg }}>
+
                         <Table
                             columns={colunas}
                             dataSource={funcionarios}
@@ -257,6 +263,7 @@ function Funcionarios() {
                                 position: ['bottomCenter']
                             }}
                         />
+
                     </div>
 
                     <Modal

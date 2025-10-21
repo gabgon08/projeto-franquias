@@ -7,16 +7,18 @@ export function GreenTheme({ children }) {
 
   return (
     <ConfigProvider
+
       theme={{
         token: {
           colorPrimary: '#255933',
           colorText: '#0c2713',
           colorBgContainer: '#dcfce3',
+          colorTableBg: '#ecfcef'
         },
         components: {
           Table: {
-            colorBgContainer: '#dcfce3',
-            // headerBg: '#35725f',
+            colorBgContainer: '#ecfcef',
+            headerBg: '#255933',
             // headerColor: '#e2fffa',
             // rowHoverBg: '#35725f2a',
             // rowExpandedBg: '#35725f2a',
