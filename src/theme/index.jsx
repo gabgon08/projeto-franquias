@@ -6,8 +6,8 @@ import { ConfigProvider } from 'antd'
 const colors = {
   green: {
     1: '#0c2713',
-    2: '#4b7556',
-    3: '#255933',
+    2: '#255933',
+    3: '#4b7556',
     4: '#4ca865',
     5: '#cfeed5',
     6: '#dcfce3',
@@ -21,7 +21,7 @@ export function GreenTheme({ children }) {
 
       theme={{
         token: {
-          colorPrimary: colors.green[3],
+          colorPrimary: colors.green[2],
           colorText: colors.green[1],
           colorBgContainer: colors.green[6],
           colorTableBg: colors.green[7],
@@ -29,16 +29,16 @@ export function GreenTheme({ children }) {
         components: {
           Table: {
             colorBgContainer: colors.green[7],
-            headerBg: colors.green[3],
+            headerBg: colors.green[2],
             headerColor: colors.green[6],
             rowHoverBg: colors.green[5],
             headerSortActiveBg: colors.green[4],
-            headerSortHoverBg: colors.green[2],
+            headerSortHoverBg: colors.green[3],
             cellFontSize: 15,
             headerBorderRadius: 15,
           },
           Tooltip: {
-            colorBgSpotlight: colors.green[3]
+            colorBgSpotlight: colors.green[2]
           },
           Button: {
             primaryShadow: 0,
@@ -59,7 +59,7 @@ export function HeaderTheme({ children }) {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: colors.green[3],
+          colorPrimary: colors.green[2],
           colorText: colors.green[7],
         },
         components: {
@@ -69,7 +69,7 @@ export function HeaderTheme({ children }) {
             itemColor: colors.green[7],
             itemHoverColor: colors.green[7],
             itemBg: colors.green[1],
-            popupBg: colors.green[3],
+            popupBg: colors.green[1],
           },
           Layout: {
             headerBg: colors.green[1],
