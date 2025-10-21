@@ -7,7 +7,6 @@ import Link from 'next/link'
 import styles from './Header.module.css'
 import { HeaderTheme } from "../theme/index"
 import Title from "antd/es/typography/Title"
-import { startTransition } from "react"
 
 
 const { Header } = Layout;
