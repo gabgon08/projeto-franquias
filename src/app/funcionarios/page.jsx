@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './funcionarios.module.css'
 import common from './../../theme/common.module.css'
 import { GreenTheme } from './../../theme/index'
-import { Table, Button, Modal, Form, message, Input, Typography, InputNumber, Select, Space, Popconfirm, Tooltip, theme, Flex, Layout } from 'antd'
+import { Table, Button, Modal, Form, message, Input, Typography, InputNumber, Select, Space, Popconfirm, Tooltip, theme, Layout } from 'antd'
 import { PlusOutlined, UserOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
 function Funcionarios() {
