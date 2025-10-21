@@ -3,7 +3,8 @@
 .container {
     margin: auto;
     padding: 2rem;
-    max-width: min(90vw, 1400px);
+    width: 80vw;
+    max-width: 1300px;
 }
 
 /* TABLE */
@@ -15,10 +16,9 @@
 }
 
 .topBoxIconTitle {
-    background-color: #35725f;
     display: flex;
     padding: 1.2rem;
-    gap: 0.7rem;
+    gap: 0.9rem;
     border-radius: 2rem 2rem 0 0;
     align-items: center;
     justify-content: space-evenly;
@@ -29,31 +29,23 @@
         /* right */
         -1px 0px 10px rgba(0, 0, 0, 0.200);
     /* left */
-    z-index: 1;
+    z-index: 0;
     position: relative;
 }
 
 .topBoxIcon {
     font-size: 35px;
-    border-color: black;
     border-radius: 50%;
 }
 
 .topBoxTitle {
     font-weight: bold !important;
-    color: #e2fffa !important;
-}
-
-.addButton {
-    color: #e2fffa;
 }
 
 .containerTable {
-    background-color: #ffffff88;
     border-radius: 0 2rem 2rem 2rem;
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.200);
-    padding: 1.5rem;
-    z-index: 20;
+    padding: 1.5rem 1.5rem 0;
 }
 
 .containerTable :global(.ant-table-thead > tr > th) {

@@ -4,12 +4,13 @@ import React, { useState, useEffect } from 'react'
 import styles from './funcionarios.module.css'
 import common from './../../theme/common.module.css'
 import { GreenTheme } from './../../theme/index'
-import { Table, Button, Modal, Form, message, Input, Typography, InputNumber, Select, Space, Popconfirm, Tooltip, theme, Flex } from 'antd'
+import { Table, Button, Modal, Form, message, Input, Typography, InputNumber, Select, Space, Popconfirm, Tooltip, theme, Flex, Layout } from 'antd'
 import { PlusOutlined, UserOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
 function Funcionarios() {
 
     const { Title } = Typography
+    const { Content } = Layout
     const [funcionarios, setFuncionarios] = useState([])
     const [franquias, setFranquias] = useState([])
     const [loading, setLoading] = useState(true)
@@ -209,125 +210,130 @@ function Funcionarios() {
 
     return (
         <GreenTheme>
-            <div className={common.container}>
-                {contextHolder}
-                <div className={common.topBox}>
-                    <div className={common.topBoxIconTitle}>
+            <Layout style={{ backgroundColor: token.colorBgContainer }}>
+                <Content className={common.container}>
+                    {contextHolder}
 
-                        <UserOutlined
-                            className={common.topBoxIcon}
+                    <div className={common.topBox}>
+
+                        <div className={common.topBoxIconTitle}
                             style={{
+                                backgroundColor: token.colorPrimary,
                                 color: token.colorBgContainer
+                            }}>
+
+                            <UserOutlined className={common.topBoxIcon} />
+
+                            <Title
+                                level={3}
+                                className={common.topBoxTitle}
+                                style={{ color: token.colorBgContainer }}
+                            >FUNCIONÁRIOS
+                            </Title>
+
+                        </div>
+
+                        <Button
+                            type='primary'
+                            icon={<PlusOutlined />}
+                            className={common.addButton}
+                            shape='round'
+                            size='large'
+                            onClick={showModal}
+                        >Adicionar
+                        </Button>
+                    </div>
+                    <div className={common.containerTable}>
+                        <Table
+                            columns={colunas}
+                            dataSource={funcionarios}
+                            loading={{
+                                spinning: loading,
+                                tip: 'Carregando funcionários, aguarde...'
+                            }}
+                            rowKey='id'
+                            pagination={{
+                                pageSize: 10,
+                                position: ['bottomCenter']
                             }}
                         />
-
-                        <Title
-                            level={3}
-                            className={common.topBoxTitle}
-                        >FUNCIONÁRIOS
-                        </Title>
                     </div>
-                    <Button
-                        type='primary'
-                        icon={<PlusOutlined />}
-                        className={common.addButton}
-                        shape='round'
-                        size='large'
-                        onClick={showModal}
-                    >Adicionar
-                    </Button>
-                </div>
 
-                <Table
-                    className={common.containerTable}
-                    columns={colunas}
-                    dataSource={funcionarios}
-                    loading={{
-                        spinning: loading,
-                        tip: 'Carregando funcionários, aguarde...'
-                    }}
-                    rowKey='id'
-                    pagination={{
-                        pageSize: 10,
-                        position: ['bottomCenter']
-                    }}
-                />
-
-                <Modal
-                    title={editandoId ? 'Editar Funcionário' : 'Novo Funcionário'}
-                    open={modalVisible}
-                    onCancel={closeModal}
-                    onOk={okModal}
-                    okText="Salvar"
-                    cancelText="Cancelar"
-                    okButtonProps={{ shape: 'round' }}
-                    cancelButtonProps={{ shape: 'round' }}
-                >
-                    <Form
-                        form={form}
-                        layout="vertical"
-                        onFinish={salvarFuncionario}
+                    <Modal
+                        title={editandoId ? 'Editar Funcionário' : 'Novo Funcionário'}
+                        open={modalVisible}
+                        onCancel={closeModal}
+                        onOk={okModal}
+                        okText="Salvar"
+                        cancelText="Cancelar"
+                        okButtonProps={{ shape: 'round' }}
+                        cancelButtonProps={{ shape: 'round' }}
                     >
-                        <Form.Item
-                            name="nome"
-                            label="Nome"
-                            rules={[{ required: true, message: 'Campo obrigatório' }]}>
-                            <Input />
-                        </Form.Item>
+                        <Form
+                            form={form}
+                            layout="vertical"
+                            onFinish={salvarFuncionario}
+                        >
+                            <Form.Item
+                                name="nome"
+                                label="Nome"
+                                rules={[{ required: true, message: 'Campo obrigatório' }]}>
+                                <Input />
+                            </Form.Item>
 
-                        <Form.Item
-                            name="email"
-                            label="E-mail"
-                            rules={[
-                                { required: true, message: 'Campo obrigatório' },
-                                { type: 'email', message: 'Email inválido' }
-                            ]}>
-                            <Input />
-                        </Form.Item>
+                            <Form.Item
+                                name="email"
+                                label="E-mail"
+                                rules={[
+                                    { required: true, message: 'Campo obrigatório' },
+                                    { type: 'email', message: 'Email inválido' }
+                                ]}>
+                                <Input />
+                            </Form.Item>
 
-                        <Form.Item
-                            name="cargo"
-                            label="Cargo"
-                            rules={[{ required: true, message: 'Campo obrigatório' }]}>
-                            <Input />
-                        </Form.Item>
+                            <Form.Item
+                                name="cargo"
+                                label="Cargo"
+                                rules={[{ required: true, message: 'Campo obrigatório' }]}>
+                                <Input />
+                            </Form.Item>
 
-                        <Form.Item
-                            name="salario"
-                            label="Salário"
-                            rules={[{ required: true, message: 'Campo obrigatório' }]}>
+                            <Form.Item
+                                name="salario"
+                                label="Salário"
+                                rules={[{ required: true, message: 'Campo obrigatório' }]}>
 
-                            <InputNumber
-                                style={{ width: '100%' }}
-                                prefix="$"
-                                min={0}
-                                precision={2}
-                                decimalSeparator="."
-                                step={100}
-                            />
-                        </Form.Item>
+                                <InputNumber
+                                    style={{ width: '100%' }}
+                                    prefix="$"
+                                    min={0}
+                                    precision={2}
+                                    decimalSeparator="."
+                                    step={100}
+                                />
+                            </Form.Item>
 
-                        <Form.Item
-                            name="franquiaId"
-                            label="Franquia"
-                            rules={[{ required: true, message: 'Campo obrigatório' }]}>
+                            <Form.Item
+                                name="franquiaId"
+                                label="Franquia"
+                                rules={[{ required: true, message: 'Campo obrigatório' }]}>
 
-                            <Select
-                                placeholder="Selecione uma franquia"
-                                showSearch
-                                optionFilterProp="children">
+                                <Select
+                                    placeholder="Selecione uma franquia"
+                                    showSearch
+                                    optionFilterProp="children">
 
-                                {franquias.map(franquia => (
-                                    <Select.Option key={franquia.id} value={franquia.id}>
-                                        {franquia.nome} - {franquia.cidade}
-                                    </Select.Option>
-                                ))}
-                            </Select>
-                        </Form.Item>
-                    </Form>
-                </Modal>
-
-            </div>
+                                    {franquias.map(franquia => (
+                                        <Select.Option key={franquia.id} value={franquia.id}>
+                                            {franquia.nome} - {franquia.cidade}
+                                        </Select.Option>
+                                    ))}
+                                </Select>
+                            </Form.Item>
+                        </Form>
+                    </Modal>
+                </Content>
+            </Layout>
         </GreenTheme >
     )
 }

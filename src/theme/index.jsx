@@ -4,39 +4,28 @@ import React from 'react'
 import { ConfigProvider } from 'antd'
 
 export function GreenTheme({ children }) {
-  // cores principais
-  const primaryColorCode = '#35725f'
-  const textBaseColor = '#1c3b32ff'
-
-  // cores da tabela
-  const headerTextColor = '#e2fffa'
-  const tableBgColor = '#e8f6f4'
-  const tableRowHoverBg = '#35725f2a';
-  const tableRowExpandedBg = '#35725f2a';
-  const tableHeaderSortActiveBg = '#f05e23';
-  const tableHeaderSortHoverBg = '#35725fc4'
 
   return (
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: primaryColorCode,
-          colorTextBase: textBaseColor,
-          colorBgContainer: '#9fff51ff'
+          colorPrimary: '#255933',
+          colorText: '#0c2713',
+          colorBgContainer: '#dcfce3',
         },
         components: {
           Table: {
-            colorBgContainer: tableBgColor,
-            headerBg: primaryColorCode,
-            headerColor: headerTextColor,
-            rowHoverBg: tableRowHoverBg,
-            rowExpandedBg: tableRowExpandedBg,
-            headerSortActiveBg: tableHeaderSortActiveBg,
-            headerSortHoverBg: tableHeaderSortHoverBg,
-            cellFontSize: 15
+            colorBgContainer: '#dcfce3',
+            // headerBg: '#35725f',
+            // headerColor: '#e2fffa',
+            // rowHoverBg: '#35725f2a',
+            // rowExpandedBg: '#35725f2a',
+            // headerSortActiveBg: '#f05e23',
+            // headerSortHoverBg: '#35725fc4',
+            // cellFontSize: 15
           },
           Tooltip: {
-            colorBgSpotlight: textBaseColor
+            colorBgSpotlight: '#1c3b32ff'
           }
         }
       }}
