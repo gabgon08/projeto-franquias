@@ -143,7 +143,6 @@ function Franquias() {
             align: 'center',
             render: (_, record) => (
                 <Space>
-
                     <Tooltip
                         title='Editar franquia'>
                         <Button
@@ -174,7 +173,6 @@ function Franquias() {
                             />
                         </Tooltip>
                     </Popconfirm>
-
                 </Space>
             ),
 
@@ -193,7 +191,6 @@ function Franquias() {
     const okModal = () => {
         form.submit()
     }
-
 
     return (
         <GreenTheme>

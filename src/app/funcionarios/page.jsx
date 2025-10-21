@@ -164,8 +164,7 @@ function Funcionarios() {
                             color='primary'
                             shape='circle'
                             onClick={() => editar(record)}
-                            size="default"
-                        />
+                            size="default" />
                     </Tooltip>
 
                     <Popconfirm
@@ -205,7 +204,6 @@ function Funcionarios() {
     const okModal = () => {
         form.submit()
     }
-
 
     return (
         <GreenTheme>
