@@ -44,16 +44,6 @@ function Funcionarios() {
         }
     }
 
-    useEffect(() => {
-        carregarFuncionarios()
-        carregarFranquias()
-    }, [])
-
-    const gerarFiltros = (key) => {
-        const uniqueValues = [...new Set(funcionarios.map((item) => item[key]))];
-        return uniqueValues.map((value) => ({ text: value, value }));
-    };
-
     async function salvarFuncionario(values) {
         try {
             const url = editandoId ? `/api/funcionarios/${editandoId}` : '/api/funcionarios'
@@ -101,6 +91,16 @@ function Funcionarios() {
         })
         setModalVisible(true)
     }
+
+    const gerarFiltros = (key) => {
+        const uniqueValues = [...new Set(funcionarios.map((item) => item[key]))];
+        return uniqueValues.map((value) => ({ text: value, value }));
+    }
+
+    useEffect(() => {
+        carregarFuncionarios()
+        carregarFranquias()
+    }, [])
 
     const colunas = [
         {

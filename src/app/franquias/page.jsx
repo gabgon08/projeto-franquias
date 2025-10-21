@@ -21,6 +21,7 @@ function Franquias() {
     const { Title } = Typography
     const { Option } = Select
     const { Content } = Layout
+    const { token } = theme.useToken()
     const paises = Object.entries(countries.getNames('pt', { select: 'official' }))
 
     async function carregarFranquias() {
@@ -83,14 +84,14 @@ function Franquias() {
         setModalVisible(true)
     }
 
-    useEffect(() => {
-        carregarFranquias()
-    }, [])
-
     const gerarFiltros = (key) => {
         const uniqueValues = [...new Set(franquias.map((item) => item[key]))];
         return uniqueValues.map((value) => ({ text: value, value }));
-    };
+    }
+
+    useEffect(() => {
+        carregarFranquias()
+    }, [])
 
     const colunas = [
         {
