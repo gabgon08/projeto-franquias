@@ -12,6 +12,21 @@ const colors = {
     5: '#cfeed5',
     6: '#dcfce3',
     7: '#ecfcef',
+  },
+  steel: {
+    1: '#1b3246',
+    2: '#2b445e',
+    3: '#38678f',
+    4: '#699bc4',
+    5: '#b2cce1',
+    6: '#bbcfdf',
+    7: '#e5edf6',
+  },
+  brown: {
+    1: '#2c1707ff',
+    2: '#3F2B1D',
+    6: '#F2E5DC',
+    7: '#fff7f2'
   }
 }
 export function LayoutTheme({ children }) {
@@ -21,34 +36,34 @@ export function LayoutTheme({ children }) {
 
       theme={{
         token: {
-          colorPrimary: colors.green[2],
-          colorText: colors.green[1],
-          colorBgContainer: colors.green[7],
-          colorTableBg: colors.green[7],
-          colorBgLayout: colors.green[6]
+          colorPrimary: colors.steel[1],
+          colorText: colors.steel[1],
+          colorBgContainer: colors.steel[7],
+          colorTableBg: colors.steel[7],
+          colorBgLayout: colors.steel[6]
         },
         components: {
           Table: {
-            colorBgContainer: colors.green[7],
-            headerBg: colors.green[2],
-            headerColor: colors.green[6],
-            rowHoverBg: colors.green[5],
-            headerSortActiveBg: colors.green[4],
-            headerSortHoverBg: colors.green[3],
+            colorBgContainer: colors.steel[7],
+            headerBg: colors.steel[2],
+            headerColor: colors.steel[7],
+            headerSortActiveBg: colors.steel[4],
+            headerSortHoverBg: colors.steel[3],
+            rowHoverBg: colors.steel[5],
             cellFontSize: 15,
             headerBorderRadius: 15,
           },
           Tooltip: {
-            colorBgSpotlight: colors.green[2]
+            colorBgSpotlight: colors.steel[2]
           },
           Button: {
             primaryShadow: 0,
-            primaryColor: colors.green[7],
-            dangerColor: colors.green[7]
+            primaryColor: colors.steel[7],
+            dangerColor: colors.steel[7]
           },
           Modal: {
-            contentBg: colors.green[7],
-            headerBg: colors.green[7],
+            contentBg: colors.steel[7],
+            headerBg: colors.steel[7],
             titleFontSize: 20,
           }
         }
@@ -65,20 +80,20 @@ export function HeaderTheme({ children }) {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: colors.green[2],
-          colorText: colors.green[7],
+          colorPrimary: colors.brown[2],
+          colorText: colors.brown[7],
         },
         components: {
           Menu: {
-            horizontalItemHoverBg: colors.green[2],
-            horizontalItemSelectedBg: colors.green[6],
-            itemColor: colors.green[7],
-            itemHoverColor: colors.green[7],
-            itemBg: colors.green[1],
-            popupBg: colors.green[1],
+            horizontalItemHoverBg: colors.brown[2],
+            horizontalItemSelectedBg: colors.brown[6],
+            itemColor: colors.brown[7],
+            itemHoverColor: colors.brown[7],
+            itemBg: colors.brown[1],
+            popupBg: colors.brown[1],
           },
           Layout: {
-            headerBg: colors.green[1],
+            headerBg: colors.brown[1],
           }
         }
       }}
