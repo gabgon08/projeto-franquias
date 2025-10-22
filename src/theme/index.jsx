@@ -59,7 +59,7 @@ export function GreenTheme({ children }) {
   )
 }
 
-export function HeaderGreenTheme({ children }) {
+export function HeaderTheme({ children }) {
 
   return (
     <ConfigProvider

@@ -5,7 +5,7 @@ import { HomeOutlined, UserOutlined, ShopOutlined, DashboardOutlined } from '@an
 import { usePathname } from "next/navigation"
 import Link from 'next/link'
 import styles from './Header.module.css'
-import { HeaderGreenTheme } from "../theme/index"
+import { HeaderTheme } from "../theme/index"
 import Title from "antd/es/typography/Title"
 
 
@@ -37,7 +37,7 @@ const App = () => {
     ]
 
     return (
-        <HeaderGreenTheme>
+        <HeaderTheme>
             <Layout className={styles.layout}>
                 <Header className={styles.header}>
                     <Flex className={styles.flexContainer}>
@@ -63,7 +63,7 @@ const App = () => {
                     </Flex>
                 </Header>
             </Layout >
-        </HeaderGreenTheme >
+        </HeaderTheme >
     )
 }
 
