@@ -4,7 +4,7 @@ import React from 'react'
 import styles from './page.module.css'
 import common from './../theme/common.module.css'
 import { LayoutTheme } from './../theme/index'
-import { Layout } from 'antd'
+import { Layout, theme } from 'antd'
 
 function Home() {
 
