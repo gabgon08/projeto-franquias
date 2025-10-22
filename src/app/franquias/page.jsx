@@ -213,7 +213,7 @@ function Franquias() {
                             <Title
                                 level={3}
                                 className={common.topBoxTitle}
-                                style={{ color: token.colorBgContainer }}
+                                style={{ color: token.colorBgLayout }}
                             >FRANQUIAS
                             </Title>
                         </div>
