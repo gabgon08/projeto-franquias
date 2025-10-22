@@ -23,8 +23,9 @@ export function GreenTheme({ children }) {
         token: {
           colorPrimary: colors.green[2],
           colorText: colors.green[1],
-          colorBgContainer: colors.green[6],
+          colorBgContainer: colors.green[7],
           colorTableBg: colors.green[7],
+          colorBgLayout: colors.green[6]
         },
         components: {
           Table: {
@@ -44,6 +45,11 @@ export function GreenTheme({ children }) {
             primaryShadow: 0,
             primaryColor: colors.green[7],
             dangerColor: colors.green[7]
+          },
+          Modal: {
+            contentBg: colors.green[7],
+            headerBg: colors.green[7],
+            titleFontSize: 20,
           }
         }
       }}

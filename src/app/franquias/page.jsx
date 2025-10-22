@@ -194,105 +194,119 @@ function Franquias() {
 
     return (
         <GreenTheme>
-            <div className={common.container}>
-                {contextHolder}
-                <div className={common.top}>
-                    <div className={common.topTitleBox}>
-                        <ShopOutlined className={common.topTitleIcon} />
-                        <Title
-                            level={3}
-                            className={common.topTitleText}
-                        >
-                            FRANQUIAS
-                        </Title>
+            <Layout className={common.layout}
+                style={{ backgroundColor: token.colorBgLayout }}>
+
+                <Content className={common.container}>
+                    {contextHolder}
+
+                    <div className={common.topBox}>
+
+                        <div className={common.topBoxIconTitle}
+                            style={{
+                                backgroundColor: token.colorPrimary,
+                                color: token.colorBgLayout
+                            }}>
+
+                            <ShopOutlined className={common.topBoxIcon} />
+
+                            <Title
+                                level={3}
+                                className={common.topBoxTitle}
+                                style={{ color: token.colorBgContainer }}
+                            >FRANQUIAS
+                            </Title>
+                        </div>
+
+                        <Button
+                            type='primary'
+                            icon={<PlusOutlined />}
+                            shape='round'
+                            size='large'
+                            onClick={showModal}
+                        >Adicionar
+                        </Button>
+
                     </div>
-                    <Button
-                        type='primary'
-                        icon={<PlusOutlined />}
-                        className={common.addButton}
-                        shape='round'
-                        size='large'
-                        onClick={showModal}
-                    >Adicionar
-                    </Button>
-                </div>
 
-                <Table
-                    className={common.containerTable}
-                    columns={colunas}
-                    dataSource={franquias}
-                    loading={{
-                        spinning: loading,
-                        tip: 'Carregando franquias, aguarde...'
-                    }}
-                    rowKey='id'
-                    pagination={{
-                        pageSize: 10,
-                        position: ['bottomCenter']
-                    }}
-                />
+                    <div
+                        className={common.containerTable}
+                        style={{ backgroundColor: token.colorTableBg }}>
+                        <Table
+                            columns={colunas}
+                            dataSource={franquias}
+                            loading={{
+                                spinning: loading,
+                                tip: 'Carregando franquias, aguarde...'
+                            }}
+                            rowKey='id'
+                            pagination={{
+                                pageSize: 10,
+                                position: ['bottomCenter']
+                            }} />
+                    </div>
 
-                <Modal
-                    title={editandoId ? 'Editar franquia' : 'Nova Franquia'}
-                    open={modalVisible}
-                    onCancel={closeModal}
-                    onOk={okModal}
-                    okText="Salvar"
-                    cancelText="Cancelar"
-                    okButtonProps={{ shape: 'round' }}
-                    cancelButtonProps={{ shape: 'round' }}
-                >
-
-                    <Form
-                        form={form}
-                        layout='vertical'
-                        onFinish={salvarFranquia}
+                    <Modal
+                        title={editandoId ? 'Editar franquia' : 'Nova Franquia'}
+                        open={modalVisible}
+                        onCancel={closeModal}
+                        onOk={okModal}
+                        okText="Salvar"
+                        cancelText="Cancelar"
+                        okButtonProps={{ shape: 'round' }}
+                        cancelButtonProps={{ shape: 'round' }}
                     >
-                        <Form.Item
-                            name='nome'
-                            label='Nome'
-                            rules={[{ required: true, message: 'Digite o nome' }]}>
-                            <Input />
-                        </Form.Item>
 
-                        <Form.Item
-                            name='cidade'
-                            label='Cidade'
-                            rules={[{ required: true, message: 'Digite a cidade' }]}>
-                            <Input />
-                        </Form.Item>
+                        <Form
+                            form={form}
+                            layout='vertical'
+                            onFinish={salvarFranquia}
+                        >
+                            <Form.Item
+                                name='nome'
+                                label='Nome'
+                                rules={[{ required: true, message: 'Digite o nome' }]}>
+                                <Input />
+                            </Form.Item>
 
-                        <Form.Item
-                            name='pais'
-                            label='País'
-                            rules={[{ required: true, message: 'Digite o país' }]}>
+                            <Form.Item
+                                name='cidade'
+                                label='Cidade'
+                                rules={[{ required: true, message: 'Digite a cidade' }]}>
+                                <Input />
+                            </Form.Item>
 
-                            <Select
-                                showSearch
-                                placeholder='Selecione um país'
-                                optionFilterProp='children'
-                                filterOption={(input, option) =>
-                                    option.children.toLowerCase().includes(input.toLowerCase())
-                                }
-                            >
-                                {paises.map(([code, name]) => (
-                                    <Option key={code} value={name}>{name}</Option>
-                                ))}
+                            <Form.Item
+                                name='pais'
+                                label='País'
+                                rules={[{ required: true, message: 'Digite o país' }]}>
 
-                            </Select>
-                        </Form.Item>
+                                <Select
+                                    showSearch
+                                    placeholder='Selecione um país'
+                                    optionFilterProp='children'
+                                    filterOption={(input, option) =>
+                                        option.children.toLowerCase().includes(input.toLowerCase())
+                                    }
+                                >
+                                    {paises.map(([code, name]) => (
+                                        <Option key={code} value={name}>{name}</Option>
+                                    ))}
 
-                        <Form.Item
-                            name='telefone'
-                            label='Telefone'
-                            rules={[{ required: true, message: 'Digite o telefone' }]}>
-                            <Input />
-                        </Form.Item>
+                                </Select>
+                            </Form.Item>
 
-                    </Form>
-                </Modal>
+                            <Form.Item
+                                name='telefone'
+                                label='Telefone'
+                                rules={[{ required: true, message: 'Digite o telefone' }]}>
+                                <Input />
+                            </Form.Item>
 
-            </div>
+                        </Form>
+                    </Modal>
+                </Content>
+            </Layout>
         </GreenTheme >
     )
 }

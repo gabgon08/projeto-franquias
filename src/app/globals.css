@@ -22,3 +22,7 @@ body,
 .ant-btn {
   padding-bottom: 2px !important;
 }
+
+.ant-modal-title {
+  text-align: center !important;
+}

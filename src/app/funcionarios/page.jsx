@@ -208,7 +208,7 @@ function Funcionarios() {
     return (
         <GreenTheme>
             <Layout className={common.layout}
-                style={{ backgroundColor: token.colorBgContainer }}>
+                style={{ backgroundColor: token.colorBgLayout }}>
 
                 <Content className={common.container}>
                     {contextHolder}
@@ -218,7 +218,7 @@ function Funcionarios() {
                         <div className={common.topBoxIconTitle}
                             style={{
                                 backgroundColor: token.colorPrimary,
-                                color: token.colorBgContainer
+                                color: token.colorBgLayout
                             }}>
 
                             <UserOutlined className={common.topBoxIcon} />
@@ -229,7 +229,6 @@ function Funcionarios() {
                                 style={{ color: token.colorBgContainer }}
                             >FUNCIONÁRIOS
                             </Title>
-
                         </div>
 
                         <Button
@@ -248,6 +247,7 @@ function Funcionarios() {
                         style={{ backgroundColor: token.colorTableBg }}>
 
                         <Table
+                            // className={common.containerTable}
                             columns={colunas}
                             dataSource={funcionarios}
                             loading={{
@@ -258,8 +258,7 @@ function Funcionarios() {
                             pagination={{
                                 pageSize: 10,
                                 position: ['bottomCenter']
-                            }}
-                        />
+                            }} />
 
                     </div>
 
