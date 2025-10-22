@@ -23,10 +23,10 @@ const colors = {
     7: '#e5edf6',
   },
   brown: {
-    1: '#2c1707ff',
-    2: '#3F2B1D',
-    6: '#F2E5DC',
-    7: '#fff7f2'
+    1: '#1D1404',
+    2: '#48320C',
+    6: '#E9E0D0',
+    7: '#F4EFE7'
   }
 }
 export function LayoutTheme({ children }) {
