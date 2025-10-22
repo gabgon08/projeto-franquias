@@ -8,12 +8,14 @@
     width: 80vw;
     max-width: 1300px;
     height: 100%;
+    transition: all 0.3 ease;
 }
 
 .topBox {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .topBoxIconTitle {
@@ -22,7 +24,7 @@
     gap: 0.9rem;
     border-radius: 2rem 2rem 0 0;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     box-shadow:
         0px -1px 10px rgba(0, 0, 0, 0.200),
         /* top */
@@ -32,23 +34,29 @@
     /* left */
     z-index: 0;
     position: relative;
+    transition: all 0.3s ease;
+    text-align: center;
 }
 
 .topBoxIcon {
-    font-size: 35px;
+    font-size: 2.2rem;
     border-radius: 50%;
 }
 
 .topBoxTitle {
     font-weight: bold !important;
+    font-size: 1.4rem !important;
+    line-height: 1.2;
 }
 
 .containerTable {
     border-radius: 0 2rem 2rem 2rem;
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.200);
     padding: 1.5rem 1.5rem 0;
+    overflow-x: auto;
 }
 
 .containerTable :global(.ant-table-thead > tr > th) {
     font-size: 1.1rem;
+    white-space: nowrap;
 }
