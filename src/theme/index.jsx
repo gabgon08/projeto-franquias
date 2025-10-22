@@ -54,7 +54,7 @@ export function LayoutTheme({ children }) {
             headerBorderRadius: 15,
           },
           Tooltip: {
-            colorBgSpotlight: colors.steel[2]
+            colorBgSpotlight: colors.steel[1]
           },
           Button: {
             primaryShadow: 0,
