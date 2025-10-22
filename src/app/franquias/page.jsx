@@ -99,6 +99,7 @@ function Franquias() {
             dataIndex: 'nome',
             key: 'nome',
             align: 'center',
+            render: (text) => <strong>{text}</strong>,
             showSorterTooltip: { title: 'Clique para ordenar' },
             sorter: (a, b) => a.nome.localeCompare(b.nome)
         },
@@ -194,8 +195,7 @@ function Franquias() {
 
     return (
         <LayoutTheme>
-            <Layout className={common.layout}
-                style={{ backgroundColor: token.colorBgLayout }}>
+            <Layout className={common.layout}>
 
                 <Content className={common.container}>
                     {contextHolder}
