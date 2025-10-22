@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import common from './../../theme/common.module.css'
 import styles from './franquias.module.css'
-import { GreenTheme } from './../../theme/index'
+import { LayoutTheme } from './../../theme/index'
 import { Table, Button, Modal, Form, message, Input, Space, Typography, Popconfirm, Tooltip, Select, theme, Layout } from 'antd'
 import { PlusOutlined, ShopOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import countries from 'i18n-iso-countries'
@@ -193,7 +193,7 @@ function Franquias() {
     }
 
     return (
-        <GreenTheme>
+        <LayoutTheme>
             <Layout className={common.layout}
                 style={{ backgroundColor: token.colorBgLayout }}>
 
@@ -307,7 +307,7 @@ function Franquias() {
                     </Modal>
                 </Content>
             </Layout>
-        </GreenTheme >
+        </LayoutTheme >
     )
 }
 

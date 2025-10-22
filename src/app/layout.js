@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from '../components/Header'
-import { GreenTheme } from "./../theme/index.jsx";
+import { LayoutTheme } from "./../theme/index.jsx";
 import { ConfigProvider } from "antd";
 
 const geistSans = Geist({
@@ -25,9 +25,9 @@ export default function RootLayout({ children }) {
       <html lang="pt-BR">
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
           <Header />
-          <GreenTheme>
+          <LayoutTheme>
             {children}
-          </GreenTheme>
+          </LayoutTheme>
         </body>
       </html>
     </ConfigProvider>

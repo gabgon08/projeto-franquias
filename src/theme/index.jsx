@@ -14,7 +14,7 @@ const colors = {
     7: '#ecfcef',
   }
 }
-export function GreenTheme({ children }) {
+export function LayoutTheme({ children }) {
 
   return (
     <ConfigProvider
