@@ -1,6 +1,48 @@
-/* .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
+.header {
     display: flex;
-} */
+    flex-direction: column;
+    height: auto;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 2.7rem;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+}
+
+.cardsContainer {
+    padding: 4rem 0;
+}
+
+.card {
+    border-radius: 1.5rem;
+    padding: 2rem;
+    display: grid;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.cardCover {
+    font-size: 3rem;
+}
+
+.cardMeta {
+    text-align: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.cardMeta :global(.ant-card-meta-title) {
+    font-size: 1.3rem;
+    font-weight: bold;
+}

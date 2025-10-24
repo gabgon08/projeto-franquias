@@ -2,72 +2,75 @@
 
 import React from 'react'
 import { Card, Row, Col, Layout, theme } from 'antd'
-import { UserOutlined, ShopOutlined, DashboardOutlined } from '@ant-design/icons'
+import { UserOutlined, ShopFilled, DashboardFilled } from '@ant-design/icons'
 import Link from 'next/link'
 import styles from './page.module.css'
 import common from './../theme/common.module.css'
 import { LayoutTheme } from './../theme/index'
 
-
 export default function Home() {
 
-  const { Content } = Layout
+  const { Header, Content } = Layout
+  const { Meta } = Card
   const { token } = theme.useToken()
 
   return (
     <LayoutTheme>
-      <Layout>
+      <Layout className={common.layout}>
+        <Header className={styles.header}>
+          <h1 className={styles.title}>Sistema de Franquias</h1>
+          <p className={styles.subtitle}>Gerencie suas franquias e funcionários</p>
+        </Header>
+
         <Content className={common.container}>
-
-          <div className={styles.header}>
-            <h1 className={styles.title}>Sistema de Franquias</h1>
-            <p className={styles.subtitle}>Gerencie suas franquias e funcionários</p>
-          </div>
-
           <div className={styles.cardsContainer}>
-            <Row gutter={[24, 24]} justify="center">
-
-              <Col xs={24} sm={12} lg={8}>
-                <Link href="/funcionarios">
-                  <Card
-                    className={styles.menuCard}
-                    hoverable
-                  >
-                    <div className={styles.cardContent}>
-                      <UserOutlined className={`${styles.cardIcon} ${styles.funcionariosIcon}`} />
-                      <h3 className={styles.cardTitle}>Funcionários</h3>
-                      <p className={styles.cardDescription}>Gerenciar funcionários das franquias</p>
-                    </div>
-                  </Card>
-                </Link>
-              </Col>
+            <Row gutter={[32, 32]} justify="center" align='middle'>
 
               <Col xs={24} sm={12} lg={8}>
                 <Link href="/franquias">
                   <Card
-                    className={styles.menuCard}
+                    className={styles.card}
+                    cover={<ShopFilled style={{ color: token.iconColor }} className={styles.cardCover} />}
                     hoverable
                   >
-                    <div className={styles.cardContent}>
-                      <ShopOutlined className={`${styles.cardIcon} ${styles.franquiasIcon}`} />
-                      <h3 className={styles.cardTitle}>Franquias</h3>
-                      <p className={styles.cardDescription}>Gerenciar franquias da empresa</p>
-                    </div>
+                    <Meta
+                      title="Franquias"
+                      description="Gerenciar franquias da empresa"
+                      className={styles.cardMeta} />
+
                   </Card>
                 </Link>
               </Col>
 
               <Col xs={24} sm={12} lg={8}>
-                <Link href="/dashboard">
+                <Link href="/funcionarios">
                   <Card
-                    className={styles.menuCard}
+                    className={styles.card}
+                    cover={<UserOutlined style={{ color: token.iconColor }} className={styles.cardCover} />}
                     hoverable
                   >
-                    <div className={styles.cardContent}>
-                      <DashboardOutlined className={`${styles.cardIcon} ${styles.dashboardIcon}`} />
-                      <h3 className={styles.cardTitle}>Dashboard</h3>
-                      <p className={styles.cardDescription}>Relatórios e indicadores (B.I)</p>
-                    </div>
+                    <Meta
+                      title="Funcionários"
+                      description="Gerenciar funcionários das franquias"
+                      className={styles.cardMeta} />
+
+                  </Card>
+                </Link>
+              </Col>
+
+
+              <Col xs={24} sm={12} lg={8}>
+                <Link href="/dashboard">
+                  <Card
+                    className={styles.card}
+                    cover={<DashboardFilled style={{ color: token.iconColor }} className={styles.cardCover} />}
+                    hoverable
+                  >
+                    <Meta
+                      title="Dashboard"
+                      description="Relatórios e indicadores (BI)"
+                      className={styles.cardMeta} />
+
                   </Card>
                 </Link>
               </Col>
