@@ -208,7 +208,7 @@ function Funcionarios() {
 
     return (
         <LayoutTheme>
-            <Layout className={common.layout}>
+            <Layout>
 
                 <Content className={common.container}>
                     {contextHolder}
