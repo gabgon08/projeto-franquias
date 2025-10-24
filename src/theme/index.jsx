@@ -40,7 +40,8 @@ export function LayoutTheme({ children }) {
           colorText: colors.steel[1],
           colorBgContainer: colors.steel[7],
           colorTableBg: colors.steel[7],
-          colorBgLayout: colors.steel[6]
+          colorBgLayout: colors.steel[6],
+          iconColor: colors.steel[3]
         },
         components: {
           Table: {
@@ -65,6 +66,12 @@ export function LayoutTheme({ children }) {
             contentBg: colors.steel[7],
             headerBg: colors.steel[7],
             titleFontSize: 20,
+          },
+          Layout: {
+            headerBg: 'transparent'
+          },
+          Card: {
+            bodyPadding: 0
           }
         }
       }}
