@@ -75,7 +75,7 @@ export function LayoutTheme({ children }) {
             bodyPadding: 0
           },
           Statistic: {
-            titleFontSize: 16,
+            titleFontSize: 17,
           }
         }
       }}
