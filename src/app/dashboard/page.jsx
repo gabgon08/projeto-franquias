@@ -258,7 +258,12 @@ export default function DashboardPage() {
                                     prefix={<DollarOutlined style={{ color: '#fa8c16' }} />}
                                     precision={2}
                                     valueStyle={{ color: '#fa8c16' }}
-                                    formatter={(value) => `R$ ${value.toLocaleString('pt-BR')}`}
+                                    formatter={(valor) =>
+                                        valor.toLocaleString('en', {
+                                            maximumFractionDigits: 0,
+                                            style: 'currency',
+                                            currency: 'USD'
+                                        })}
                                 />
                             </Card>
                         </Col>
@@ -271,7 +276,12 @@ export default function DashboardPage() {
                                     prefix={<WalletOutlined style={{ color: '#eb2f96' }} />}
                                     precision={2}
                                     valueStyle={{ color: '#eb2f96' }}
-                                    formatter={(value) => `R$ ${value.toLocaleString('pt-BR')}`}
+                                    formatter={(valor) =>
+                                        valor.toLocaleString('en', {
+                                            maximumFractionDigits: 0,
+                                            style: 'currency',
+                                            currency: 'USD'
+                                        })}
                                 />
                             </Card>
                         </Col>
@@ -279,8 +289,8 @@ export default function DashboardPage() {
 
                 </Header>
 
-                <Content>
-                    <div className={styles.container}>
+                <Content className={common.container}>
+                    <div>
 
                         {/* ==========================================
           GRÁFICOS - PRIMEIRA LINHA
