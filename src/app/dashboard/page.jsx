@@ -228,7 +228,7 @@ export default function DashboardPage() {
 
                     {/* Cards Totais */}
                     <Row gutter={[16, 16]} className={styles.statsRow}>
-                        <Col xs={12} sm={6}>
+                        <Col xs={12} sm={12} md={6}>
                             <Card className={styles.statCard}>
                                 <Statistic
                                     title="Total de Franquias"
@@ -239,7 +239,7 @@ export default function DashboardPage() {
                             </Card>
                         </Col>
 
-                        <Col xs={12} sm={6}>
+                        <Col xs={12} sm={12} md={6}>
                             <Card className={styles.statCard}>
                                 <Statistic
                                     title="Total de Funcionários"
@@ -250,7 +250,7 @@ export default function DashboardPage() {
                             </Card>
                         </Col>
 
-                        <Col xs={12} sm={6}>
+                        <Col xs={12} sm={12} md={6}>
                             <Card className={styles.statCard}>
                                 <Statistic
                                     title="Salário Médio"
@@ -263,7 +263,7 @@ export default function DashboardPage() {
                             </Card>
                         </Col>
 
-                        <Col xs={12} sm={6}>
+                        <Col xs={12} sm={12} md={6}>
                             <Card className={styles.statCard}>
                                 <Statistic
                                     title="Folha Salarial Total"

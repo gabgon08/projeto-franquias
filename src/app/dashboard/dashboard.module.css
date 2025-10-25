@@ -8,6 +8,7 @@
     flex-direction: column;
     height: auto;
     justify-content: space-between;
+    gap: 1rem
 }
 
 .title {
@@ -15,7 +16,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 12px;
+    gap: 0.8rem;
     font-size: 2rem;
 }
 
@@ -34,9 +35,9 @@
 }
 
 /* Cards de Estatísticas */
-.statsRow {
+/* .statsRow {
     margin-bottom: 24px;
-}
+} */
 
 .statCard {
     text-align: center;
