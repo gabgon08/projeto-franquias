@@ -2,35 +2,16 @@
 
 import { useState, useEffect } from 'react'
 import { Card, Row, Col, Table, Statistic, Spin, message, Alert } from 'antd'
-import {
-    DashboardOutlined,
-    ShopOutlined,
-    UserOutlined,
-    DollarOutlined,
-    WalletOutlined,
-    WarningOutlined
-} from '@ant-design/icons'
-import {
-    BarChart,
-    Bar,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    PieChart,
-    Pie,
-    Cell,
-    ResponsiveContainer
-} from 'recharts'
+import { DashboardOutlined, ShopOutlined, UserOutlined, DollarOutlined, WalletOutlined, WarningOutlined } from '@ant-design/icons'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
 import styles from './dashboard.module.css'
+import common from '../../theme/index'
 
 export default function DashboardPage() {
+
     const [loading, setLoading] = useState(true)
     const [dashboardData, setDashboardData] = useState(null)
 
-    // ==========================================
-    // CARREGAR DADOS DA API
-    // ==========================================
     async function carregarDashboard() {
         try {
             setLoading(true)
@@ -41,18 +22,16 @@ export default function DashboardPage() {
             }
 
             const data = await response.json()
-            console.log('📊 Dados recebidos:', data)
             setDashboardData(data)
 
         } catch (error) {
-            console.error('❌ Erro ao carregar dashboard:', error)
+            console.error('Erro ao carregar dashboard:', error)
             message.error('Erro ao carregar dados do dashboard')
         } finally {
             setLoading(false)
         }
     }
 
-    // Carregar quando o componente montar
     useEffect(() => {
         carregarDashboard()
     }, [])
@@ -72,12 +51,14 @@ export default function DashboardPage() {
             title: 'Franquia',
             dataIndex: 'nome',
             key: 'nome',
+            align: 'center',
             render: (text) => <strong>{text}</strong>
         },
         {
-            title: 'Cidade',
-            dataIndex: 'cidade',
-            key: 'cidade'
+            title: 'País',
+            dataIndex: 'pais',
+            key: 'pais',
+            align: 'center',
         },
         {
             title: 'Funcionários',
@@ -89,32 +70,42 @@ export default function DashboardPage() {
             title: 'Folha Salarial',
             dataIndex: 'folhaSalarial',
             key: 'folhaSalarial',
-            render: (value) => `R$ ${value.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`
+            align: 'center',
+            render: (valor) =>
+                valor.toLocaleString('en', {
+                    minimumFractionDigits: 2,
+                    style: 'currency',
+                    currency: 'USD',
+                }),
         }
     ]
 
     // Tabela: Últimas Franquias
     const columnsUltimasFranquias = [
         {
-            title: 'Nome',
+            title: 'Franquia',
             dataIndex: 'nome',
-            key: 'nome'
+            key: 'nome',
+            align: 'center',
+            render: (text) => <strong>{text}</strong>
+        },
+        {
+            title: 'País',
+            dataIndex: 'pais',
+            key: 'pais',
+            align: 'center',
         },
         {
             title: 'Cidade',
             dataIndex: 'cidade',
-            key: 'cidade'
-        },
-        {
-            title: 'Funcionários',
-            dataIndex: 'totalFuncionarios',
-            key: 'totalFuncionarios',
-            align: 'center'
+            key: 'cidade',
+            align: 'center',
         },
         {
             title: 'Data',
             dataIndex: 'createdAt',
             key: 'createdAt',
+            align: 'center',
             render: (date) => new Date(date).toLocaleDateString('pt-BR')
         }
     ]
@@ -124,62 +115,75 @@ export default function DashboardPage() {
         {
             title: 'Nome',
             dataIndex: 'nome',
-            key: 'nome'
+            key: 'nome',
+            align: 'center',
+            render: (text) => <strong>{text}</strong>
         },
         {
             title: 'Cargo',
             dataIndex: 'cargo',
-            key: 'cargo'
+            key: 'cargo',
+            align: 'center',
         },
         {
             title: 'Salário',
             dataIndex: 'salario',
             key: 'salario',
+            align: 'center',
             render: (value) => `R$ ${value.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`
         },
         {
             title: 'Franquia',
             dataIndex: 'franquia',
-            key: 'franquia'
+            key: 'franquia',
+            align: 'center',
         }
     ]
 
-    // Tabela: Alertas - Franquias sem funcionários
+    // TABELAS DE ALERTA
+
+    // Tabela: Franquias sem funcionários
     const columnsFranquiasSemFuncionarios = [
         {
             title: 'Nome',
             dataIndex: 'nome',
-            key: 'nome'
+            key: 'nome',
+            align: 'center',
         },
         {
             title: 'Cidade',
             dataIndex: 'cidade',
-            key: 'cidade'
+            key: 'cidade',
+            align: 'center',
         },
         {
             title: 'Data Cadastro',
             dataIndex: 'createdAt',
             key: 'createdAt',
+            align: 'center',
             render: (date) => new Date(date).toLocaleDateString('pt-BR')
         }
     ]
 
-    // Tabela: Alertas - Funcionários sem franquia
+    // Tabela: Funcionários sem franquia
     const columnsFuncionariosSemFranquia = [
         {
             title: 'Nome',
             dataIndex: 'nome',
-            key: 'nome'
+            key: 'nome',
+            align: 'center',
         },
         {
             title: 'Cargo',
             dataIndex: 'cargo',
-            key: 'cargo'
+            key: 'cargo',
+            align: 'center',
         },
         {
             title: 'Salário',
             dataIndex: 'salario',
             key: 'salario',
+            align: 'center',
             render: (value) => `R$ ${value.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`
         }
     ]
@@ -279,8 +283,23 @@ export default function DashboardPage() {
           ========================================== */}
             <Row gutter={[16, 16]} className={styles.chartsRow}>
 
+                {/*Franquias por País*/}
+                <Col xs={24} sm={12} lg={8}>
+                    <Card title="📍 Franquias por País" className={styles.chartCard}>
+                        <ResponsiveContainer width="100%" height={300}>
+                            <BarChart data={dashboardData.franquiasPorPais}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="pais" />
+                                <YAxis />
+                                <Tooltip />
+                                <Bar dataKey="total" fill="#667eea" />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </Card>
+                </Col>
+
                 {/* Franquias por Cidade */}
-                <Col xs={24} lg={12}>
+                <Col xs={24} sm={12} lg={8}>
                     <Card title="📍 Franquias por Cidade" className={styles.chartCard}>
                         <ResponsiveContainer width="100%" height={300}>
                             <BarChart data={dashboardData.franquiasPorCidade}>
@@ -295,7 +314,7 @@ export default function DashboardPage() {
                 </Col>
 
                 {/* Funcionários por Cargo */}
-                <Col xs={24} lg={12}>
+                <Col xs={24} sm={12} lg={8}>
                     <Card title="👥 Funcionários por Cargo" className={styles.chartCard}>
                         <ResponsiveContainer width="100%" height={300}>
                             <PieChart>

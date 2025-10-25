@@ -59,6 +59,21 @@ export async function GET() {
 
         cidades.sort((a, b) => b.total - a.total)
 
+        // Franquias por país
+        const paises = []
+
+        franquias.forEach(franquia => {
+            const existe = paises.find(p => p.pais === franquia.pais)
+
+            if (existe) {
+                existe.total++
+            } else {
+                paises.push({ pais: franquia.pais, total: 1 })
+            }
+        })
+
+        paises.sort((a, b) => b.total - a.total)
+
         // Funcionários por cargo
         const cargos = []
 
@@ -108,6 +123,7 @@ export async function GET() {
                 id: franquia.id,
                 nome: franquia.nome,
                 cidade: franquia.cidade,
+                pais: franquia.pais,
                 totalFuncionarios: franquia.funcionarios.length,
                 folhaSalarial: Math.round(folha * 100) / 100
             })
@@ -121,6 +137,7 @@ export async function GET() {
             id: franquia.id,
             nome: franquia.nome,
             cidade: franquia.cidade,
+            pais: franquia.pais,
             totalFuncionarios: franquia.funcionarios.length,
             createdAt: franquia.createdAt
         }))
@@ -144,6 +161,7 @@ export async function GET() {
                     id: franquia.id,
                     nome: franquia.nome,
                     cidade: franquia.cidade,
+                    pais: franquia.pais,
                     createdAt: franquia.createdAt
                 })
             }
@@ -170,6 +188,7 @@ export async function GET() {
             salarioMedio: Math.round(salarioMedio * 100) / 100,
             folhaTotal: Math.round(somaSalarios * 100) / 100,
             franquiasPorCidade: cidades,
+            franquiasPorPais: paises,
             funcionariosPorCargo: cargos,
             faixasSalariais: faixasSalariais,
             topFranquias: top5,
