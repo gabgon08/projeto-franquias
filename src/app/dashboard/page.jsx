@@ -231,7 +231,7 @@ export default function DashboardPage() {
                         <Col xs={12} sm={12} md={6}>
                             <Card className={styles.statCard}>
                                 <Statistic
-                                    title="Total de Franquias"
+                                    title={<span style={{ color: token.statisticTitleColor }}>Total de Franquias</span>}
                                     value={dashboardData.totalFranquias}
                                     prefix={<ShopOutlined style={{ color: '#1890ff' }} />}
                                     valueStyle={{ color: '#1890ff' }}
@@ -242,7 +242,7 @@ export default function DashboardPage() {
                         <Col xs={12} sm={12} md={6}>
                             <Card className={styles.statCard}>
                                 <Statistic
-                                    title="Total de Funcionários"
+                                    title={<span style={{ color: token.statisticTitleColor }}>Total de Funcionários</span>}
                                     value={dashboardData.totalFuncionarios}
                                     prefix={<UserOutlined style={{ color: '#52c41a' }} />}
                                     valueStyle={{ color: '#52c41a' }}
@@ -253,7 +253,7 @@ export default function DashboardPage() {
                         <Col xs={12} sm={12} md={6}>
                             <Card className={styles.statCard}>
                                 <Statistic
-                                    title="Salário Médio"
+                                    title={<span style={{ color: token.statisticTitleColor }}>Salário Médio</span>}
                                     value={dashboardData.salarioMedio}
                                     prefix={<DollarOutlined style={{ color: '#fa8c16' }} />}
                                     precision={2}
@@ -266,7 +266,7 @@ export default function DashboardPage() {
                         <Col xs={12} sm={12} md={6}>
                             <Card className={styles.statCard}>
                                 <Statistic
-                                    title="Folha Salarial Total"
+                                    title={<span style={{ color: token.statisticTitleColor }}>Folha Salarial Total</span>}
                                     value={dashboardData.folhaTotal}
                                     prefix={<WalletOutlined style={{ color: '#eb2f96' }} />}
                                     precision={2}

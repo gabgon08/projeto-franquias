@@ -41,7 +41,8 @@ export function LayoutTheme({ children }) {
           colorBgContainer: colors.steel[7],
           colorTableBg: colors.steel[7],
           colorBgLayout: colors.steel[6],
-          iconColor: colors.steel[3]
+          iconColor: colors.steel[3],
+          statisticTitleColor: colors.steel[1]
         },
         components: {
           Table: {
@@ -72,6 +73,9 @@ export function LayoutTheme({ children }) {
           },
           Card: {
             bodyPadding: 0
+          },
+          Statistic: {
+            titleFontSize: 16,
           }
         }
       }}
