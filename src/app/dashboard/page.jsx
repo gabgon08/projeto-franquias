@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react'
 import { Card, Row, Col, Table, Statistic, Spin, message, Alert } from 'antd'
 import { DashboardOutlined, ShopOutlined, UserOutlined, DollarOutlined, WalletOutlined, WarningOutlined } from '@ant-design/icons'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
+import { LayoutTheme } from '../../theme/index'
 import styles from './dashboard.module.css'
-import common from '../../theme/index'
+import common from '../../theme/common.module.css'
 
 export default function DashboardPage() {
 
@@ -213,269 +214,271 @@ export default function DashboardPage() {
     }
 
     return (
-        <div className={styles.container}>
+        <LayoutTheme>
+            <div className={styles.container}>
 
-            {/* ==========================================
+                {/* ==========================================
           HEADER
           ========================================== */}
-            <div className={styles.header}>
-                <h1 className={styles.title}>
-                    <DashboardOutlined className={styles.titleIcon} />
-                    Dashboard - Business Intelligence
-                </h1>
-            </div>
+                <div className={styles.header}>
+                    <h1 className={styles.title}>
+                        <DashboardOutlined className={styles.titleIcon} />
+                        Dashboard - Business Intelligence
+                    </h1>
+                </div>
 
-            {/* ==========================================
+                {/* ==========================================
           CARDS DE TOTAIS
           ========================================== */}
-            <Row gutter={[16, 16]} className={styles.statsRow}>
-                <Col xs={12} sm={6}>
-                    <Card className={styles.statCard}>
-                        <Statistic
-                            title="Total de Franquias"
-                            value={dashboardData.totalFranquias}
-                            prefix={<ShopOutlined style={{ color: '#1890ff' }} />}
-                            valueStyle={{ color: '#1890ff' }}
-                        />
-                    </Card>
-                </Col>
+                <Row gutter={[16, 16]} className={styles.statsRow}>
+                    <Col xs={12} sm={6}>
+                        <Card className={styles.statCard}>
+                            <Statistic
+                                title="Total de Franquias"
+                                value={dashboardData.totalFranquias}
+                                prefix={<ShopOutlined style={{ color: '#1890ff' }} />}
+                                valueStyle={{ color: '#1890ff' }}
+                            />
+                        </Card>
+                    </Col>
 
-                <Col xs={12} sm={6}>
-                    <Card className={styles.statCard}>
-                        <Statistic
-                            title="Total de Funcionários"
-                            value={dashboardData.totalFuncionarios}
-                            prefix={<UserOutlined style={{ color: '#52c41a' }} />}
-                            valueStyle={{ color: '#52c41a' }}
-                        />
-                    </Card>
-                </Col>
+                    <Col xs={12} sm={6}>
+                        <Card className={styles.statCard}>
+                            <Statistic
+                                title="Total de Funcionários"
+                                value={dashboardData.totalFuncionarios}
+                                prefix={<UserOutlined style={{ color: '#52c41a' }} />}
+                                valueStyle={{ color: '#52c41a' }}
+                            />
+                        </Card>
+                    </Col>
 
-                <Col xs={12} sm={6}>
-                    <Card className={styles.statCard}>
-                        <Statistic
-                            title="Salário Médio"
-                            value={dashboardData.salarioMedio}
-                            prefix={<DollarOutlined style={{ color: '#fa8c16' }} />}
-                            precision={2}
-                            valueStyle={{ color: '#fa8c16' }}
-                            formatter={(value) => `R$ ${value.toLocaleString('pt-BR')}`}
-                        />
-                    </Card>
-                </Col>
+                    <Col xs={12} sm={6}>
+                        <Card className={styles.statCard}>
+                            <Statistic
+                                title="Salário Médio"
+                                value={dashboardData.salarioMedio}
+                                prefix={<DollarOutlined style={{ color: '#fa8c16' }} />}
+                                precision={2}
+                                valueStyle={{ color: '#fa8c16' }}
+                                formatter={(value) => `R$ ${value.toLocaleString('pt-BR')}`}
+                            />
+                        </Card>
+                    </Col>
 
-                <Col xs={12} sm={6}>
-                    <Card className={styles.statCard}>
-                        <Statistic
-                            title="Folha Salarial Total"
-                            value={dashboardData.folhaTotal}
-                            prefix={<WalletOutlined style={{ color: '#eb2f96' }} />}
-                            precision={2}
-                            valueStyle={{ color: '#eb2f96' }}
-                            formatter={(value) => `R$ ${value.toLocaleString('pt-BR')}`}
-                        />
-                    </Card>
-                </Col>
-            </Row>
+                    <Col xs={12} sm={6}>
+                        <Card className={styles.statCard}>
+                            <Statistic
+                                title="Folha Salarial Total"
+                                value={dashboardData.folhaTotal}
+                                prefix={<WalletOutlined style={{ color: '#eb2f96' }} />}
+                                precision={2}
+                                valueStyle={{ color: '#eb2f96' }}
+                                formatter={(value) => `R$ ${value.toLocaleString('pt-BR')}`}
+                            />
+                        </Card>
+                    </Col>
+                </Row>
 
-            {/* ==========================================
+                {/* ==========================================
           GRÁFICOS - PRIMEIRA LINHA
           ========================================== */}
-            <Row gutter={[16, 16]} className={styles.chartsRow}>
+                <Row gutter={[16, 16]} className={styles.chartsRow}>
 
-                {/*Franquias por País*/}
-                <Col xs={24} sm={12} lg={8}>
-                    <Card title="📍 Franquias por País" className={styles.chartCard}>
-                        <ResponsiveContainer width="100%" height={300}>
-                            <BarChart data={dashboardData.franquiasPorPais}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="pais" />
-                                <YAxis />
-                                <Tooltip />
-                                <Bar dataKey="total" fill="#667eea" />
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </Card>
-                </Col>
+                    {/*Franquias por País*/}
+                    <Col xs={24} sm={12} lg={8}>
+                        <Card title="📍 Franquias por País" className={styles.chartCard}>
+                            <ResponsiveContainer width="100%" height={300}>
+                                <BarChart data={dashboardData.franquiasPorPais}>
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="pais" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Bar dataKey="total" fill="#667eea" />
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </Card>
+                    </Col>
 
-                {/* Franquias por Cidade */}
-                <Col xs={24} sm={12} lg={8}>
-                    <Card title="📍 Franquias por Cidade" className={styles.chartCard}>
-                        <ResponsiveContainer width="100%" height={300}>
-                            <BarChart data={dashboardData.franquiasPorCidade}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="cidade" />
-                                <YAxis />
-                                <Tooltip />
-                                <Bar dataKey="total" fill="#667eea" />
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </Card>
-                </Col>
+                    {/* Franquias por Cidade */}
+                    <Col xs={24} sm={12} lg={8}>
+                        <Card title="📍 Franquias por Cidade" className={styles.chartCard}>
+                            <ResponsiveContainer width="100%" height={300}>
+                                <BarChart data={dashboardData.franquiasPorCidade}>
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="cidade" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Bar dataKey="total" fill="#667eea" />
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </Card>
+                    </Col>
 
-                {/* Funcionários por Cargo */}
-                <Col xs={24} sm={12} lg={8}>
-                    <Card title="👥 Funcionários por Cargo" className={styles.chartCard}>
-                        <ResponsiveContainer width="100%" height={300}>
-                            <PieChart>
-                                <Pie
-                                    data={dashboardData.funcionariosPorCargo}
-                                    cx="50%"
-                                    cy="50%"
-                                    outerRadius={100}
-                                    fill="#8884d8"
-                                    dataKey="total"
-                                    label={({ cargo, total }) => `${cargo}: ${total}`}
-                                >
-                                    {dashboardData.funcionariosPorCargo.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                    ))}
-                                </Pie>
-                                <Tooltip />
-                            </PieChart>
-                        </ResponsiveContainer>
-                    </Card>
-                </Col>
-
-            </Row>
-
-            {/* ==========================================
-          GRÁFICOS - SEGUNDA LINHA
-          ========================================== */}
-            <Row gutter={[16, 16]} className={styles.chartsRow}>
-
-                {/* Distribuição por Faixa Salarial */}
-                <Col xs={24} lg={24}>
-                    <Card title="💰 Distribuição por Faixa Salarial" className={styles.chartCard}>
-                        <ResponsiveContainer width="100%" height={300}>
-                            <BarChart data={dashboardData.faixasSalariais}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="faixa" />
-                                <YAxis />
-                                <Tooltip />
-                                <Bar dataKey="quantidade" fill="#52c41a" />
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </Card>
-                </Col>
-
-            </Row>
-
-            {/* ==========================================
-          TABELAS - RANKINGS E RECENTES
-          ========================================== */}
-            <Row gutter={[16, 16]} className={styles.tablesRow}>
-
-                {/* Top 5 Franquias */}
-                <Col xs={24} lg={8}>
-                    <Card title="🏆 Top 5 Franquias" className={styles.tableCard}>
-                        <Table
-                            dataSource={dashboardData.topFranquias}
-                            columns={columnsTopFranquias}
-                            rowKey="id"
-                            pagination={false}
-                            size="small"
-                        />
-                    </Card>
-                </Col>
-
-                {/* Últimas Franquias */}
-                <Col xs={24} lg={8}>
-                    <Card title="🆕 Últimas Franquias Cadastradas" className={styles.tableCard}>
-                        <Table
-                            dataSource={dashboardData.ultimasFranquias}
-                            columns={columnsUltimasFranquias}
-                            rowKey="id"
-                            pagination={false}
-                            size="small"
-                        />
-                    </Card>
-                </Col>
-
-                {/* Últimos Funcionários */}
-                <Col xs={24} lg={8}>
-                    <Card title="🆕 Últimos Funcionários Cadastrados" className={styles.tableCard}>
-                        <Table
-                            dataSource={dashboardData.ultimosFuncionarios}
-                            columns={columnsUltimosFuncionarios}
-                            rowKey="id"
-                            pagination={false}
-                            size="small"
-                        />
-                    </Card>
-                </Col>
-
-            </Row>
-
-            {/* ==========================================
-          ALERTAS
-          ========================================== */}
-            {(dashboardData.franquiasSemFuncionarios.length > 0 || dashboardData.funcionariosSemFranquia.length > 0) && (
-                <Row gutter={[16, 16]} className={styles.alertsRow}>
-
-                    {/* Franquias sem Funcionários */}
-                    {dashboardData.franquiasSemFuncionarios.length > 0 && (
-                        <Col xs={24} lg={12}>
-                            <Card
-                                title={
-                                    <span>
-                                        <WarningOutlined style={{ color: '#faad14', marginRight: 8 }} />
-                                        Franquias sem Funcionários ({dashboardData.franquiasSemFuncionarios.length})
-                                    </span>
-                                }
-                                className={styles.alertCard}
-                            >
-                                <Alert
-                                    message="Atenção!"
-                                    description="Estas franquias não possuem funcionários cadastrados"
-                                    type="warning"
-                                    showIcon
-                                    style={{ marginBottom: 16 }}
-                                />
-                                <Table
-                                    dataSource={dashboardData.franquiasSemFuncionarios}
-                                    columns={columnsFranquiasSemFuncionarios}
-                                    rowKey="id"
-                                    pagination={false}
-                                    size="small"
-                                />
-                            </Card>
-                        </Col>
-                    )}
-
-                    {/* Funcionários sem Franquia */}
-                    {dashboardData.funcionariosSemFranquia.length > 0 && (
-                        <Col xs={24} lg={12}>
-                            <Card
-                                title={
-                                    <span>
-                                        <WarningOutlined style={{ color: '#faad14', marginRight: 8 }} />
-                                        Funcionários sem Franquia ({dashboardData.funcionariosSemFranquia.length})
-                                    </span>
-                                }
-                                className={styles.alertCard}
-                            >
-                                <Alert
-                                    message="Atenção!"
-                                    description="Estes funcionários não estão alocados em nenhuma franquia"
-                                    type="warning"
-                                    showIcon
-                                    style={{ marginBottom: 16 }}
-                                />
-                                <Table
-                                    dataSource={dashboardData.funcionariosSemFranquia}
-                                    columns={columnsFuncionariosSemFranquia}
-                                    rowKey="id"
-                                    pagination={false}
-                                    size="small"
-                                />
-                            </Card>
-                        </Col>
-                    )}
+                    {/* Funcionários por Cargo */}
+                    <Col xs={24} sm={12} lg={8}>
+                        <Card title="👥 Funcionários por Cargo" className={styles.chartCard}>
+                            <ResponsiveContainer width="100%" height={300}>
+                                <PieChart>
+                                    <Pie
+                                        data={dashboardData.funcionariosPorCargo}
+                                        cx="50%"
+                                        cy="50%"
+                                        outerRadius={100}
+                                        fill="#8884d8"
+                                        dataKey="total"
+                                        label={({ cargo, total }) => `${cargo}: ${total}`}
+                                    >
+                                        {dashboardData.funcionariosPorCargo.map((entry, index) => (
+                                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                        ))}
+                                    </Pie>
+                                    <Tooltip />
+                                </PieChart>
+                            </ResponsiveContainer>
+                        </Card>
+                    </Col>
 
                 </Row>
-            )}
 
-        </div>
+                {/* ==========================================
+          GRÁFICOS - SEGUNDA LINHA
+          ========================================== */}
+                <Row gutter={[16, 16]} className={styles.chartsRow}>
+
+                    {/* Distribuição por Faixa Salarial */}
+                    <Col xs={24} lg={24}>
+                        <Card title="💰 Distribuição por Faixa Salarial" className={styles.chartCard}>
+                            <ResponsiveContainer width="100%" height={300}>
+                                <BarChart data={dashboardData.faixasSalariais}>
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="faixa" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Bar dataKey="quantidade" fill="#52c41a" />
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </Card>
+                    </Col>
+
+                </Row>
+
+                {/* ==========================================
+          TABELAS - RANKINGS E RECENTES
+          ========================================== */}
+                <Row gutter={[16, 16]} className={styles.tablesRow}>
+
+                    {/* Top 5 Franquias */}
+                    <Col xs={24} lg={8}>
+                        <Card title="🏆 Top 5 Franquias" className={styles.tableCard}>
+                            <Table
+                                dataSource={dashboardData.topFranquias}
+                                columns={columnsTopFranquias}
+                                rowKey="id"
+                                pagination={false}
+                                size="small"
+                            />
+                        </Card>
+                    </Col>
+
+                    {/* Últimas Franquias */}
+                    <Col xs={24} lg={8}>
+                        <Card title="🆕 Últimas Franquias Cadastradas" className={styles.tableCard}>
+                            <Table
+                                dataSource={dashboardData.ultimasFranquias}
+                                columns={columnsUltimasFranquias}
+                                rowKey="id"
+                                pagination={false}
+                                size="small"
+                            />
+                        </Card>
+                    </Col>
+
+                    {/* Últimos Funcionários */}
+                    <Col xs={24} lg={8}>
+                        <Card title="🆕 Últimos Funcionários Cadastrados" className={styles.tableCard}>
+                            <Table
+                                dataSource={dashboardData.ultimosFuncionarios}
+                                columns={columnsUltimosFuncionarios}
+                                rowKey="id"
+                                pagination={false}
+                                size="small"
+                            />
+                        </Card>
+                    </Col>
+
+                </Row>
+
+                {/* ==========================================
+          ALERTAS
+          ========================================== */}
+                {(dashboardData.franquiasSemFuncionarios.length > 0 || dashboardData.funcionariosSemFranquia.length > 0) && (
+                    <Row gutter={[16, 16]} className={styles.alertsRow}>
+
+                        {/* Franquias sem Funcionários */}
+                        {dashboardData.franquiasSemFuncionarios.length > 0 && (
+                            <Col xs={24} lg={12}>
+                                <Card
+                                    title={
+                                        <span>
+                                            <WarningOutlined style={{ color: '#faad14', marginRight: 8 }} />
+                                            Franquias sem Funcionários ({dashboardData.franquiasSemFuncionarios.length})
+                                        </span>
+                                    }
+                                    className={styles.alertCard}
+                                >
+                                    <Alert
+                                        message="Atenção!"
+                                        description="Estas franquias não possuem funcionários cadastrados"
+                                        type="warning"
+                                        showIcon
+                                        style={{ marginBottom: 16 }}
+                                    />
+                                    <Table
+                                        dataSource={dashboardData.franquiasSemFuncionarios}
+                                        columns={columnsFranquiasSemFuncionarios}
+                                        rowKey="id"
+                                        pagination={false}
+                                        size="small"
+                                    />
+                                </Card>
+                            </Col>
+                        )}
+
+                        {/* Funcionários sem Franquia */}
+                        {dashboardData.funcionariosSemFranquia.length > 0 && (
+                            <Col xs={24} lg={12}>
+                                <Card
+                                    title={
+                                        <span>
+                                            <WarningOutlined style={{ color: '#faad14', marginRight: 8 }} />
+                                            Funcionários sem Franquia ({dashboardData.funcionariosSemFranquia.length})
+                                        </span>
+                                    }
+                                    className={styles.alertCard}
+                                >
+                                    <Alert
+                                        message="Atenção!"
+                                        description="Estes funcionários não estão alocados em nenhuma franquia"
+                                        type="warning"
+                                        showIcon
+                                        style={{ marginBottom: 16 }}
+                                    />
+                                    <Table
+                                        dataSource={dashboardData.funcionariosSemFranquia}
+                                        columns={columnsFuncionariosSemFranquia}
+                                        rowKey="id"
+                                        pagination={false}
+                                        size="small"
+                                    />
+                                </Card>
+                            </Col>
+                        )}
+
+                    </Row>
+                )}
+
+            </div>
+        </LayoutTheme>
     )
 }
