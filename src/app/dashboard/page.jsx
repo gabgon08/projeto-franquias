@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Card, Row, Col, Table, Statistic, Spin, message, Alert, Layout } from 'antd'
+import { Card, Row, Col, Table, Statistic, Spin, message, Alert, Layout, theme } from 'antd'
 import { DashboardOutlined, ShopOutlined, UserOutlined, DollarOutlined, WalletOutlined, WarningOutlined } from '@ant-design/icons'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
 import { LayoutTheme } from '../../theme/index'
@@ -13,6 +13,7 @@ export default function DashboardPage() {
     const [loading, setLoading] = useState(true)
     const [dashboardData, setDashboardData] = useState(null)
     const { Header, Content } = Layout
+    const { token } = theme.useToken()
 
 
     async function carregarDashboard() {
@@ -219,13 +220,11 @@ export default function DashboardPage() {
         <LayoutTheme>
             <Layout className={common.layout}>
 
-                <Header>
-                    <div className={styles.header}>
-                        <h1 className={styles.title}>
-                            <DashboardOutlined className={styles.titleIcon} />
-                            Dashboard - Business Intelligence
-                        </h1>
-                    </div>
+                <Header className={styles.header}>
+                    <h1 className={styles.title}>
+                        <DashboardOutlined style={{ color: token.iconColor }} className={styles.titleIcon} />
+                        Dashboard - Business Intelligence
+                    </h1>
 
                     {/* Cards Totais */}
                     <Row gutter={[16, 16]} className={styles.statsRow}>
