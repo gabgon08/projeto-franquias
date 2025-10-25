@@ -227,7 +227,7 @@ export default function DashboardPage() {
                     </h1>
 
                     {/* Cards Totais */}
-                    <Row gutter={[16, 16]} className={styles.statsRow}>
+                    <Row gutter={[24, 24]} className={styles.statsRow}>
                         <Col xs={12} sm={12} md={6}>
                             <Card className={styles.statCard}>
                                 <Statistic
