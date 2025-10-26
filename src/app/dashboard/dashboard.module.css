@@ -4,7 +4,6 @@
     max-width: 1400px;
     height: 100%;
     min-height: 80%;
-    background-color: yellow;
 }
 
 .header {
@@ -43,9 +42,9 @@
 }
 
 /* Cards de Estatísticas */
-.statsRow {
+/* .statsRow {
     margin-bottom: 24px;
-}
+} */
 
 .statCard {
     text-align: center;
