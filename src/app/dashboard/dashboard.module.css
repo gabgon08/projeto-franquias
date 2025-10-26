@@ -1,15 +1,22 @@
 .container {
-    padding: 24px;
-    min-height: 100vh;
+    margin: auto;
+    width: 90vw;
+    max-width: 1400px;
+    height: 100%;
+    min-height: 80%;
+    background-color: yellow;
 }
 
 .header {
+    margin: auto;
+    width: 90vw;
     display: flex;
+    max-width: 1400px;
     flex-direction: column;
     height: auto;
     justify-content: space-between;
     gap: 2.7rem;
-    padding-bottom: 3rem;
+    padding: 0 0 3rem;
 }
 
 .title {
@@ -36,9 +43,9 @@
 }
 
 /* Cards de Estatísticas */
-/* .statsRow {
+.statsRow {
     margin-bottom: 24px;
-} */
+}
 
 .statCard {
     text-align: center;
