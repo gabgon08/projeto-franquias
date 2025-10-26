@@ -3,6 +3,8 @@ import "./globals.css";
 import Header from '../components/Header'
 import { LayoutTheme } from "./../theme/index.jsx";
 import { ConfigProvider } from "antd";
+import '@ant-design/v5-patch-for-react-19';
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
