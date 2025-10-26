@@ -61,24 +61,13 @@
 
 /* Gráficos */
 .chartsRow {
-    margin-bottom: 24px;
+    padding: 0.5rem 0;
 }
 
 .chartCard {
-    border-radius: 8px;
+    border-radius: 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    height: 350px;
-}
-
-.chartCard .ant-card-body {
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-}
-
-.chartCard .ant-card-head-title {
-    font-weight: 600;
-    color: #1f2937;
+    justify-content: center;
 }
 
 /* Tabelas */
@@ -89,9 +78,4 @@
 .tableCard {
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.tableCard .ant-card-head-title {
-    font-weight: 600;
-    color: #1f2937;
 }

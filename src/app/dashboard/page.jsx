@@ -14,7 +14,14 @@ export default function DashboardPage() {
     const [dashboardData, setDashboardData] = useState(null)
     const { Header, Content } = Layout
     const { token } = theme.useToken()
-
+    const dashColors = {
+        blue: '#417fb4',
+        red: '#f00f00',
+        green: '#52c41a',
+        orange: '#fa8c16',
+        magenta: '#eb2f96',
+        graphColors: ['#29620D', '#398912', '#52C41A', '#85D55E', '#B9E7A3', '#EDF9E8']
+    }
 
     async function carregarDashboard() {
         try {
@@ -39,15 +46,6 @@ export default function DashboardPage() {
     useEffect(() => {
         carregarDashboard()
     }, [])
-
-    // ==========================================
-    // CORES PARA OS GRÁFICOS
-    // ==========================================
-    const COLORS = ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe', '#00f2fe']
-
-    // ==========================================
-    // COLUNAS DAS TABELAS
-    // ==========================================
 
     // Tabela: Top 5 Franquias
     const columnsTopFranquias = [
@@ -192,9 +190,7 @@ export default function DashboardPage() {
         }
     ]
 
-    // ==========================================
     // LOADING E ERROS
-    // ==========================================
     if (loading) {
         return (
             <div className={styles.container}>
@@ -233,8 +229,8 @@ export default function DashboardPage() {
                                 <Statistic
                                     title={<span style={{ color: token.statisticTitleColor }}>Total de Franquias</span>}
                                     value={dashboardData.totalFranquias}
-                                    prefix={<ShopOutlined style={{ color: '#1890ff' }} />}
-                                    valueStyle={{ color: '#1890ff' }}
+                                    prefix={<ShopOutlined style={{ color: dashColors.blue }} />}
+                                    valueStyle={{ color: dashColors.blue }}
                                 />
                             </Card>
                         </Col>
@@ -244,8 +240,8 @@ export default function DashboardPage() {
                                 <Statistic
                                     title={<span style={{ color: token.statisticTitleColor }}>Total de Funcionários</span>}
                                     value={dashboardData.totalFuncionarios}
-                                    prefix={<UserOutlined style={{ color: '#52c41a' }} />}
-                                    valueStyle={{ color: '#52c41a' }}
+                                    prefix={<UserOutlined style={{ color: dashColors.green }} />}
+                                    valueStyle={{ color: dashColors.green }}
                                 />
                             </Card>
                         </Col>
@@ -255,9 +251,9 @@ export default function DashboardPage() {
                                 <Statistic
                                     title={<span style={{ color: token.statisticTitleColor }}>Salário Médio</span>}
                                     value={dashboardData.salarioMedio}
-                                    prefix={<DollarOutlined style={{ color: '#fa8c16' }} />}
+                                    prefix={<DollarOutlined style={{ color: dashColors.orange }} />}
                                     precision={2}
-                                    valueStyle={{ color: '#fa8c16' }}
+                                    valueStyle={{ color: dashColors.orange }}
                                     formatter={(valor) =>
                                         valor.toLocaleString('en', {
                                             maximumFractionDigits: 0,
@@ -273,9 +269,9 @@ export default function DashboardPage() {
                                 <Statistic
                                     title={<span style={{ color: token.statisticTitleColor }}>Folha Salarial Total</span>}
                                     value={dashboardData.folhaTotal}
-                                    prefix={<WalletOutlined style={{ color: '#eb2f96' }} />}
+                                    prefix={<WalletOutlined style={{ color: dashColors.magenta }} />}
                                     precision={2}
-                                    valueStyle={{ color: '#eb2f96' }}
+                                    valueStyle={{ color: dashColors.magenta }}
                                     formatter={(valor) =>
                                         valor.toLocaleString('en', {
                                             maximumFractionDigits: 0,
@@ -297,13 +293,13 @@ export default function DashboardPage() {
                         {/*Franquias por País*/}
                         <Col xs={24} sm={24} lg={12}>
                             <Card title="📍 Franquias por País" className={styles.chartCard}>
-                                <ResponsiveContainer width="100%" height={300}>
+                                <ResponsiveContainer width="95%" height={300}>
                                     <BarChart data={dashboardData.franquiasPorPais}>
                                         <CartesianGrid strokeDasharray="3 3" />
                                         <XAxis dataKey="pais" />
                                         <YAxis />
                                         <Tooltip />
-                                        <Bar dataKey="total" fill="#667eea" />
+                                        <Bar dataKey="total" fill="#417fb4" />
                                     </BarChart>
                                 </ResponsiveContainer>
                             </Card>
@@ -312,13 +308,13 @@ export default function DashboardPage() {
                         {/* Franquias por Cidade */}
                         <Col xs={24} sm={24} lg={12}>
                             <Card title="📍 Franquias por Cidade" className={styles.chartCard}>
-                                <ResponsiveContainer width="100%" height={300}>
+                                <ResponsiveContainer width="95%" height={300}>
                                     <BarChart data={dashboardData.franquiasPorCidade}>
                                         <CartesianGrid strokeDasharray="3 3" />
                                         <XAxis dataKey="cidade" />
                                         <YAxis />
                                         <Tooltip />
-                                        <Bar dataKey="total" fill="#667eea" />
+                                        <Bar dataKey="total" fill="#417fb4" />
                                     </BarChart>
                                 </ResponsiveContainer>
                             </Card>
@@ -340,15 +336,13 @@ export default function DashboardPage() {
                                             cx="50%"
                                             cy="50%"
                                             outerRadius={100}
-                                            fill="#8884d8"
                                             dataKey="total"
                                             label={({ cargo, total }) => `${cargo}: ${total}`}
                                         >
                                             {dashboardData.funcionariosPorCargo.map((entry, index) => (
-                                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                                <Cell key={`cell-${index}`} fill={dashColors.graphColors[index % dashColors.graphColors.length]} />
                                             ))}
                                         </Pie>
-                                        <Tooltip />
                                     </PieChart>
                                 </ResponsiveContainer>
                             </Card>
@@ -357,13 +351,13 @@ export default function DashboardPage() {
                         {/* Distribuição por Faixa Salarial */}
                         <Col xs={24} sm={12} lg={16}>
                             <Card title="💰 Distribuição por Faixa Salarial" className={styles.chartCard}>
-                                <ResponsiveContainer width="100%" height={300}>
+                                <ResponsiveContainer width="95%" height={300}>
                                     <BarChart data={dashboardData.faixasSalariais}>
                                         <CartesianGrid strokeDasharray="3 3" />
                                         <XAxis dataKey="faixa" />
                                         <YAxis />
                                         <Tooltip />
-                                        <Bar dataKey="quantidade" fill="#52c41a" />
+                                        <Bar dataKey="quantidade" fill={dashColors.orange} />
                                     </BarChart>
                                 </ResponsiveContainer>
                             </Card>
@@ -415,9 +409,7 @@ export default function DashboardPage() {
 
                     </Row>
 
-                    {/* ==========================================
-          ALERTAS
-          ========================================== */}
+                    {/* ALERTAS */}
                     {(dashboardData.franquiasSemFuncionarios.length > 0 || dashboardData.funcionariosSemFranquia.length > 0) && (
                         <Row gutter={[16, 16]} className={styles.alertsRow}>
 
