@@ -104,16 +104,6 @@ function Franquias() {
             sorter: (a, b) => a.nome.localeCompare(b.nome)
         },
         {
-            title: 'Cidade',
-            dataIndex: 'cidade',
-            key: 'cidade',
-            align: 'center',
-            showSorterTooltip: { title: 'Clique para ordenar' },
-            sorter: (a, b) => a.cidade.localeCompare(b.cidade),
-            filters: gerarFiltros('cidade'),
-            onFilter: (value, record) => record.cidade === value
-        },
-        {
             title: 'País',
             dataIndex: 'pais',
             key: 'pais',
@@ -122,6 +112,16 @@ function Franquias() {
             sorter: (a, b) => a.pais.localeCompare(b.pais),
             filters: gerarFiltros('pais'),
             onFilter: (value, record) => record.pais === value
+        },
+        {
+            title: 'Cidade',
+            dataIndex: 'cidade',
+            key: 'cidade',
+            align: 'center',
+            showSorterTooltip: { title: 'Clique para ordenar' },
+            sorter: (a, b) => a.cidade.localeCompare(b.cidade),
+            filters: gerarFiltros('cidade'),
+            onFilter: (value, record) => record.cidade === value
         },
         {
             title: 'Telefone',

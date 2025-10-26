@@ -66,10 +66,21 @@
 
 /* Tabelas */
 .tablesRow {
-    margin-bottom: 24px;
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
 }
 
 .tableCard {
-    border-radius: 8px;
+    height: 100%;
+    border-radius: 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 0 1rem 1rem;
+    overflow-x: auto;
+}
+
+.tableDiv {
+    display: grid;
+    padding-top: 3rem;
+    gap: 1rem;
 }

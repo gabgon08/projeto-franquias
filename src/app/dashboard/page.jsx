@@ -20,7 +20,7 @@ export default function DashboardPage() {
         green: '#52c41a',
         orange: '#fa8c16',
         magenta: '#eb2f96',
-        graphColors: ['#29620D', '#398912', '#52C41A', '#85D55E', '#B9E7A3', '#EDF9E8']
+        graphColors: ['#29620D', '#31750F', '#398912', '#419C14', '#49B017', '#52C41A']
     }
 
     async function carregarDashboard() {
@@ -60,6 +60,12 @@ export default function DashboardPage() {
             title: 'País',
             dataIndex: 'pais',
             key: 'pais',
+            align: 'center',
+        },
+        {
+            title: 'Cidade',
+            dataIndex: 'cidade',
+            key: 'cidade',
             align: 'center',
         },
         {
@@ -337,11 +343,14 @@ export default function DashboardPage() {
                                             cy="50%"
                                             outerRadius={100}
                                             dataKey="total"
+                                            nameKey='cargo'
                                             label={({ cargo, total }) => `${cargo}: ${total}`}
                                         >
                                             {dashboardData.funcionariosPorCargo.map((entry, index) => (
                                                 <Cell key={`cell-${index}`} fill={dashColors.graphColors[index % dashColors.graphColors.length]} />
                                             ))}
+                                            <Tooltip
+                                                formatter={(a) => `${a}`} />
                                         </Pie>
                                     </PieChart>
                                 </ResponsiveContainer>
@@ -366,48 +375,54 @@ export default function DashboardPage() {
                     </Row>
 
                     {/* TABELAS - RANKINGS E RECENTES */}
-                    <Row gutter={[16, 16]} className={styles.tablesRow}>
+                    <div className={styles.tableDiv}>
 
-                        {/* Top 5 Franquias */}
-                        <Col xs={24} lg={8}>
-                            <Card title="🏆 Top 5 Franquias" className={styles.tableCard}>
-                                <Table
-                                    dataSource={dashboardData.topFranquias}
-                                    columns={columnsTopFranquias}
-                                    rowKey="id"
-                                    pagination={false}
-                                    size="small"
-                                />
-                            </Card>
-                        </Col>
+                        <Row gutter={[16, 16]} className={styles.tablesRow}>
 
-                        {/* Últimas Franquias */}
-                        <Col xs={24} lg={8}>
-                            <Card title="🆕 Últimas Franquias Cadastradas" className={styles.tableCard}>
-                                <Table
-                                    dataSource={dashboardData.ultimasFranquias}
-                                    columns={columnsUltimasFranquias}
-                                    rowKey="id"
-                                    pagination={false}
-                                    size="small"
-                                />
-                            </Card>
-                        </Col>
+                            {/* Últimas Franquias */}
+                            <Col xs={24} lg={12}>
+                                <Card title="🆕 Últimas Franquias Cadastradas" className={styles.tableCard}>
+                                    <Table
+                                        dataSource={dashboardData.ultimasFranquias}
+                                        columns={columnsUltimasFranquias}
+                                        rowKey="id"
+                                        pagination={false}
+                                        size="small"
+                                    />
+                                </Card>
+                            </Col>
 
-                        {/* Últimos Funcionários */}
-                        <Col xs={24} lg={8}>
-                            <Card title="🆕 Últimos Funcionários Cadastrados" className={styles.tableCard}>
-                                <Table
-                                    dataSource={dashboardData.ultimosFuncionarios}
-                                    columns={columnsUltimosFuncionarios}
-                                    rowKey="id"
-                                    pagination={false}
-                                    size="small"
-                                />
-                            </Card>
-                        </Col>
+                            {/* Últimos Funcionários */}
+                            <Col xs={24} lg={12}>
+                                <Card title="🆕 Últimos Funcionários Cadastrados" className={styles.tableCard}>
+                                    <Table
+                                        dataSource={dashboardData.ultimosFuncionarios}
+                                        columns={columnsUltimosFuncionarios}
+                                        rowKey="id"
+                                        pagination={false}
+                                        size="small"
+                                    />
+                                </Card>
+                            </Col>
 
-                    </Row>
+                        </Row>
+
+                        <Row gutter={[16, 16]} className={styles.tablesRow}>
+
+                            {/* Top 5 Franquias */}
+                            <Col xs={24} lg={24}>
+                                <Card title="🏆 Top 5 Franquias" className={styles.tableCard}>
+                                    <Table
+                                        dataSource={dashboardData.topFranquias}
+                                        columns={columnsTopFranquias}
+                                        rowKey="id"
+                                        pagination={false}
+                                        size="small"
+                                    />
+                                </Card>
+                            </Col>
+                        </Row>
+                    </div>
 
                     {/* ALERTAS */}
                     {(dashboardData.franquiasSemFuncionarios.length > 0 || dashboardData.funcionariosSemFranquia.length > 0) && (
@@ -419,7 +434,7 @@ export default function DashboardPage() {
                                     <Card
                                         title={
                                             <span>
-                                                <WarningOutlined style={{ color: '#faad14', marginRight: 8 }} />
+                                                <WarningOutlined style={{ color: dashColors.orange, marginRight: 8 }} />
                                                 Franquias sem Funcionários ({dashboardData.franquiasSemFuncionarios.length})
                                             </span>
                                         }
@@ -449,7 +464,7 @@ export default function DashboardPage() {
                                     <Card
                                         title={
                                             <span>
-                                                <WarningOutlined style={{ color: '#faad14', marginRight: 8 }} />
+                                                <WarningOutlined style={{ color: dashColors.orange, marginRight: 8 }} />
                                                 Funcionários sem Franquia ({dashboardData.funcionariosSemFranquia.length})
                                             </span>
                                         }
