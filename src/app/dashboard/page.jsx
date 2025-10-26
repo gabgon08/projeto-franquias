@@ -327,9 +327,7 @@ export default function DashboardPage() {
 
                     </Row>
 
-                    {/* ==========================================
-          GRÁFICOS - SEGUNDA LINHA
-          ========================================== */}
+                    {/* GRÁFICOS - SEGUNDA LINHA */}
                     <Row gutter={[16, 16]} className={styles.chartsRow}>
 
                         {/* Funcionários por Cargo */}
@@ -373,9 +371,7 @@ export default function DashboardPage() {
 
                     </Row>
 
-                    {/* ==========================================
-          TABELAS - RANKINGS E RECENTES
-          ========================================== */}
+                    {/* TABELAS - RANKINGS E RECENTES */}
                     <Row gutter={[16, 16]} className={styles.tablesRow}>
 
                         {/* Top 5 Franquias */}
