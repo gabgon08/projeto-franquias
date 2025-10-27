@@ -228,10 +228,18 @@ export default function DashboardPage() {
             <Layout className={common.layout}>
 
                 <Header className={styles.header}>
-                    <h1 className={styles.title}>
-                        <DashboardOutlined className={styles.titleIcon} />
-                        Dashboard - Business Intelligence
-                    </h1>
+                    <div
+                        className={styles.headerContainer}
+                        style={{
+                            backgroundColor: token.colorPrimary,
+                            color: token.colorBgLayout
+                        }}>
+
+                        <DashboardOutlined className={styles.containerIcon} />
+                        <h1 className={styles.containerTitle}>
+                            DASHBOARD - BUSINESS INTELLIGENCE
+                        </h1>
+                    </div>
 
                     {/* Cards Totais */}
                     <Row gutter={[16, 16]} className={styles.statsRow}>
