@@ -417,7 +417,7 @@ export default function DashboardPage() {
 
                             {/* Top 5 Franquias */}
                             <Col xs={24} lg={24}>
-                                <Card title="🏆 Top 5 Franquias" className={styles.tableCard}>
+                                <Card title="🏆 Top 5 Franquias" className={styles.tableCardTop5}>
                                     <Table
                                         dataSource={dashboardData.topFranquias}
                                         columns={columnsTopFranquias}
@@ -444,7 +444,7 @@ export default function DashboardPage() {
                                                 Franquias sem Funcionários ({dashboardData.franquiasSemFuncionarios.length})
                                             </span>
                                         }
-                                        className={styles.tableCard}
+                                        className={styles.alertsCard}
                                     >
                                         <Alert
                                             message="Atenção!"
@@ -474,7 +474,7 @@ export default function DashboardPage() {
                                                 Funcionários sem Franquia ({dashboardData.funcionariosSemFranquia.length})
                                             </span>
                                         }
-                                        className={styles.tableCard}
+                                        className={styles.alertsCard}
                                     >
                                         <Alert
                                             message="Atenção!"
