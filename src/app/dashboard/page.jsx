@@ -236,35 +236,35 @@ export default function DashboardPage() {
                     {/* Cards Totais */}
                     <Row gutter={[16, 16]} className={styles.statsRow}>
                         <Col xs={12} sm={12} md={6}>
-                            <Card className={styles.statCard} style={{ backgroundColor: dashColors.blue, border: 0 }}>
+                            <Card className={styles.statCard}>
                                 <Statistic
                                     title={<span style={{ color: token.statisticTitleColor }}>Total de Franquias</span>}
                                     value={dashboardData.totalFranquias}
-                                    prefix={<ShopOutlined style={{ color: token.statisticTitleColor }} />}
-                                    valueStyle={{ color: token.statisticTitleColor }}
+                                    prefix={<ShopOutlined style={{ color: dashColors.blue }} />}
+                                    valueStyle={{ color: dashColors.blue }}
                                 />
                             </Card>
                         </Col>
 
                         <Col xs={12} sm={12} md={6}>
-                            <Card className={styles.statCard} style={{ backgroundColor: dashColors.green, border: 0 }}>
+                            <Card className={styles.statCard}>
                                 <Statistic
                                     title={<span style={{ color: token.statisticTitleColor }}>Total de Funcionários</span>}
                                     value={dashboardData.totalFuncionarios}
-                                    prefix={<UserOutlined style={{ color: token.statisticTitleColor }} />}
-                                    valueStyle={{ color: token.statisticTitleColor }}
+                                    prefix={<UserOutlined style={{ color: dashColors.green }} />}
+                                    valueStyle={{ color: dashColors.green }}
                                 />
                             </Card>
                         </Col>
 
                         <Col xs={12} sm={12} md={6}>
-                            <Card className={styles.statCard} style={{ backgroundColor: dashColors.orange, border: 0 }}>
+                            <Card className={styles.statCard}>
                                 <Statistic
                                     title={<span style={{ color: token.statisticTitleColor }}>Salário Médio</span>}
                                     value={dashboardData.salarioMedio}
-                                    prefix={<DollarOutlined style={{ color: token.statisticTitleColor }} />}
+                                    prefix={<DollarOutlined style={{ color: dashColors.orange }} />}
                                     precision={2}
-                                    valueStyle={{ color: token.statisticTitleColor }}
+                                    valueStyle={{ color: dashColors.orange }}
                                     formatter={(valor) =>
                                         valor.toLocaleString('en', {
                                             maximumFractionDigits: 0,
@@ -276,13 +276,13 @@ export default function DashboardPage() {
                         </Col>
 
                         <Col xs={12} sm={12} md={6}>
-                            <Card className={styles.statCard} style={{ backgroundColor: dashColors.magenta, border: 0 }}>
+                            <Card className={styles.statCard}>
                                 <Statistic
                                     title={<span style={{ color: token.statisticTitleColor }}>Folha Salarial Total</span>}
                                     value={dashboardData.folhaTotal}
-                                    prefix={<WalletOutlined style={{ color: token.statisticTitleColor }} />}
+                                    prefix={<WalletOutlined style={{ color: dashColors.magenta }} />}
                                     precision={2}
-                                    valueStyle={{ color: token.statisticTitleColor }}
+                                    valueStyle={{ color: dashColors.magenta }}
                                     formatter={(valor) =>
                                         valor.toLocaleString('en', {
                                             maximumFractionDigits: 0,
