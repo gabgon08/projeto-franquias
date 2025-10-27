@@ -16,10 +16,9 @@ export default function DashboardPage() {
     const { token } = theme.useToken()
     const dashColors = {
         blue: '#417fb4',
-        red: '#f00f00',
-        green: '#52c41a',
-        orange: '#fa8c16',
-        magenta: '#eb2f96',
+        green: '#419C14',
+        orange: '#E17E13',
+        magenta: '#D32A87',
         graphColors: ['#29620D', '#31750F', '#398912', '#419C14', '#49B017', '#52C41A']
     }
 
@@ -159,6 +158,12 @@ export default function DashboardPage() {
             align: 'center',
         },
         {
+            title: 'País',
+            dataIndex: 'pais',
+            key: 'pais',
+            align: 'center'
+        },
+        {
             title: 'Cidade',
             dataIndex: 'cidade',
             key: 'cidade',
@@ -224,14 +229,14 @@ export default function DashboardPage() {
 
                 <Header className={styles.header}>
                     <h1 className={styles.title}>
-                        <DashboardOutlined style={{ color: token.iconColor }} className={styles.titleIcon} />
+                        <DashboardOutlined className={styles.titleIcon} />
                         Dashboard - Business Intelligence
                     </h1>
 
                     {/* Cards Totais */}
                     <Row gutter={[16, 16]} className={styles.statsRow}>
                         <Col xs={12} sm={12} md={6}>
-                            <Card className={styles.statCard}>
+                            <Card className={styles.statCard} style={{ borderColor: dashColors.blue }}>
                                 <Statistic
                                     title={<span style={{ color: token.statisticTitleColor }}>Total de Franquias</span>}
                                     value={dashboardData.totalFranquias}
@@ -242,7 +247,7 @@ export default function DashboardPage() {
                         </Col>
 
                         <Col xs={12} sm={12} md={6}>
-                            <Card className={styles.statCard}>
+                            <Card className={styles.statCard} style={{ borderColor: dashColors.green }}>
                                 <Statistic
                                     title={<span style={{ color: token.statisticTitleColor }}>Total de Funcionários</span>}
                                     value={dashboardData.totalFuncionarios}
@@ -253,7 +258,7 @@ export default function DashboardPage() {
                         </Col>
 
                         <Col xs={12} sm={12} md={6}>
-                            <Card className={styles.statCard}>
+                            <Card className={styles.statCard} style={{ borderColor: dashColors.orange }}>
                                 <Statistic
                                     title={<span style={{ color: token.statisticTitleColor }}>Salário Médio</span>}
                                     value={dashboardData.salarioMedio}
@@ -271,7 +276,7 @@ export default function DashboardPage() {
                         </Col>
 
                         <Col xs={12} sm={12} md={6}>
-                            <Card className={styles.statCard}>
+                            <Card className={styles.statCard} style={{ borderColor: dashColors.magenta }}>
                                 <Statistic
                                     title={<span style={{ color: token.statisticTitleColor }}>Folha Salarial Total</span>}
                                     value={dashboardData.folhaTotal}
@@ -411,7 +416,7 @@ export default function DashboardPage() {
 
                             {/* Top 5 Franquias */}
                             <Col xs={24} lg={24}>
-                                <Card title="🏆 Top 5 Franquias" className={styles.tableCard}>
+                                <Card title="🏆 Top 5 Franquias" className={styles.tableCardTop5}>
                                     <Table
                                         dataSource={dashboardData.topFranquias}
                                         columns={columnsTopFranquias}
@@ -426,7 +431,7 @@ export default function DashboardPage() {
 
                     {/* ALERTAS */}
                     {(dashboardData.franquiasSemFuncionarios.length > 0 || dashboardData.funcionariosSemFranquia.length > 0) && (
-                        <Row gutter={[16, 16]} className={styles.alertsRow}>
+                        <Row gutter={[16, 16]} className={styles.tablesRow}>
 
                             {/* Franquias sem Funcionários */}
                             {dashboardData.franquiasSemFuncionarios.length > 0 && (
@@ -438,7 +443,7 @@ export default function DashboardPage() {
                                                 Franquias sem Funcionários ({dashboardData.franquiasSemFuncionarios.length})
                                             </span>
                                         }
-                                        className={styles.alertCard}
+                                        className={styles.alertsCard}
                                     >
                                         <Alert
                                             message="Atenção!"
@@ -468,7 +473,7 @@ export default function DashboardPage() {
                                                 Funcionários sem Franquia ({dashboardData.funcionariosSemFranquia.length})
                                             </span>
                                         }
-                                        className={styles.alertCard}
+                                        className={styles.alertsCard}
                                     >
                                         <Alert
                                             message="Atenção!"
