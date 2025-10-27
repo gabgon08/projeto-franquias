@@ -1,55 +1,52 @@
 .layout {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .header {
+    display: flex;
+    flex-direction: row;
     width: 100%;
-    min-height: 4rem;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.329);
-    border-bottom: 0;
-    /* height: 4rem; */
-}
-
-.flexContainer {
-    display: flex;
+    max-width: 1300px;
     justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: min(90vw, 1500px);
-    margin: 0 auto;
-    padding: 0 2rem;
-    flex-wrap: nowrap;
-    /* gap: 0.8rem; */
-}
-
-.flexLink {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    padding: 0.4rem 0;
-    transition: opacity 0.3s ease;
-    white-space: nowrap;
-}
-
-.flexLink:hover {
-    opacity: 0.8;
-}
-
-.flexTitle {
-    font-weight: bold !important;
-    font-size: clamp(1.1rem, 1.8vw, 1.6rem);
-}
-
-.flexMenu {
-    display: flex;
-    justify-content: flex-end;
-    flex: 1 1 300px;
-    min-width: 200px;
-    border: 0;
-    font-size: clamp(0.9rem, 1vw, 1rem);
     padding: 0;
+}
+
+.headerLink {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    transition: all 0.4s ease;
+}
+
+.headerMenu {
+    justify-content: center;
+    width: 470px;
+}
+
+@media (max-width: 600px) {
+    .layout {
+        flex-direction: row;
+        justify-content: start;
+    }
+
+    .header {
+        height: fit-content;
+        display: grid;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .headerLink {
+        justify-content: center;
+        padding: 0.8rem 0;
+        text-align: center;
+    }
+
+    .headerMenu {
+        justify-content: center;
+        align-items: center;
+        width: 470px;
+    }
 }

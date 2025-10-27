@@ -18,7 +18,7 @@ export default function Home() {
     <LayoutTheme>
       <Layout className={common.layout}>
         <Header className={styles.header}>
-          <h1 className={styles.title}>Sistema de Franquias</h1>
+          <h1 className={styles.title}>Sistema de Gerenciamento de Franquias</h1>
           <p className={styles.subtitle}>Gerencie suas franquias e funcionários</p>
         </Header>
 

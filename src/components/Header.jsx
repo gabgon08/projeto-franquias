@@ -1,6 +1,6 @@
 'use client'
 
-import { Flex, Layout, Menu } from "antd"
+import { Layout, Menu } from "antd"
 import { HomeOutlined, UserOutlined, ShopOutlined, DashboardOutlined } from '@ant-design/icons'
 import { usePathname } from "next/navigation"
 import Link from 'next/link'
@@ -13,6 +13,7 @@ const { Header } = Layout;
 
 const App = () => {
     const pathname = usePathname()
+
     const itens = [
         {
             label: <Link href='/'>Home</Link>,
@@ -40,27 +41,23 @@ const App = () => {
         <HeaderTheme>
             <Layout className={styles.layout}>
                 <Header className={styles.header}>
-                    <Flex className={styles.flexContainer}>
 
-                        <Link href='/' className={styles.flexLink}>
+                    <Link
+                        href='/'
+                        className={styles.headerLink}>
+                        <Title
+                            level={1}
+                            style={{ fontWeight: 600 }}>
+                            SGF</Title>
+                    </Link>
 
-                            <Title
-                                level={2}
-                                className={styles.flexTitle}
-                            >
-                                Sistema de Franquias
-                            </Title>
+                    <Menu
+                        mode="horizontal"
+                        selectedKeys={[pathname]}
+                        items={itens}
+                        className={styles.headerMenu}
+                    />
 
-                        </Link>
-
-                        <Menu
-                            mode="horizontal"
-                            selectedKeys={[pathname]}
-                            items={itens}
-                            className={styles.flexMenu}
-                        />
-
-                    </Flex>
                 </Header>
             </Layout >
         </HeaderTheme >

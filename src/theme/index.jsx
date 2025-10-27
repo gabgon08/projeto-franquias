@@ -105,7 +105,8 @@ export function HeaderTheme({ children }) {
           },
           Layout: {
             headerBg: colors.brown[1],
-          }
+            colorBgLayout: colors.brown[1]
+          },
         }
       }}
     >
