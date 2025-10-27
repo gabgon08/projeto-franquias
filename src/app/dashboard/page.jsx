@@ -229,7 +229,7 @@ export default function DashboardPage() {
 
                 <Header className={styles.header}>
                     <h1 className={styles.title}>
-                        <DashboardOutlined style={{ color: token.iconColor }} className={styles.titleIcon} />
+                        <DashboardOutlined className={styles.titleIcon} />
                         Dashboard - Business Intelligence
                     </h1>
 
