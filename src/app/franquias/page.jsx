@@ -285,13 +285,7 @@ function Franquias() {
                             }}>
 
                             <ShopOutlined className={common.topBoxIcon} />
-
-                            <Title
-                                level={3}
-                                className={common.topBoxTitle}
-                                style={{ color: token.colorBgLayout }}
-                            >FRANQUIAS
-                            </Title>
+                            <h1 className={common.TopBoxTitle}>FRANQUIAS</h1>
                         </div>
 
                         <Button

@@ -309,13 +309,7 @@ function Funcionarios() {
                             }}>
 
                             <UserOutlined className={common.topBoxIcon} />
-
-                            <Title
-                                level={3}
-                                className={common.topBoxTitle}
-                                style={{ color: token.colorBgLayout }}
-                            >FUNCIONÁRIOS
-                            </Title>
+                            <h1 className={common.topBoxTitle}>FUNCIONÁRIOS</h1>
                         </div>
 
                         <Button
