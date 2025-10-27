@@ -1,11 +1,13 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styles from './funcionarios.module.css'
 import common from './../../theme/common.module.css'
 import { LayoutTheme } from './../../theme/index'
 import { Table, Button, Modal, Form, message, Input, Typography, InputNumber, Select, Space, Popconfirm, Tooltip, theme, Layout } from 'antd'
-import { PlusOutlined, UserOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
+import { PlusOutlined, UserOutlined, EditOutlined, DeleteOutlined, SearchOutlined } from '@ant-design/icons'
+import Highlighter from 'react-highlight-words';
+
 
 function Funcionarios() {
 
@@ -19,6 +21,9 @@ function Funcionarios() {
     const [form] = Form.useForm()
     const [messageApi, contextHolder] = message.useMessage()
     const { token } = theme.useToken()
+    const [searchText, setSearchText] = useState('');
+    const [searchedColumn, setSearchedColumn] = useState('');
+    const searchInput = useRef(null);
 
     async function carregarFuncionarios() {
         try {
@@ -92,6 +97,74 @@ function Funcionarios() {
         setModalVisible(true)
     }
 
+    const handleSearch = (selectedKeys, confirm, dataIndex) => {
+        confirm();
+        setSearchText(selectedKeys[0]);
+        setSearchedColumn(dataIndex);
+    }
+
+    const handleReset = clearFilters => {
+        clearFilters();
+        setSearchText('');
+    }
+
+    const getColumnSearchProps = dataIndex => ({
+        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+            <div className={common.searchDiv} onKeyDown={e => e.stopPropagation()}>
+
+                <Input
+                    ref={searchInput}
+                    placeholder={`Buscar funcionário`}
+                    value={selectedKeys[0]}
+                    onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+                    onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+                    className={common.searchInput}
+                />
+                <Space>
+                    <Button
+                        type="primary"
+                        onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}>
+                        Buscar
+                    </Button>
+
+                    <Button
+                        onClick={() => clearFilters && handleReset(clearFilters)}>
+                        Reset
+                    </Button>
+
+                    <Button
+                        variant="link"
+                        color="danger"
+                        onClick={() => { close() }}>
+                        Fechar
+                    </Button>
+                </Space>
+            </div >
+        ),
+        filterIcon: filtered => <SearchOutlined style={{ color: filtered ? '#1677ff' : token.colorTableBg }} />,
+
+        onFilter: (value, record) =>
+            record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+        filterDropdownProps: {
+            onOpenChange(open) {
+                if (open) {
+                    setTimeout(() => searchInput.current?.select(), 100);
+                }
+            },
+        },
+        render: text =>
+            searchedColumn === dataIndex ? (
+                <Highlighter
+                    highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
+                    searchWords={[searchText]}
+                    autoEscape
+                    textToHighlight={text ? text.toString() : ''}
+                />
+            ) : (
+                text
+            ),
+    })
+
     const gerarFiltros = (key) => {
         const uniqueValues = [...new Set(funcionarios.map((item) => item[key]))];
         return uniqueValues.map((value) => ({ text: value, value }));
@@ -111,6 +184,7 @@ function Funcionarios() {
             render: (text) => <strong>{text}</strong>,
             showSorterTooltip: { title: 'Clique para ordenar' },
             sorter: (a, b) => a.nome.localeCompare(b.nome),
+            ...getColumnSearchProps('nome')
         },
         {
             title: 'E-mail',

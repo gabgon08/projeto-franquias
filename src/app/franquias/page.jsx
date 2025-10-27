@@ -1,13 +1,14 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import common from './../../theme/common.module.css'
 import styles from './franquias.module.css'
 import { LayoutTheme } from './../../theme/index'
 import { Table, Button, Modal, Form, message, Input, Space, Typography, Popconfirm, Tooltip, Select, theme, Layout } from 'antd'
-import { PlusOutlined, ShopOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
+import { PlusOutlined, ShopOutlined, EditOutlined, DeleteOutlined, SearchOutlined } from '@ant-design/icons'
 import countries from 'i18n-iso-countries'
 import pt from 'i18n-iso-countries/langs/pt.json'
+import Highlighter from 'react-highlight-words';
 countries.registerLocale(pt)
 
 function Franquias() {
@@ -18,11 +19,14 @@ function Franquias() {
     const [editandoId, setEditandoId] = useState(null)
     const [form] = Form.useForm()
     const [messageApi, contextHolder] = message.useMessage()
+    const paises = Object.entries(countries.getNames('pt', { select: 'official' }))
     const { Title } = Typography
     const { Option } = Select
     const { Content } = Layout
     const { token } = theme.useToken()
-    const paises = Object.entries(countries.getNames('pt', { select: 'official' }))
+    const [searchText, setSearchText] = useState('')
+    const [searchedColumn, setSearchedColumn] = useState('')
+    const searchInput = useRef(null)
 
     async function carregarFranquias() {
 
@@ -84,6 +88,74 @@ function Franquias() {
         setModalVisible(true)
     }
 
+    const handleSearch = (selectedKeys, confirm, dataIndex) => {
+        confirm();
+        setSearchText(selectedKeys[0]);
+        setSearchedColumn(dataIndex);
+    }
+
+    const handleReset = clearFilters => {
+        clearFilters();
+        setSearchText('');
+    }
+
+    const getColumnSearchProps = dataIndex => ({
+        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+            <div className={common.searchDiv} onKeyDown={e => e.stopPropagation()}>
+
+                <Input
+                    ref={searchInput}
+                    placeholder={`Buscar franquia`}
+                    value={selectedKeys[0]}
+                    onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+                    onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+                    className={common.searchInput}
+                />
+                <Space>
+                    <Button
+                        type="primary"
+                        onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}>
+                        Buscar
+                    </Button>
+
+                    <Button
+                        onClick={() => clearFilters && handleReset(clearFilters)}>
+                        Reset
+                    </Button>
+
+                    <Button
+                        variant="link"
+                        color="danger"
+                        onClick={() => { close() }}>
+                        Fechar
+                    </Button>
+                </Space>
+            </div >
+        ),
+        filterIcon: filtered => <SearchOutlined style={{ color: filtered ? '#1677ff' : token.colorTableBg }} />,
+
+        onFilter: (value, record) =>
+            record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+        filterDropdownProps: {
+            onOpenChange(open) {
+                if (open) {
+                    setTimeout(() => searchInput.current?.select(), 100);
+                }
+            },
+        },
+        render: text =>
+            searchedColumn === dataIndex ? (
+                <Highlighter
+                    highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
+                    searchWords={[searchText]}
+                    autoEscape
+                    textToHighlight={text ? text.toString() : ''}
+                />
+            ) : (
+                text
+            ),
+    })
+
     const gerarFiltros = (key) => {
         const uniqueValues = [...new Set(franquias.map((item) => item[key]))];
         return uniqueValues.map((value) => ({ text: value, value }));
@@ -101,7 +173,8 @@ function Franquias() {
             align: 'center',
             render: (text) => <strong>{text}</strong>,
             showSorterTooltip: { title: 'Clique para ordenar' },
-            sorter: (a, b) => a.nome.localeCompare(b.nome)
+            sorter: (a, b) => a.nome.localeCompare(b.nome),
+            ...getColumnSearchProps('nome')
         },
         {
             title: 'País',

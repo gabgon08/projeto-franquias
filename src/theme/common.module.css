@@ -60,3 +60,13 @@
     font-size: 1.1rem;
     white-space: nowrap;
 }
+
+.searchDiv {
+    display: grid;
+    padding: 0.5rem;
+    gap: 0.5rem;
+}
+
+.searchInput {
+    display: block;
+}
