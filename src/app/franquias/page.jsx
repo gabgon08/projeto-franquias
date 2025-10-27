@@ -5,7 +5,7 @@ import common from './../../theme/common.module.css'
 import styles from './franquias.module.css'
 import { LayoutTheme } from './../../theme/index'
 import { Table, Button, Modal, Form, message, Input, Space, Typography, Popconfirm, Tooltip, Select, theme, Layout } from 'antd'
-import { PlusOutlined, ShopOutlined, EditOutlined, DeleteOutlined, SearchOutlined } from '@ant-design/icons'
+import { PlusOutlined, ShopOutlined, EditOutlined, DeleteOutlined, SearchOutlined, FilterFilled } from '@ant-design/icons'
 import countries from 'i18n-iso-countries'
 import pt from 'i18n-iso-countries/langs/pt.json'
 import Highlighter from 'react-highlight-words';
@@ -157,8 +157,9 @@ function Franquias() {
     })
 
     const gerarFiltros = (key) => {
-        const uniqueValues = [...new Set(franquias.map((item) => item[key]))];
-        return uniqueValues.map((value) => ({ text: value, value }));
+        const valoresUnicos = [...new Set(franquias.map((item) => item[key]))];
+        const valoresOrdenados = valoresUnicos.sort((a, b) => a.localeCompare(b));
+        return valoresOrdenados.map((value) => ({ text: value, value }));
     }
 
     useEffect(() => {
@@ -184,7 +185,8 @@ function Franquias() {
             showSorterTooltip: { title: 'Clique para ordenar' },
             sorter: (a, b) => a.pais.localeCompare(b.pais),
             filters: gerarFiltros('pais'),
-            onFilter: (value, record) => record.pais === value
+            onFilter: (value, record) => record.pais === value,
+            filterIcon: filtered => <FilterFilled style={{ color: filtered ? '#1677ff' : token.colorTableBg }} />,
         },
         {
             title: 'Cidade',
@@ -194,7 +196,8 @@ function Franquias() {
             showSorterTooltip: { title: 'Clique para ordenar' },
             sorter: (a, b) => a.cidade.localeCompare(b.cidade),
             filters: gerarFiltros('cidade'),
-            onFilter: (value, record) => record.cidade === value
+            onFilter: (value, record) => record.cidade === value,
+            filterIcon: filtered => <FilterFilled style={{ color: filtered ? '#1677ff' : token.colorTableBg }} />,
         },
         {
             title: 'Telefone',

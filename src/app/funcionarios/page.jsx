@@ -5,7 +5,7 @@ import styles from './funcionarios.module.css'
 import common from './../../theme/common.module.css'
 import { LayoutTheme } from './../../theme/index'
 import { Table, Button, Modal, Form, message, Input, Typography, InputNumber, Select, Space, Popconfirm, Tooltip, theme, Layout } from 'antd'
-import { PlusOutlined, UserOutlined, EditOutlined, DeleteOutlined, SearchOutlined } from '@ant-design/icons'
+import { PlusOutlined, UserOutlined, EditOutlined, DeleteOutlined, SearchOutlined, FilterFilled } from '@ant-design/icons'
 import Highlighter from 'react-highlight-words';
 
 
@@ -145,6 +145,7 @@ function Funcionarios() {
 
         onFilter: (value, record) =>
             record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+
         filterDropdownProps: {
             onOpenChange(open) {
                 if (open) {
@@ -166,9 +167,17 @@ function Funcionarios() {
     })
 
     const gerarFiltros = (key) => {
-        const uniqueValues = [...new Set(funcionarios.map((item) => item[key]))];
-        return uniqueValues.map((value) => ({ text: value, value }));
+        const valoresUnicos = [...new Set(funcionarios.map((item) => item[key]))];
+        const valoresOrdenados = valoresUnicos.sort((a, b) => a.localeCompare(b));
+        return valoresOrdenados.map((value) => ({ text: value, value }));
     }
+
+    const gerarFiltrosFranquias = (valores) => {
+        const valoresUnicos = [...new Set(valores)]
+        const valoresOrdenados = valoresUnicos.sort((a, b) => a.localeCompare(b))
+        return valoresOrdenados.map(v => ({ text: v, value: v }))
+    }
+
 
     useEffect(() => {
         carregarFuncionarios()
@@ -200,7 +209,8 @@ function Funcionarios() {
             showSorterTooltip: { title: 'Clique para ordenar' },
             sorter: (a, b) => a.cargo.localeCompare(b.cargo),
             filters: gerarFiltros('cargo'),
-            onFilter: (value, record) => record.cargo === value
+            onFilter: (value, record) => record.cargo === value,
+            filterIcon: filtered => <FilterFilled style={{ color: filtered ? '#1677ff' : token.colorTableBg }} />,
         },
         {
             title: 'Salário',
@@ -224,6 +234,9 @@ function Funcionarios() {
             showSorterTooltip: { title: 'Clique para ordenar' },
             render: (nome) => nome || 'Sem franquia',
             sorter: (a, b) => a.franquia.nome.localeCompare(b.franquia.nome),
+            filters: gerarFiltrosFranquias(funcionarios.map(f => f.franquia?.nome).filter(Boolean)),
+            onFilter: (value, record) => record.franquia?.nome === value,
+            filterIcon: filtered => <FilterFilled style={{ color: filtered ? '#1677ff' : token.colorTableBg }} />,
         },
         {
             title: 'Ações',
