@@ -81,6 +81,8 @@
 
 .tableDiv {
     display: grid;
-    padding-top: 3rem;
+    padding: 3rem 0;
     gap: 1rem;
 }
+
+/* Alertas */
