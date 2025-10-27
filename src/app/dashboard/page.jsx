@@ -16,10 +16,9 @@ export default function DashboardPage() {
     const { token } = theme.useToken()
     const dashColors = {
         blue: '#417fb4',
-        red: '#f00f00',
-        green: '#52c41a',
-        orange: '#fa8c16',
-        magenta: '#eb2f96',
+        green: '#419C14',
+        orange: '#E17E13',
+        magenta: '#D32A87',
         graphColors: ['#29620D', '#31750F', '#398912', '#419C14', '#49B017', '#52C41A']
     }
 
