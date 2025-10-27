@@ -47,6 +47,7 @@
 .statCard {
     text-align: center;
     border-radius: 1.5rem;
+    border: 2px solid;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     transition: all 0.3s ease;
     padding: 0.8rem 0;

@@ -236,7 +236,7 @@ export default function DashboardPage() {
                     {/* Cards Totais */}
                     <Row gutter={[16, 16]} className={styles.statsRow}>
                         <Col xs={12} sm={12} md={6}>
-                            <Card className={styles.statCard}>
+                            <Card className={styles.statCard} style={{ borderColor: dashColors.blue }}>
                                 <Statistic
                                     title={<span style={{ color: token.statisticTitleColor }}>Total de Franquias</span>}
                                     value={dashboardData.totalFranquias}
@@ -247,7 +247,7 @@ export default function DashboardPage() {
                         </Col>
 
                         <Col xs={12} sm={12} md={6}>
-                            <Card className={styles.statCard}>
+                            <Card className={styles.statCard} style={{ borderColor: dashColors.green }}>
                                 <Statistic
                                     title={<span style={{ color: token.statisticTitleColor }}>Total de Funcionários</span>}
                                     value={dashboardData.totalFuncionarios}
@@ -258,7 +258,7 @@ export default function DashboardPage() {
                         </Col>
 
                         <Col xs={12} sm={12} md={6}>
-                            <Card className={styles.statCard}>
+                            <Card className={styles.statCard} style={{ borderColor: dashColors.orange }}>
                                 <Statistic
                                     title={<span style={{ color: token.statisticTitleColor }}>Salário Médio</span>}
                                     value={dashboardData.salarioMedio}
@@ -276,7 +276,7 @@ export default function DashboardPage() {
                         </Col>
 
                         <Col xs={12} sm={12} md={6}>
-                            <Card className={styles.statCard}>
+                            <Card className={styles.statCard} style={{ borderColor: dashColors.magenta }}>
                                 <Statistic
                                     title={<span style={{ color: token.statisticTitleColor }}>Folha Salarial Total</span>}
                                     value={dashboardData.folhaTotal}
