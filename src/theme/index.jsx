@@ -42,7 +42,7 @@ export function LayoutTheme({ children }) {
           colorTableBg: colors.steel[7],
           colorBgLayout: colors.steel[6],
           iconColor: colors.steel[3],
-          statisticTitleColor: colors.steel[1]
+          statisticTitleColor: colors.steel[7]
         },
         components: {
           Table: {
