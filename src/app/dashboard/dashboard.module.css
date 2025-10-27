@@ -79,8 +79,29 @@
     overflow-x: auto;
 }
 
+.tableCardTop5 {
+    height: 100%;
+    border: 4px solid;
+    border-color: #2b445e;
+    border-radius: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 0 1rem 1rem;
+    overflow-x: auto;
+}
+
 .tableDiv {
     display: grid;
-    padding-top: 3rem;
+    padding: 3rem 0;
     gap: 1rem;
+}
+
+/* Alertas */
+.alertsCard {
+    height: 100%;
+    border-radius: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 0 1rem 1rem;
+    overflow-x: auto;
+    border: 4px solid;
+    border-color: #f7b634;
 }

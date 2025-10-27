@@ -159,6 +159,12 @@ export default function DashboardPage() {
             align: 'center',
         },
         {
+            title: 'País',
+            dataIndex: 'pais',
+            key: 'pais',
+            align: 'center'
+        },
+        {
             title: 'Cidade',
             dataIndex: 'cidade',
             key: 'cidade',
@@ -411,7 +417,7 @@ export default function DashboardPage() {
 
                             {/* Top 5 Franquias */}
                             <Col xs={24} lg={24}>
-                                <Card title="🏆 Top 5 Franquias" className={styles.tableCard}>
+                                <Card title="🏆 Top 5 Franquias" className={styles.tableCardTop5}>
                                     <Table
                                         dataSource={dashboardData.topFranquias}
                                         columns={columnsTopFranquias}
@@ -426,7 +432,7 @@ export default function DashboardPage() {
 
                     {/* ALERTAS */}
                     {(dashboardData.franquiasSemFuncionarios.length > 0 || dashboardData.funcionariosSemFranquia.length > 0) && (
-                        <Row gutter={[16, 16]} className={styles.alertsRow}>
+                        <Row gutter={[16, 16]} className={styles.tablesRow}>
 
                             {/* Franquias sem Funcionários */}
                             {dashboardData.franquiasSemFuncionarios.length > 0 && (
@@ -438,7 +444,7 @@ export default function DashboardPage() {
                                                 Franquias sem Funcionários ({dashboardData.franquiasSemFuncionarios.length})
                                             </span>
                                         }
-                                        className={styles.alertCard}
+                                        className={styles.alertsCard}
                                     >
                                         <Alert
                                             message="Atenção!"
@@ -468,7 +474,7 @@ export default function DashboardPage() {
                                                 Funcionários sem Franquia ({dashboardData.funcionariosSemFranquia.length})
                                             </span>
                                         }
-                                        className={styles.alertCard}
+                                        className={styles.alertsCard}
                                     >
                                         <Alert
                                             message="Atenção!"
