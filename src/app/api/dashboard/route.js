@@ -32,6 +32,7 @@ export async function GET() {
 
         // CALCULAR OS TOTAIS BÁSICOS
 
+        const totalFranquias = franquias.length
         const totalFuncionarios = funcionarios.length
 
         let somaSalarios = 0
@@ -183,7 +184,7 @@ export async function GET() {
 
         // RESPOSTA FINAL
         const dashboard = {
-            totalFranquias: franquias.length,
+            totalFranquias: totalFranquias,
             totalFuncionarios: totalFuncionarios,
             salarioMedio: Math.round(salarioMedio * 100) / 100,
             folhaTotal: Math.round(somaSalarios * 100) / 100,
