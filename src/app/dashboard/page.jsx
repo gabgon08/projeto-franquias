@@ -137,7 +137,12 @@ export default function DashboardPage() {
             dataIndex: 'salario',
             key: 'salario',
             align: 'center',
-            render: (value) => `R$ ${value.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`
+            render: (valor) =>
+                valor.toLocaleString('en', {
+                    minimumFractionDigits: 2,
+                    style: 'currency',
+                    currency: 'USD',
+                }),
         },
         {
             title: 'Franquia',
