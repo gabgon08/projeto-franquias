@@ -242,7 +242,7 @@ export default function DashboardPage() {
                     </div>
 
                     {/* Cards Totais */}
-                    <Row gutter={[16, 16]} className={styles.statsRow}>
+                    <Row gutter={[16, 16]}>
                         <Col xs={12} sm={12} md={6}>
                             <Card className={styles.statCard} style={{ borderColor: dashColors.blue }}>
                                 <Statistic
@@ -307,7 +307,7 @@ export default function DashboardPage() {
                 <Content className={styles.container}>
 
                     {/* GRÁFICOS - PRIMEIRA LINHA */}
-                    <Row gutter={[16, 16]} className={styles.chartsRow}>
+                    <Row gutter={[16, 16]}>
 
                         {/*Franquias por País*/}
                         <Col xs={24} sm={24} lg={12}>
@@ -343,7 +343,7 @@ export default function DashboardPage() {
                     </Row>
 
                     {/* GRÁFICOS - SEGUNDA LINHA */}
-                    <Row gutter={[16, 16]} className={styles.chartsRow}>
+                    <Row gutter={[16, 16]}>
 
                         {/* Funcionários por Cargo */}
                         <Col xs={24} sm={12} lg={8}>
