@@ -283,7 +283,7 @@ function Franquias() {
                             }}>
 
                             <ShopOutlined className={common.topBoxIcon} />
-                            <h1 className={common.TopBoxTitle}>FRANQUIAS</h1>
+                            <h1 className={common.topBoxTitle}>FRANQUIAS</h1>
                         </div>
 
                         <Button
@@ -292,7 +292,7 @@ function Franquias() {
                             shape='round'
                             size='large'
                             onClick={showModal}
-                        >Adicionar
+                        ><span className={common.addButton}>Adicionar</span>
                         </Button>
 
                     </div>

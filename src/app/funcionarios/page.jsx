@@ -316,7 +316,7 @@ function Funcionarios() {
                             shape='round'
                             size='large'
                             onClick={showModal}
-                        >Adicionar
+                        ><span className={common.addButton}>Adicionar</span>
                         </Button>
 
                     </div>

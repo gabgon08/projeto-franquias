@@ -69,3 +69,10 @@
 .searchInput {
     display: block;
 }
+
+@media (max-width: 600px) {
+
+    .addButton {
+        display: none;
+    }
+}
