@@ -149,7 +149,15 @@ export default function DashboardPage() {
             dataIndex: 'franquia',
             key: 'franquia',
             align: 'center',
+        },
+        {
+            title: 'Data Cadastro',
+            dataIndex: 'createdAt',
+            key: 'createdAt',
+            align: 'center',
+            render: (date) => new Date(date).toLocaleDateString('pt-BR')
         }
+
     ]
 
     // TABELAS DE ALERTA
