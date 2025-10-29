@@ -1,4 +1,4 @@
-# Projeto Dashboard de Gestão
+# Projeto: Sistema de Gerenciamento de Franquias
 
 Este é um projeto full-stack. A aplicação consiste em um sistema de gerenciamento de franquias e seus funcionários, acompanhado de um dashboard para visualização de métricas, relatórios, gráficos e KPI's.
 
