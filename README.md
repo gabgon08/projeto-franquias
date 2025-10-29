@@ -1,8 +1,8 @@
 # Projeto: Sistema de Gerenciamento de Franquias
 
-Este é um projeto full-stack. A aplicação consiste em um sistema de gerenciamento de franquias e seus funcionários, acompanhado de um dashboard para visualização de métricas, relatórios, gráficos e KPI's.
+<h3>Este é um projeto full-stack. A aplicação consiste em um sistema de gerenciamento de franquias e seus funcionários, acompanhado de um dashboard para visualização de métricas, relatórios, gráficos e KPI's.</h3></br>
 
-O principal objetivo foi construir uma aplicação moderna, do desenvolvimento à produção, utilizando as melhores práticas do JavaScript.
+<p>O principal objetivo foi construir uma aplicação moderna, do desenvolvimento à produção, utilizando as melhores práticas do JavaScript.</p></br>
 
 ## 🚀 Tecnologias Utilizadas
 
