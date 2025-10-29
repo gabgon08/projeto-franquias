@@ -29,16 +29,9 @@
 }
 
 @media (max-width: 600px) {
-    .layout {
-        flex-direction: row;
-        justify-content: start;
-    }
-
     .header {
-        height: fit-content;
-        display: grid;
         width: 100%;
-        justify-content: center;
+        padding-left: 1rem;
     }
 
     .headerLink {
@@ -48,8 +41,9 @@
     }
 
     .headerMenu {
-        justify-content: center;
         align-items: center;
-        width: 470px;
+        width: 50px;
+        align-content: center;
     }
+
 }

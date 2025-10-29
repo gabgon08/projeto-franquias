@@ -21,7 +21,7 @@ const App = () => {
             icon: <HomeOutlined />
         },
         {
-            label: <Link href='/franquias'>Franquias</Link>,
+            label: <Link href='/franquias'><span className={styles.menuTitle}>Franquias</span></Link>,
             key: '/franquias',
             icon: <ShopOutlined />
         },
