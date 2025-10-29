@@ -52,7 +52,6 @@ export function LayoutTheme({ children }) {
             headerSortActiveBg: colors.steel[4],
             headerSortHoverBg: colors.steel[3],
             rowHoverBg: colors.steel[5],
-            cellFontSize: 15,
             headerBorderRadius: 15,
           },
           Tooltip: {

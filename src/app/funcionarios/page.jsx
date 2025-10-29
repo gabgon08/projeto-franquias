@@ -127,7 +127,7 @@ function Funcionarios() {
 
                     <Button
                         onClick={() => clearFilters && handleReset(clearFilters)}>
-                        Reset
+                        Limpar
                     </Button>
 
                     <Button
@@ -334,6 +334,7 @@ function Funcionarios() {
                                 tip: 'Carregando funcionários, aguarde...'
                             }}
                             rowKey='id'
+                            size='middle'
                             pagination={{
                                 pageSize: 10,
                                 position: ['bottomCenter']

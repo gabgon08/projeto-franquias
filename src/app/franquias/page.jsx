@@ -118,7 +118,7 @@ function Franquias() {
 
                     <Button
                         onClick={() => clearFilters && handleReset(clearFilters)}>
-                        Reset
+                        Limpar
                     </Button>
 
                     <Button
@@ -308,6 +308,7 @@ function Franquias() {
                                 tip: 'Carregando franquias, aguarde...'
                             }}
                             rowKey='id'
+                            size='middle'
                             pagination={{
                                 pageSize: 10,
                                 position: ['bottomCenter']
