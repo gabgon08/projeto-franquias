@@ -1,17 +1,15 @@
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react'
-import styles from './funcionarios.module.css'
 import common from './../../theme/common.module.css'
 import { LayoutTheme } from './../../theme/index'
-import { Table, Button, Modal, Form, message, Input, Typography, InputNumber, Select, Space, Popconfirm, Tooltip, theme, Layout } from 'antd'
+import { Table, Button, Modal, Form, message, Input, InputNumber, Select, Space, Popconfirm, Tooltip, theme, Layout } from 'antd'
 import { PlusOutlined, UserOutlined, EditOutlined, DeleteOutlined, SearchOutlined, FilterFilled } from '@ant-design/icons'
 import Highlighter from 'react-highlight-words';
 
 
 function Funcionarios() {
 
-    const { Title } = Typography
     const { Content } = Layout
     const [funcionarios, setFuncionarios] = useState([])
     const [franquias, setFranquias] = useState([])

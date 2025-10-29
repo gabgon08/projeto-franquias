@@ -2,9 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import common from './../../theme/common.module.css'
-import styles from './franquias.module.css'
 import { LayoutTheme } from './../../theme/index'
-import { Table, Button, Modal, Form, message, Input, Space, Typography, Popconfirm, Tooltip, Select, theme, Layout } from 'antd'
+import { Table, Button, Modal, Form, message, Input, Space, Popconfirm, Tooltip, Select, theme, Layout } from 'antd'
 import { PlusOutlined, ShopOutlined, EditOutlined, DeleteOutlined, SearchOutlined, FilterFilled } from '@ant-design/icons'
 import countries from 'i18n-iso-countries'
 import pt from 'i18n-iso-countries/langs/pt.json'
@@ -20,7 +19,6 @@ function Franquias() {
     const [form] = Form.useForm()
     const [messageApi, contextHolder] = message.useMessage()
     const paises = Object.entries(countries.getNames('pt', { select: 'official' }))
-    const { Title } = Typography
     const { Option } = Select
     const { Content } = Layout
     const { token } = theme.useToken()
