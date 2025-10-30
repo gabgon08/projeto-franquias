@@ -404,14 +404,13 @@ function Funcionarios() {
                                 <Select
                                     placeholder="Selecione uma franquia"
                                     showSearch
-                                    optionFilterProp="children">
+                                    optionFilterProp="children"
+                                    options={franquias.map((franquia) => ({
+                                        value: franquia.id,
+                                        label: [`${franquia.nome} - ${franquia.cidade}`],
+                                    }))}
+                                />
 
-                                    {franquias.map(franquia => (
-                                        <Select.Option key={franquia.id} value={franquia.id}>
-                                            {franquia.nome} - {franquia.cidade}
-                                        </Select.Option>
-                                    ))}
-                                </Select>
                             </Form.Item>
                         </Form>
                     </Modal>
