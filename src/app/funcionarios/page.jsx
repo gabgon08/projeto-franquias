@@ -326,7 +326,6 @@ function Funcionarios() {
                         style={{ backgroundColor: token.colorTableBg }}>
 
                         <Table
-                            // className={common.containerTable}
                             columns={colunas}
                             dataSource={funcionarios}
                             loading={{
