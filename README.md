@@ -1,6 +1,6 @@
 # Projeto: Sistema de Gerenciamento de Franquias
 
-<h3>Este é um projeto full-stack. A aplicação consiste em um sistema de gerenciamento de franquias e seus funcionários, acompanhado de um dashboard para visualização de métricas, relatórios, gráficos e KPI's.</h3></br>
+<h3>A aplicação consiste em um sistema de gerenciamento de franquias e seus funcionários, acompanhado de um dashboard para visualização de métricas, relatórios, gráficos e KPI's. Projeto full-stack desenvolvido em Node e React.</h3></br>
 
 <p>O principal objetivo foi construir uma aplicação moderna, do desenvolvimento à produção, utilizando as melhores práticas do JavaScript.</p></br>
 
