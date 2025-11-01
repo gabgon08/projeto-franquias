@@ -284,6 +284,7 @@ function Funcionarios() {
 
     const closeModal = () => {
         setModalVisible(false)
+        setEditandoId(null)
         form.resetFields()
     }
 
