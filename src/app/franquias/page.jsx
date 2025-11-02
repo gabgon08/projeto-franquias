@@ -188,7 +188,6 @@ function Franquias() {
 
     const closeModal = () => {
         setModalVisible(false)
-        setEditandoId(null)
         form.resetFields()
     }
 
