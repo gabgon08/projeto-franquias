@@ -50,7 +50,7 @@ function Franquias() {
             })
 
             if (response.ok) {
-                messageApi.success(`Franquia ${editandoId ? 'atualizada' : 'criada'} criada com sucesso!`)
+                messageApi.success(`Franquia ${editandoId ? 'atualizada' : 'criada'} com sucesso!`)
                 setModalVisible(false)
                 form.resetFields()
                 setEditandoId(null)
