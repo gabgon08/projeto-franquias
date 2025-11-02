@@ -60,7 +60,11 @@ export function LayoutTheme({ children }) {
           Button: {
             primaryShadow: 0,
             primaryColor: colors.steel[7],
-            dangerColor: colors.steel[7]
+            dangerColor: colors.steel[7],
+            defaultBg: colors.steel[6],
+            defaultBorderColor: 'transparent',
+            defaultHoverBg: colors.steel[5],
+            defaultHoverBorderColor: 'transparent'
           },
           Modal: {
             contentBg: colors.steel[7],

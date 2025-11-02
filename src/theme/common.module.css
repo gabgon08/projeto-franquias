@@ -18,7 +18,7 @@
     flex-wrap: wrap;
 }
 
-.topBoxIconTitle {
+.topBoxIconTitleAdd {
     display: flex;
     padding: 1rem 1.4rem 1rem;
     gap: 0.9rem;
@@ -48,6 +48,18 @@
     font-size: 1.4rem;
 }
 
+.inputSearch {
+    border-radius: 2rem;
+    padding: 0;
+    padding-left: 10px;
+    width: 250px;
+}
+
+.inputSearchIcon {
+    padding: 13px;
+    border-radius: 2rem;
+}
+
 .containerTable {
     border-radius: 0 2rem 2rem 2rem;
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.200);
@@ -60,23 +72,18 @@
     white-space: nowrap;
 }
 
-.searchDiv {
-    display: grid;
-    padding: 0.5rem;
-    gap: 0.5rem;
-}
 
-.searchInput {
-    display: block;
-}
+@media (max-width: 720px) {
 
-@media (max-width: 600px) {
-
-    .addButton {
+    .addButtonText {
         display: none;
     }
 
     .topBoxTitle {
         display: none;
+    }
+
+    .inputSearch {
+        width: 50%;
     }
 }

@@ -1,11 +1,10 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import common from './../../theme/common.module.css'
 import { LayoutTheme } from './../../theme/index'
 import { Table, Button, Modal, Form, message, Input, InputNumber, Select, Space, Popconfirm, Tooltip, theme, Layout } from 'antd'
-import { PlusOutlined, UserOutlined, EditOutlined, DeleteOutlined, SearchOutlined, FilterFilled } from '@ant-design/icons'
-import Highlighter from 'react-highlight-words';
+import { PlusOutlined, UserOutlined, EditOutlined, DeleteOutlined, FilterFilled, SearchOutlined } from '@ant-design/icons'
 
 
 function Funcionarios() {
@@ -16,12 +15,10 @@ function Funcionarios() {
     const [loading, setLoading] = useState(true)
     const [modalVisible, setModalVisible] = useState(false)
     const [editandoId, setEditandoId] = useState(null)
+    const [filtroNome, setFiltroNome] = useState('')
     const [form] = Form.useForm()
     const [messageApi, contextHolder] = message.useMessage()
     const { token } = theme.useToken()
-    const [searchText, setSearchText] = useState('');
-    const [searchedColumn, setSearchedColumn] = useState('');
-    const searchInput = useRef(null);
 
     async function carregarFuncionarios() {
         try {
@@ -95,75 +92,6 @@ function Funcionarios() {
         setModalVisible(true)
     }
 
-    const handleSearch = (selectedKeys, confirm, dataIndex) => {
-        confirm();
-        setSearchText(selectedKeys[0]);
-        setSearchedColumn(dataIndex);
-    }
-
-    const handleReset = clearFilters => {
-        clearFilters();
-        setSearchText('');
-    }
-
-    const getColumnSearchProps = dataIndex => ({
-        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
-            <div className={common.searchDiv} onKeyDown={e => e.stopPropagation()}>
-
-                <Input
-                    ref={searchInput}
-                    placeholder={`Buscar funcionário`}
-                    value={selectedKeys[0]}
-                    onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-                    onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
-                    className={common.searchInput}
-                />
-                <Space>
-                    <Button
-                        type="primary"
-                        onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}>
-                        Buscar
-                    </Button>
-
-                    <Button
-                        onClick={() => clearFilters && handleReset(clearFilters)}>
-                        Limpar
-                    </Button>
-
-                    <Button
-                        variant="link"
-                        color="danger"
-                        onClick={() => { close() }}>
-                        Fechar
-                    </Button>
-                </Space>
-            </div >
-        ),
-        filterIcon: filtered => <SearchOutlined style={{ color: filtered ? '#1677ff' : token.colorTableBg }} />,
-
-        onFilter: (value, record) =>
-            record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
-
-        filterDropdownProps: {
-            onOpenChange(open) {
-                if (open) {
-                    setTimeout(() => searchInput.current?.select(), 100);
-                }
-            },
-        },
-        render: text =>
-            searchedColumn === dataIndex ? (
-                <Highlighter
-                    highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
-                    searchWords={[searchText]}
-                    autoEscape
-                    textToHighlight={text ? text.toString() : ''}
-                />
-            ) : (
-                text
-            ),
-    })
-
     const gerarFiltros = (key) => {
         const valoresUnicos = [...new Set(funcionarios.map((item) => item[key]))];
         const valoresOrdenados = valoresUnicos.sort((a, b) => a.localeCompare(b));
@@ -191,7 +119,6 @@ function Funcionarios() {
             render: (text) => <strong>{text}</strong>,
             showSorterTooltip: { title: 'Clique para ordenar' },
             sorter: (a, b) => a.nome.localeCompare(b.nome),
-            ...getColumnSearchProps('nome')
         },
         {
             title: 'E-mail',
@@ -292,6 +219,10 @@ function Funcionarios() {
         form.submit()
     }
 
+    const funcionariosFiltrados = funcionarios.filter(funcionario =>
+        funcionario.nome.toLowerCase().includes(filtroNome.toLowerCase())
+    )
+
     return (
         <LayoutTheme>
             <Layout className={common.layout}>
@@ -301,25 +232,39 @@ function Funcionarios() {
 
                     <div className={common.topBox}>
 
-                        <div className={common.topBoxIconTitle}
+                        <div className={common.topBoxIconTitleAdd}
                             style={{
                                 backgroundColor: token.colorPrimary,
                                 color: token.colorBgLayout
                             }}>
 
                             <UserOutlined className={common.topBoxIcon} />
+
                             <h1 className={common.topBoxTitle}>FUNCIONÁRIOS</h1>
+
+                            <Tooltip title='Adicionar funcionário'>
+                                <Button
+                                    type='default'
+                                    icon={<PlusOutlined />}
+                                    shape='round'
+                                    size='large'
+                                    onClick={showModal}
+                                    className={common.addButton}
+                                >
+                                </Button>
+                            </Tooltip>
+
                         </div>
 
-                        <Button
-                            type='primary'
-                            icon={<PlusOutlined />}
-                            shape='round'
+                        <Input
+                            className={common.inputSearch}
+                            placeholder='Pesquisar por nome'
+                            suffix={<SearchOutlined className={common.inputSearchIcon} style={{ backgroundColor: token.colorPrimary, color: token.colorBgBase }} />}
+                            value={filtroNome}
+                            onChange={(e) => setFiltroNome(e.target.value)}
+                            allowClear
                             size='large'
-                            onClick={showModal}
-                        ><span className={common.addButton}>Adicionar</span>
-                        </Button>
-
+                        />
                     </div>
 
                     <div
@@ -328,7 +273,7 @@ function Funcionarios() {
 
                         <Table
                             columns={colunas}
-                            dataSource={funcionarios}
+                            dataSource={funcionariosFiltrados}
                             loading={{
                                 spinning: loading,
                                 tip: 'Carregando funcionários, aguarde...'
