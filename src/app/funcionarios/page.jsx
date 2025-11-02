@@ -6,7 +6,6 @@ import { LayoutTheme } from './../../theme/index'
 import { Table, Button, Modal, Form, message, Input, InputNumber, Select, Space, Popconfirm, Tooltip, theme, Layout } from 'antd'
 import { PlusOutlined, UserOutlined, EditOutlined, DeleteOutlined, FilterFilled, SearchOutlined } from '@ant-design/icons'
 
-
 function Funcionarios() {
 
     const { Content } = Layout
