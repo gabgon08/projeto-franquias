@@ -104,6 +104,7 @@ function Funcionarios() {
         return valoresOrdenados.map(v => ({ text: v, value: v }))
     }
 
+
     useEffect(() => {
         carregarFuncionarios()
         carregarFranquias()
@@ -263,7 +264,6 @@ function Funcionarios() {
                             allowClear
                             size='large'
                         />
-
                     </div>
 
                     <div
