@@ -36,6 +36,7 @@ export function LayoutTheme({ children }) {
 
       theme={{
         token: {
+          fontFamily: 'var(--font-principal)',
           colorPrimary: colors.steel[1],
           colorText: colors.steel[1],
           colorBgContainer: colors.steel[7],
@@ -94,6 +95,7 @@ export function HeaderTheme({ children }) {
     <ConfigProvider
       theme={{
         token: {
+          fontFamily: 'var(--font-principal)',
           colorPrimary: colors.brown[2],
           colorText: colors.brown[7],
         },
