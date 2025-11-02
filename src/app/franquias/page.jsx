@@ -7,7 +7,6 @@ import { Table, Button, Modal, Form, message, Input, Space, Popconfirm, Tooltip,
 import { PlusOutlined, ShopOutlined, EditOutlined, DeleteOutlined, SearchOutlined, FilterFilled } from '@ant-design/icons'
 import countries from 'i18n-iso-countries'
 import pt from 'i18n-iso-countries/langs/pt.json'
-import Highlighter from 'react-highlight-words';
 countries.registerLocale(pt)
 
 function Franquias() {
@@ -16,15 +15,13 @@ function Franquias() {
     const [loading, setLoading] = useState(true)
     const [modalVisible, setModalVisible] = useState(false)
     const [editandoId, setEditandoId] = useState(null)
+    const [filtroNome, setFiltroNome] = useState('')
     const [form] = Form.useForm()
     const [messageApi, contextHolder] = message.useMessage()
     const paises = Object.entries(countries.getNames('pt', { select: 'official' }))
     const { Option } = Select
     const { Content } = Layout
     const { token } = theme.useToken()
-    const [searchText, setSearchText] = useState('')
-    const [searchedColumn, setSearchedColumn] = useState('')
-    const searchInput = useRef(null)
 
     async function carregarFranquias() {
 
@@ -86,74 +83,6 @@ function Franquias() {
         setModalVisible(true)
     }
 
-    const handleSearch = (selectedKeys, confirm, dataIndex) => {
-        confirm();
-        setSearchText(selectedKeys[0]);
-        setSearchedColumn(dataIndex);
-    }
-
-    const handleReset = clearFilters => {
-        clearFilters();
-        setSearchText('');
-    }
-
-    const getColumnSearchProps = dataIndex => ({
-        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
-            <div className={common.searchDiv} onKeyDown={e => e.stopPropagation()}>
-
-                <Input
-                    ref={searchInput}
-                    placeholder={`Buscar franquia`}
-                    value={selectedKeys[0]}
-                    onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-                    onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
-                    className={common.searchInput}
-                />
-                <Space>
-                    <Button
-                        type="primary"
-                        onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}>
-                        Buscar
-                    </Button>
-
-                    <Button
-                        onClick={() => clearFilters && handleReset(clearFilters)}>
-                        Limpar
-                    </Button>
-
-                    <Button
-                        variant="link"
-                        color="danger"
-                        onClick={() => { close() }}>
-                        Fechar
-                    </Button>
-                </Space>
-            </div >
-        ),
-        filterIcon: filtered => <SearchOutlined style={{ color: filtered ? '#1677ff' : token.colorTableBg }} />,
-
-        onFilter: (value, record) =>
-            record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
-        filterDropdownProps: {
-            onOpenChange(open) {
-                if (open) {
-                    setTimeout(() => searchInput.current?.select(), 100);
-                }
-            },
-        },
-        render: text =>
-            searchedColumn === dataIndex ? (
-                <Highlighter
-                    highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
-                    searchWords={[searchText]}
-                    autoEscape
-                    textToHighlight={text ? text.toString() : ''}
-                />
-            ) : (
-                text
-            ),
-    })
-
     const gerarFiltros = (key) => {
         const valoresUnicos = [...new Set(franquias.map((item) => item[key]))];
         const valoresOrdenados = valoresUnicos.sort((a, b) => a.localeCompare(b));
@@ -173,7 +102,6 @@ function Franquias() {
             render: (text) => <strong>{text}</strong>,
             showSorterTooltip: { title: 'Clique para ordenar' },
             sorter: (a, b) => a.nome.localeCompare(b.nome),
-            ...getColumnSearchProps('nome')
         },
         {
             title: 'País',
@@ -267,6 +195,10 @@ function Franquias() {
         form.submit()
     }
 
+    const franquiasFiltradas = franquias.filter(franquia =>
+        franquia.nome.toLowerCase().includes(filtroNome.toLowerCase())
+    )
+
     return (
         <LayoutTheme>
             <Layout className={common.layout}>
@@ -276,24 +208,39 @@ function Franquias() {
 
                     <div className={common.topBox}>
 
-                        <div className={common.topBoxIconTitle}
+                        <div className={common.topBoxIconTitleAdd}
                             style={{
                                 backgroundColor: token.colorPrimary,
                                 color: token.colorBgLayout
                             }}>
 
                             <ShopOutlined className={common.topBoxIcon} />
+
                             <h1 className={common.topBoxTitle}>FRANQUIAS</h1>
+
+                            <Tooltip title='Adicionar franquia'>
+                                <Button
+                                    type='default'
+                                    icon={<PlusOutlined />}
+                                    shape='round'
+                                    size='large'
+                                    onClick={showModal}
+                                    className={common.addButton}
+                                >
+                                </Button>
+                            </Tooltip>
+
                         </div>
 
-                        <Button
-                            type='primary'
-                            icon={<PlusOutlined />}
-                            shape='round'
+                        <Input
+                            className={common.inputSearch}
+                            placeholder='Pesquisar por nome'
+                            suffix={<SearchOutlined className={common.inputSearchIcon} style={{ backgroundColor: token.colorPrimary, color: token.colorBgBase }} />}
+                            value={filtroNome}
+                            onChange={(e) => setFiltroNome(e.target.value)}
+                            allowClear
                             size='large'
-                            onClick={showModal}
-                        ><span className={common.addButton}>Adicionar</span>
-                        </Button>
+                        />
 
                     </div>
 
@@ -302,7 +249,7 @@ function Franquias() {
                         style={{ backgroundColor: token.colorTableBg }}>
                         <Table
                             columns={colunas}
-                            dataSource={franquias}
+                            dataSource={franquiasFiltradas}
                             loading={{
                                 spinning: loading,
                                 tip: 'Carregando franquias, aguarde...'
