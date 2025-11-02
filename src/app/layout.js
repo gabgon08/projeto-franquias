@@ -1,4 +1,4 @@
-import { Quicksand } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from '../components/Header'
 import { LayoutTheme } from "./../theme/index.jsx";
@@ -6,7 +6,15 @@ import { ConfigProvider } from "antd";
 import '@ant-design/v5-patch-for-react-19';
 
 
-const quickFont = Quicksand({ subsets: ['latin'], weight: '500' })
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "SGF",
@@ -17,7 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <ConfigProvider>
       <html lang="pt-BR">
-        <body className={quickFont.className}>
+        <body className={`${geistSans.variable} ${geistMono.variable}`}>
           <Header />
           <LayoutTheme>
             {children}
