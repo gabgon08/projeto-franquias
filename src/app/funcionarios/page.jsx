@@ -245,7 +245,7 @@ function Funcionarios() {
                                     type='default'
                                     icon={<PlusOutlined />}
                                     shape='round'
-                                    size='large'
+                                    size='middle'
                                     onClick={showModal}
                                     className={common.addButton}
                                 >
