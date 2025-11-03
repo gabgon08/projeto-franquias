@@ -207,6 +207,18 @@ function Franquias() {
                 <Content className={common.container}>
                     {contextHolder}
 
+                    <div
+                        className={common.mediaTopBoxHeader}
+                        style={{
+                            backgroundColor: token.colorPrimary,
+                            color: token.colorBgLayout
+                        }}>
+
+                        <ShopOutlined className={common.mediaTopBoxIcon} />
+
+                        <h1>FRANQUIAS</h1>
+                    </div>
+
                     <div className={common.topBox}>
 
                         <div className={common.topBoxIconTitleAdd}

@@ -2,11 +2,9 @@ html,
 body,
 #root {
   height: 100%;
-  margin: 0;
 }
 
 * {
-  box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
@@ -17,7 +15,7 @@ body,
 }
 
 .ant-btn {
-  padding-bottom: 2px !important;
+  padding-bottom: 1px !important;
   box-shadow: none !important;
 }
 

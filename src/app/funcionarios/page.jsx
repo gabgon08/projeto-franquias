@@ -228,6 +228,18 @@ function Funcionarios() {
                 <Content className={common.container}>
                     {contextHolder}
 
+                    <div
+                        className={common.mediaTopBoxHeader}
+                        style={{
+                            backgroundColor: token.colorPrimary,
+                            color: token.colorBgLayout
+                        }}>
+
+                        <UserOutlined className={common.mediaTopBoxIcon} />
+
+                        <h1>FUNCIONÁRIOS</h1>
+                    </div>
+
                     <div className={common.topBox}>
 
                         <div className={common.topBoxIconTitleAdd}
