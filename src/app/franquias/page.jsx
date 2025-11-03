@@ -7,6 +7,7 @@ import { Table, Button, Modal, Form, message, Input, Space, Popconfirm, Tooltip,
 import { PlusOutlined, ShopOutlined, EditOutlined, DeleteOutlined, SearchOutlined, FilterFilled } from '@ant-design/icons'
 import countries from 'i18n-iso-countries'
 import pt from 'i18n-iso-countries/langs/pt.json'
+
 countries.registerLocale(pt)
 
 function Franquias() {
@@ -239,6 +240,10 @@ function Franquias() {
                                     size='middle'
                                     onClick={showModal}
                                     className={common.addButton}
+                                    style={{
+                                        backgroundColor: token.colorBgLayout,
+                                        borderColor: token.colorBgLayout
+                                    }}
                                 >
                                 </Button>
                             </Tooltip>
