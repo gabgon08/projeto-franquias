@@ -48,3 +48,17 @@
     font-size: 1.3rem;
     font-weight: bold;
 }
+
+@media(max-width: 500px) {
+    .subtitle {
+        line-height: 1.5;
+    }
+
+    .header {
+        gap: 1rem;
+    }
+
+    .cardsContainer {
+        padding-top: 2rem;
+    }
+}
