@@ -1,13 +1,12 @@
 'use client'
 
-import { Layout, Menu } from "antd"
+import { Affix, Layout, Menu } from "antd"
 import { HomeOutlined, UserOutlined, ShopOutlined, DashboardOutlined } from '@ant-design/icons'
 import { usePathname } from "next/navigation"
 import Link from 'next/link'
 import styles from './Header.module.css'
 import { HeaderTheme } from "../theme/index"
 import Title from "antd/es/typography/Title"
-
 
 const { Header } = Layout;
 
@@ -39,27 +38,29 @@ const App = () => {
 
     return (
         <HeaderTheme>
-            <Layout className={styles.layout}>
-                <Header className={styles.header}>
+            <Affix>
+                <Layout className={styles.layout}>
+                    <Header className={styles.header}>
 
-                    <Link
-                        href='/'
-                        className={styles.headerLink}>
-                        <Title
-                            level={1}
-                            style={{ fontWeight: 600 }}>
-                            SGF</Title>
-                    </Link>
+                        <Link
+                            href='/'
+                            className={styles.headerLink}>
+                            <Title
+                                level={1}
+                                style={{ fontWeight: 600 }}>
+                                SGF</Title>
+                        </Link>
 
-                    <Menu
-                        mode="horizontal"
-                        selectedKeys={[pathname]}
-                        items={itens}
-                        className={styles.headerMenu}
-                    />
+                        <Menu
+                            mode="horizontal"
+                            selectedKeys={[pathname]}
+                            items={itens}
+                            className={styles.headerMenu}
+                        />
 
-                </Header>
-            </Layout >
+                    </Header>
+                </Layout >
+            </Affix>
         </HeaderTheme >
     )
 }
