@@ -6,6 +6,7 @@
     margin: auto;
     text-align: center;
     align-items: center;
+    transition: all 0.5s ease;
 }
 
 .title {
@@ -18,6 +19,7 @@
 
 .cardsContainer {
     padding: 4rem 0;
+    transition: all 0.5s ease;
 }
 
 .card {
