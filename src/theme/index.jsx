@@ -102,11 +102,14 @@ export function HeaderTheme({ children }) {
         components: {
           Menu: {
             horizontalItemHoverBg: colors.brown[2],
-            horizontalItemSelectedBg: colors.brown[6],
+            horizontalItemSelectedColor: colors.brown[2],
+            horizontalItemSelectedBg: colors.brown[7],
             itemColor: colors.brown[7],
             itemHoverColor: colors.brown[7],
             itemBg: colors.brown[1],
             popupBg: colors.brown[1],
+            itemHoverBg: colors.brown[2],
+            itemSelectedBg: colors.brown[7]
           },
           Layout: {
             headerBg: colors.brown[1],
