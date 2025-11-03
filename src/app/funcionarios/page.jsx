@@ -260,6 +260,11 @@ function Funcionarios() {
                                     size='middle'
                                     onClick={showModal}
                                     className={common.addButton}
+                                    style={{
+                                        backgroundColor: token.colorBgLayout,
+                                        borderColor: token.colorBgLayout
+                                    }}
+
                                 >
                                 </Button>
                             </Tooltip>
