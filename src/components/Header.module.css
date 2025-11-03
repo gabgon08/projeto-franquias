@@ -26,9 +26,10 @@
 .headerMenu {
     justify-content: center;
     width: 490px;
+    transition: all 0.6s ease;
 }
 
-@media (max-width: 630px) {
+@media (max-width: 650px) {
     .header {
         width: 100%;
         padding-left: 1rem;
