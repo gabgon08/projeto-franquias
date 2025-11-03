@@ -42,8 +42,14 @@
 
     .headerMenu {
         align-items: center;
-        width: 50px;
+        width: 70%;
         align-content: center;
     }
 
+}
+
+@media (max-width: 440px) {
+    .headerMenu {
+        width: 50px
+    }
 }
