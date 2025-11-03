@@ -160,8 +160,6 @@ export default function DashboardPage() {
 
     ]
 
-    // TABELAS DE ALERTA
-
     // Tabela: Franquias sem funcionários
     const columnsFranquiasSemFuncionarios = [
         {
@@ -188,29 +186,6 @@ export default function DashboardPage() {
             key: 'createdAt',
             align: 'center',
             render: (date) => new Date(date).toLocaleDateString('pt-BR')
-        }
-    ]
-
-    // Tabela: Funcionários sem franquia
-    const columnsFuncionariosSemFranquia = [
-        {
-            title: 'Nome',
-            dataIndex: 'nome',
-            key: 'nome',
-            align: 'center',
-        },
-        {
-            title: 'Cargo',
-            dataIndex: 'cargo',
-            key: 'cargo',
-            align: 'center',
-        },
-        {
-            title: 'Salário',
-            dataIndex: 'salario',
-            key: 'salario',
-            align: 'center',
-            render: (value) => `R$ ${value.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`
         }
     ]
 
@@ -476,36 +451,6 @@ export default function DashboardPage() {
                                         <Table
                                             dataSource={dashboardData.franquiasSemFuncionarios}
                                             columns={columnsFranquiasSemFuncionarios}
-                                            rowKey="id"
-                                            pagination={false}
-                                            size="small"
-                                        />
-                                    </Card>
-                                </Col>
-                            )}
-
-                            {/* Funcionários sem Franquia */}
-                            {dashboardData.funcionariosSemFranquia.length > 0 && (
-                                <Col xs={24} lg={12}>
-                                    <Card
-                                        title={
-                                            <span>
-                                                <WarningOutlined style={{ color: dashColors.orange, marginRight: 8 }} />
-                                                Funcionários sem Franquia ({dashboardData.funcionariosSemFranquia.length})
-                                            </span>
-                                        }
-                                        className={styles.alertsCard}
-                                    >
-                                        <Alert
-                                            message="Atenção!"
-                                            description="Estes funcionários não estão alocados em nenhuma franquia"
-                                            type="warning"
-                                            showIcon
-                                            style={{ marginBottom: 16 }}
-                                        />
-                                        <Table
-                                            dataSource={dashboardData.funcionariosSemFranquia}
-                                            columns={columnsFuncionariosSemFranquia}
                                             rowKey="id"
                                             pagination={false}
                                             size="small"
