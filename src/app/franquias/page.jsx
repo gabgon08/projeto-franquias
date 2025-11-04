@@ -275,8 +275,9 @@ function Franquias() {
                             rowKey='id'
                             size='middle'
                             pagination={{
-                                pageSize: 10,
-                                position: ['bottomCenter']
+                                size: 'middle',
+                                position: ['bottomCenter'],
+                                showSizeChanger: true
                             }} />
                     </div>
 
@@ -313,7 +314,7 @@ function Franquias() {
                             <Form.Item
                                 name='pais'
                                 label='País'
-                                rules={[{ required: true, message: 'Digite o país' }]}>
+                                rules={[{ required: true, message: 'Selecione um país' }]}>
 
                                 <Select
                                     showSearch

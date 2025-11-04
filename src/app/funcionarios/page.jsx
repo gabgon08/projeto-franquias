@@ -297,8 +297,9 @@ function Funcionarios() {
                             rowKey='id'
                             size='middle'
                             pagination={{
-                                pageSize: 10,
-                                position: ['bottomCenter']
+                                size: 'middle',
+                                position: ['bottomCenter'],
+                                showSizeChanger: true
                             }} />
 
                     </div>
@@ -321,7 +322,7 @@ function Funcionarios() {
                             <Form.Item
                                 name="nome"
                                 label="Nome"
-                                rules={[{ required: true, message: 'Campo obrigatório' }]}>
+                                rules={[{ required: true, message: 'Digite o nome' }]}>
                                 <Input />
                             </Form.Item>
 
@@ -329,7 +330,7 @@ function Funcionarios() {
                                 name="email"
                                 label="E-mail"
                                 rules={[
-                                    { required: true, message: 'Campo obrigatório' },
+                                    { required: true, message: 'Digite o e-mail' },
                                     { type: 'email', message: 'Email inválido' }
                                 ]}>
                                 <Input />
@@ -338,14 +339,14 @@ function Funcionarios() {
                             <Form.Item
                                 name="cargo"
                                 label="Cargo"
-                                rules={[{ required: true, message: 'Campo obrigatório' }]}>
+                                rules={[{ required: true, message: 'Digite o cargo' }]}>
                                 <Input />
                             </Form.Item>
 
                             <Form.Item
                                 name="salario"
                                 label="Salário"
-                                rules={[{ required: true, message: 'Campo obrigatório' }]}>
+                                rules={[{ required: true, message: 'Digite o salário' }]}>
 
                                 <InputNumber
                                     style={{ width: '100%' }}
@@ -360,7 +361,7 @@ function Funcionarios() {
                             <Form.Item
                                 name="franquiaId"
                                 label="Franquia"
-                                rules={[{ required: true, message: 'Campo obrigatório' }]}>
+                                rules={[{ required: true, message: 'Selecione uma franquia' }]}>
 
                                 <Select
                                     placeholder="Selecione uma franquia"
