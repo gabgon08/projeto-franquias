@@ -300,21 +300,21 @@ function Franquias() {
                             <Form.Item
                                 name='nome'
                                 label='Nome'
-                                rules={[{ required: true, message: 'Digite o nome' }]}>
-                                <Input />
+                                rules={[{ required: true, message: 'Campo obrigatório' }]}>
+                                <Input placeholder='Digite o nome' />
                             </Form.Item>
 
                             <Form.Item
                                 name='cidade'
                                 label='Cidade'
-                                rules={[{ required: true, message: 'Digite a cidade' }]}>
-                                <Input />
+                                rules={[{ required: true, message: 'Campo obrigatório' }]}>
+                                <Input placeholder='Digite a cidade' />
                             </Form.Item>
 
                             <Form.Item
                                 name='pais'
                                 label='País'
-                                rules={[{ required: true, message: 'Selecione um país' }]}>
+                                rules={[{ required: true, message: 'Campo obrigatório' }]}>
 
                                 <Select
                                     showSearch
@@ -334,8 +334,16 @@ function Franquias() {
                             <Form.Item
                                 name='telefone'
                                 label='Telefone'
-                                rules={[{ required: true, message: 'Digite o telefone' }]}>
-                                <Input />
+                                rules={[
+                                    { required: true, message: 'Campo obrigatório' },
+                                    {
+                                        type: 'string',
+                                        min: 5,
+                                        max: 15,
+                                        message: 'O número deve ter de 5 a 15 caracteres'
+                                    }
+                                ]}>
+                                <Input placeholder='Digite o telefone' />
                             </Form.Item>
 
                         </Form>

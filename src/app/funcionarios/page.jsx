@@ -322,36 +322,39 @@ function Funcionarios() {
                             <Form.Item
                                 name="nome"
                                 label="Nome"
-                                rules={[{ required: true, message: 'Digite o nome' }]}>
-                                <Input />
+                                rules={[{ required: true, message: 'Campo obrigatório' }]}>
+                                <Input placeholder='Digite o nome' />
                             </Form.Item>
 
                             <Form.Item
                                 name="email"
                                 label="E-mail"
                                 rules={[
-                                    { required: true, message: 'Digite o e-mail' },
+                                    { required: true, message: 'Campo obrigatório' },
                                     { type: 'email', message: 'Email inválido' }
                                 ]}>
-                                <Input />
+                                <Input placeholder='Digite o e-mail' />
                             </Form.Item>
 
                             <Form.Item
                                 name="cargo"
                                 label="Cargo"
-                                rules={[{ required: true, message: 'Digite o cargo' }]}>
-                                <Input />
+                                rules={[{ required: true, message: 'Campo obrigatório' }]}>
+                                <Input placeholder='Digite o cargo' />
                             </Form.Item>
 
                             <Form.Item
                                 name="salario"
                                 label="Salário"
-                                rules={[{ required: true, message: 'Digite o salário' }]}>
+                                rules={[
+                                    { required: true, message: 'Campo obrigatório' },
+                                ]}>
 
                                 <InputNumber
+                                    placeholder='Digite o salário (mínimo: $100.0)'
                                     style={{ width: '100%' }}
                                     prefix="$"
-                                    min={0}
+                                    min={100}
                                     precision={2}
                                     decimalSeparator="."
                                     step={100}
@@ -361,7 +364,7 @@ function Funcionarios() {
                             <Form.Item
                                 name="franquiaId"
                                 label="Franquia"
-                                rules={[{ required: true, message: 'Selecione uma franquia' }]}>
+                                rules={[{ required: true, message: 'Campo obrigatório' }]}>
 
                                 <Select
                                     placeholder="Selecione uma franquia"
