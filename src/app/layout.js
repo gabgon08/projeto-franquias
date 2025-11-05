@@ -4,7 +4,7 @@ import Header from '../components/Header'
 import { LayoutTheme } from "./../theme/index.jsx";
 import { ConfigProvider } from "antd";
 import '@ant-design/v5-patch-for-react-19';
-
+import { Toaster } from "react-hot-toast";
 
 const quickFont = Quicksand({ subsets: ['latin'], weight: '500' })
 
@@ -19,6 +19,7 @@ export default function RootLayout({ children }) {
       <html lang="pt-BR">
         <body className={quickFont.className}>
           <Header />
+          <Toaster />
           <LayoutTheme>
             {children}
           </LayoutTheme>
