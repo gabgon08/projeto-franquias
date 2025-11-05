@@ -3,8 +3,9 @@
 import React, { useState, useEffect } from 'react'
 import common from './../../theme/common.module.css'
 import { LayoutTheme } from './../../theme/index'
-import { Table, Button, Modal, Form, message, Input, InputNumber, Select, Space, Popconfirm, Tooltip, theme, Layout } from 'antd'
+import { Table, Button, Modal, Form, Input, InputNumber, Select, Space, Popconfirm, Tooltip, theme, Layout } from 'antd'
 import { PlusOutlined, UserOutlined, EditOutlined, DeleteOutlined, FilterFilled, SearchOutlined } from '@ant-design/icons'
+import toast from 'react-hot-toast'
 
 function Funcionarios() {
 
@@ -16,7 +17,6 @@ function Funcionarios() {
     const [editandoId, setEditandoId] = useState(null)
     const [filtroNome, setFiltroNome] = useState('')
     const [form] = Form.useForm()
-    const [messageApi, contextHolder] = message.useMessage()
     const { token } = theme.useToken()
 
     async function carregarFuncionarios() {
@@ -26,7 +26,7 @@ function Funcionarios() {
             const data = await response.json()
             setFuncionarios(data);
         } catch (error) {
-            messageApi.error('Erro ao carregar funcionários')
+            toast.error('Erro ao carregar funcionários')
         } finally {
             setLoading(false)
         }
@@ -39,7 +39,7 @@ function Funcionarios() {
             setFranquias(data)
 
         } catch (error) {
-            messageApi.error('Erro ao carregar franquias')
+            toast.error('Erro ao carregar franquias')
         }
     }
 
@@ -52,16 +52,16 @@ function Funcionarios() {
                 body: JSON.stringify(values)
             })
             if (response.ok) {
-                messageApi.success(`Funcionário ${editandoId ? 'atualizado' : 'criado'} com sucesso!`)
+                toast.success(`Funcionário ${editandoId ? 'atualizado' : 'criado'} com sucesso!`)
                 setModalVisible(false)
                 form.resetFields()
                 setEditandoId(null)
                 carregarFuncionarios()
             } else {
-                messageApi.error('Erro ao salvar funcionário')
+                toast.error('Erro ao salvar funcionário')
             }
         } catch (error) {
-            messageApi.error('Erro ao salvar funcionário')
+            toast.error('Erro ao salvar funcionário')
         }
     }
 
@@ -69,13 +69,13 @@ function Funcionarios() {
         try {
             const response = await fetch(`/api/funcionarios/${id}`, { method: 'DELETE' })
             if (response.ok) {
-                messageApi.success('Funcionário removido!')
+                toast.success('Funcionário removido!')
                 carregarFuncionarios()
             } else {
-                messageApi.error('Erro ao remover funcionário')
+                toast.error('Erro ao remover funcionário')
             }
         } catch (error) {
-            messageApi.error('Erro ao remover funcionário')
+            toast.error('Erro ao remover funcionário')
         }
     }
 
@@ -226,7 +226,6 @@ function Funcionarios() {
             <Layout className={common.layout}>
 
                 <Content className={common.container}>
-                    {contextHolder}
 
                     <div
                         className={common.mediaTopBoxHeader}
