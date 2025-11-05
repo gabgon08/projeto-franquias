@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Card, Row, Col, Table, Statistic, Spin, message, Alert, Layout, theme } from 'antd'
+import { Card, Row, Col, Table, Statistic, Spin, message, Alert, Layout, theme, Select, Space } from 'antd'
 import { DashboardOutlined, ShopOutlined, UserOutlined, DollarOutlined, WalletOutlined, WarningOutlined } from '@ant-design/icons'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
 import { LayoutTheme } from '../../theme/index'
@@ -14,6 +14,14 @@ export default function DashboardPage() {
     const [dashboardData, setDashboardData] = useState(null)
     const { Header, Content } = Layout
     const { token } = theme.useToken()
+
+    const [tipoRanking, setTipoRanking] = useState('funcionarios')
+
+    const dataSource =
+        tipoRanking === 'funcionarios'
+            ? dashboardData.topFranquiasFuncionarios
+            : dashboardData.topFranquiasFolha
+
     const dashColors = {
         blue: '#417fb4',
         green: '#419C14',
@@ -412,9 +420,26 @@ export default function DashboardPage() {
 
                             {/* Top 5 Franquias */}
                             <Col xs={24} lg={24}>
-                                <Card title="🏆 Top 5 Franquias" className={styles.tableCardTop5}>
+                                <Card
+                                    title={
+                                        <Space>
+                                            <span>🏆 Top 5 Franquias</span>
+                                            <Select
+                                                style={{ width: 180 }}
+                                                className={styles.tableSpaceTop5}
+                                                value={tipoRanking}
+                                                onChange={setTipoRanking}
+                                                options={[
+                                                    { value: 'funcionarios', label: 'Nº de Funcionários' },
+                                                    { value: 'folha', label: 'Folha Salarial' },
+                                                ]}
+                                            />
+                                        </Space>
+                                    }
+                                    className={styles.tableCardTop5}
+                                >
                                     <Table
-                                        dataSource={dashboardData.topFranquias}
+                                        dataSource={dataSource}
                                         columns={columnsTopFranquias}
                                         rowKey="id"
                                         pagination={false}
