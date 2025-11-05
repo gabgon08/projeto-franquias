@@ -3,10 +3,11 @@
 import React, { useState, useEffect } from 'react'
 import common from './../../theme/common.module.css'
 import { LayoutTheme } from './../../theme/index'
-import { Table, Button, Modal, Form, message, Input, Space, Popconfirm, Tooltip, Select, theme, Layout } from 'antd'
+import { Table, Button, Modal, Form, message, Input, Space, Popconfirm, Tooltip, Select, theme, Layout, Pagination } from 'antd'
 import { PlusOutlined, ShopOutlined, EditOutlined, DeleteOutlined, SearchOutlined, FilterFilled } from '@ant-design/icons'
 import countries from 'i18n-iso-countries'
 import pt from 'i18n-iso-countries/langs/pt.json'
+import locale from 'antd/es/date-picker/locale/en_US'
 
 countries.registerLocale(pt)
 
@@ -277,7 +278,8 @@ function Franquias() {
                             pagination={{
                                 size: 'middle',
                                 position: ['bottomCenter'],
-                                showSizeChanger: true
+                                showSizeChanger: true,
+                                locale: { items_per_page: 'por página' }
                             }} />
                     </div>
 

@@ -299,7 +299,8 @@ function Funcionarios() {
                             pagination={{
                                 size: 'middle',
                                 position: ['bottomCenter'],
-                                showSizeChanger: true
+                                showSizeChanger: true,
+                                locale: { items_per_page: 'por página' }
                             }} />
 
                     </div>
