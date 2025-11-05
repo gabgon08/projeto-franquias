@@ -150,38 +150,38 @@ function Franquias() {
             render: (_, record) => (
                 <Space>
                     <Tooltip
-                        title='Editar franquia'>
+                        title='Editar franquia'
+                        placement='left'>
                         <Button
                             icon={<EditOutlined />}
                             variant='solid'
                             color='primary'
                             shape='circle'
-                            onClick={() => editar(record)}
-                            size="default" />
+                            size="default"
+                            onClick={() => editar(record)} />
                     </Tooltip>
 
                     <Popconfirm
-                        title="Confirma remover?"
+                        title="Confirma a remoção?"
                         onConfirm={() => removerFranquia(record.id)}
                         okText="Sim"
                         cancelText="Não"
                         okButtonProps={{ shape: 'round' }}
                         cancelButtonProps={{ shape: 'round' }}>
                         <Tooltip
-                            title='Deletar franquia'>
+                            title='Deletar franquia'
+                            placement='right'>
                             <Button
                                 icon={<DeleteOutlined />}
                                 danger
                                 color='danger'
                                 shape='circle'
                                 variant='solid'
-                                size="default"
-                            />
+                                size="default" />
                         </Tooltip>
                     </Popconfirm>
                 </Space>
             ),
-
         }
     ]
 
