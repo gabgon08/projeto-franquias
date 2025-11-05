@@ -76,6 +76,11 @@ export function LayoutTheme({ children }) {
           },
           Statistic: {
             titleFontSize: 17,
+          },
+          Select: {
+            optionActiveBg: colors.steel[6],
+            optionSelectedBg: colors.steel[2],
+            optionSelectedColor: colors.steel[7],
           }
         }
       }}

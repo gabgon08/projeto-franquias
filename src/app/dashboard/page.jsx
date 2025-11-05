@@ -422,12 +422,14 @@ export default function DashboardPage() {
                             <Col xs={24} lg={24}>
                                 <Card
                                     title={
-                                        <Space>
+                                        <Space
+                                            className={styles.tableSpaceTop5}>
+
                                             <span>🏆 Top 5 Franquias</span>
                                             <Select
-                                                className={styles.tableSpaceTop5}
-                                                style={{ width: 180 }}
+                                                style={{ width: 170 }}
                                                 value={tipoRanking}
+                                                variant='filled'
                                                 onChange={setTipoRanking}
                                                 options={[
                                                     { value: 'funcionarios', label: 'Nº de Funcionários' },

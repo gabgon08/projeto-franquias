@@ -132,4 +132,9 @@
     .containerIcon {
         font-size: 2.2rem;
     }
+
+    .tableSpaceTop5 {
+        width: 100%;
+        justify-content: space-between;
+    }
 }
