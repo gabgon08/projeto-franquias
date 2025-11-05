@@ -70,6 +70,8 @@ function Franquias() {
             if (response.ok) {
                 toast.success('Franquia removida!')
                 carregarFranquias()
+            } else if (response.status === 400) {
+                toast.error('Erro: franquia com funcionário(s) cadastrado(s)')
             } else {
                 toast.error('Erro ao remover franquia')
             }
