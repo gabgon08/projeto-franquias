@@ -19,8 +19,8 @@ export default function DashboardPage() {
 
     const dataSource =
         tipoRanking === 'funcionarios'
-            ? dashboardData.topFranquiasFuncionarios
-            : dashboardData.topFranquiasFolha
+            ? dashboardData?.topFranquiasFuncionarios
+            : dashboardData?.topFranquiasFolha
 
     const dashColors = {
         blue: '#417fb4',
