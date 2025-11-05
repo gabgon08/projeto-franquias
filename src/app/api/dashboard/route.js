@@ -130,9 +130,13 @@ export async function GET() {
             })
         })
 
-        todasFranquias.sort((a, b) => b.totalFuncionarios - a.totalFuncionarios)
+        const top5TotalFuncionarios = todasFranquias
+            .sort((a, b) => b.totalFuncionarios - a.totalFuncionarios)
+            .slice(0, 5)
 
-        const top5 = todasFranquias.slice(0, 5)
+        const top5FolhaSalarial = todasFranquias
+            .sort((a, b) => b.folhaSalarial - a.folhaSalarial)
+            .slice(0, 5)
 
         const ultimas5Franquias = franquias.slice(0, 5).map(franquia => ({
             id: franquia.id,
@@ -192,7 +196,8 @@ export async function GET() {
             franquiasPorPais: paises,
             funcionariosPorCargo: cargos,
             faixasSalariais: faixasSalariais,
-            topFranquias: top5,
+            topFranquiasFolha: top5FolhaSalarial,
+            topFranquiasFuncionarios: top5TotalFuncionarios,
             ultimasFranquias: ultimas5Franquias,
             ultimosFuncionarios: ultimos5Funcionarios,
             franquiasSemFuncionarios: franquiasSemFuncionarios,
