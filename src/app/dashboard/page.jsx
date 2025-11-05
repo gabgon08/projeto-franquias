@@ -425,8 +425,8 @@ export default function DashboardPage() {
                                         <Space>
                                             <span>🏆 Top 5 Franquias</span>
                                             <Select
-                                                style={{ width: 180 }}
                                                 className={styles.tableSpaceTop5}
+                                                style={{ width: 180 }}
                                                 value={tipoRanking}
                                                 onChange={setTipoRanking}
                                                 options={[
