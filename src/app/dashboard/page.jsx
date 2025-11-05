@@ -151,7 +151,7 @@ export default function DashboardPage() {
             align: 'center',
         },
         {
-            title: 'Data Cadastro',
+            title: 'Data',
             dataIndex: 'createdAt',
             key: 'createdAt',
             align: 'center',
