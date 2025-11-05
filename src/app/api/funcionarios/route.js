@@ -3,7 +3,6 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-// GET - Listar todos os funcionários
 export async function GET() {
     try {
         const funcionarios = await prisma.funcionario.findMany({
@@ -25,14 +24,12 @@ export async function GET() {
     }
 }
 
-// POST - Criar novo funcionário
 export async function POST(request) {
     try {
         const data = await request.json()
 
         const { nome, email, cargo, salario, franquiaId } = data
 
-        // Validação básica
         if (!nome || !email || !cargo || !salario || !franquiaId) {
             return NextResponse.json(
                 { error: 'Todos os campos são obrigatórios' },
@@ -40,7 +37,6 @@ export async function POST(request) {
             )
         }
 
-        // Verificar se a franquia existe
         const franquia = await prisma.franquia.findUnique({
             where: { id: parseInt(franquiaId) }
         })
@@ -52,7 +48,6 @@ export async function POST(request) {
             )
         }
 
-        // Verificar se email já existe
         const emailExiste = await prisma.funcionario.findUnique({
             where: { email }
         })

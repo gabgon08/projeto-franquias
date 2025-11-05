@@ -3,7 +3,6 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-// GET - Buscar funcionário específico
 export async function GET(request, { params }) {
     try {
         const id = parseInt(params.id)
@@ -37,18 +36,15 @@ export async function GET(request, { params }) {
         )
     }
 }
-// DELETE
+
 export async function DELETE(request, { params }) {
     try {
-        //capturar o id pelo params
         const id = parseInt(params.id);
 
-        // Verificar se existe funcionario
         const existeFuncionario = await prisma.funcionario.findUnique({
             where: { id }
         })
 
-        // Verifico e dou uma mensagem de erro
         if (!existeFuncionario) {
             return NextResponse.json(
                 { error: 'Funcionário não encontrado' },
@@ -56,12 +52,10 @@ export async function DELETE(request, { params }) {
             )
         }
 
-        // Realiza o delete
         await prisma.funcionario.delete({
             where: { id }
         })
 
-        // Resposta com o funcionario que foi apagado.
         return NextResponse.json({
             apagado: existeFuncionario,
             message: 'Funcionário deletado com sucesso'
@@ -76,7 +70,7 @@ export async function DELETE(request, { params }) {
     }
 
 }
-// PUT
+
 export async function PUT(request, { params }) {
     try {
         const id = parseInt(params.id)
@@ -84,7 +78,6 @@ export async function PUT(request, { params }) {
 
         const { nome, email, cargo, salario, franquiaId } = data
 
-        // Verificar se o funcionário existe
         const funcionarioExiste = await prisma.funcionario.findUnique({
             where: { id }
         })
@@ -96,7 +89,6 @@ export async function PUT(request, { params }) {
             )
         }
 
-        // Verificar se estou passando algum dado de data
         if (!data || Object.keys(data).length === 0) {
             return NextResponse.json(
                 { error: 'Você precisa enviar algum dado' },
@@ -104,7 +96,6 @@ export async function PUT(request, { params }) {
             )
         }
 
-        // Verifica se tem franquiaId e se a franquia existe
         if (franquiaId) {
             const franquia = await prisma.franquia.findUnique({
                 where: { id: parseInt(franquiaId) }
@@ -119,7 +110,6 @@ export async function PUT(request, { params }) {
         }
 
         if (email) {
-            // Verificar se o email já existe, pois os emails sao unique
             const emailExiste = await prisma.funcionario.findFirst({
                 where: {
                     email,
@@ -139,20 +129,23 @@ export async function PUT(request, { params }) {
             where: { id },
             data: {
                 nome: nome ?? funcionarioExiste.nome,
-                email: email ?? funcionarioExiste.email, // if ternário reduzido
-                cargo: cargo ?? funcionarioExiste.cargo, // if ternário
+                email: email ?? funcionarioExiste.email,
+                cargo: cargo ?? funcionarioExiste.cargo,
                 salario: salario ? parseFloat(salario) : funcionarioExiste.salario,
                 franquiaId: franquiaId ? parseInt(franquiaId) : funcionarioExiste.franquiaId
             }
         })
 
-        // Retorna a resposta
         return NextResponse.json({
             funcionario: funcionario,
             message: 'Funcionário atualizado com sucesso!'
         })
 
     } catch (error) {
-
+        console.error('Erro ao atualizar funcionário', error)
+        return NextResponse.json(
+            { error: 'Erro interno de servidor', error },
+            { status: 500 }
+        )
     }
 }

@@ -7,8 +7,6 @@ export async function GET() {
     try {
 
         // BUSCAR OS DADOS DO BANCO
-
-        // Busca as franquias e seus funcionários
         const franquias = await prisma.franquia.findMany({
             include: {
                 funcionarios: true
@@ -18,7 +16,6 @@ export async function GET() {
             }
         })
 
-        // Busca os funcionários e suas franquias
         const funcionarios = await prisma.funcionario.findMany({
             include: {
                 franquia: {
@@ -31,7 +28,6 @@ export async function GET() {
         })
 
         // CALCULAR OS TOTAIS BÁSICOS
-
         const totalFranquias = franquias.length
         const totalFuncionarios = funcionarios.length
 
@@ -44,7 +40,6 @@ export async function GET() {
         const salarioMedio = totalFuncionarios > 0 ? somaSalarios / totalFuncionarios : 0
 
         // AGRUPAR POR CATEGORIAS
-
         // Franquias por cidade
         const cidades = []
 
@@ -172,20 +167,6 @@ export async function GET() {
             }
         })
 
-        const funcionariosSemFranquia = []
-
-        funcionarios.forEach(funcionario => {
-            if (!funcionario.franquia || funcionario.franquia.length === 0) {
-                funcionariosSemFranquia.push({
-                    id: funcionario.id,
-                    nome: funcionario.nome,
-                    cargo: funcionario.cargo,
-                    salario: funcionario.salario,
-                    createdAt: funcionario.createdAt
-                })
-            }
-        })
-
         // RESPOSTA FINAL
         const dashboard = {
             totalFranquias: totalFranquias,
@@ -201,7 +182,6 @@ export async function GET() {
             ultimasFranquias: ultimas5Franquias,
             ultimosFuncionarios: ultimos5Funcionarios,
             franquiasSemFuncionarios: franquiasSemFuncionarios,
-            funcionariosSemFranquia: funcionariosSemFranquia
         }
 
         return NextResponse.json(dashboard)

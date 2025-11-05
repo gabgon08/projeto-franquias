@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient()
 
-//GET ALL
 export async function GET() {
     try {
         const franquias = await prisma.franquia.findMany({

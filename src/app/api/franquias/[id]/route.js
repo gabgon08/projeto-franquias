@@ -1,10 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
-import { message } from "antd";
 
 const prisma = new PrismaClient()
 
-// GET - Listar franquia específica
 export async function GET(request, { params }) {
     try {
         const id = parseInt(params.id)
@@ -33,13 +31,9 @@ export async function GET(request, { params }) {
             { error: 'Erro interno de servidor' },
             { status: 500 }
         )
-
     }
 }
 
-
-
-// PUT - Atualizar franquia
 export async function PUT(request, { params }) {
     try {
         const id = parseInt(params.id)
@@ -47,7 +41,6 @@ export async function PUT(request, { params }) {
 
         const { nome, cidade, pais, telefone } = data
 
-        // Ou Object.keys(data).length === 0
         if (!data?.nome && !data?.cidade && !data?.pais && !data?.telefone) {
             return NextResponse.json(
                 { error: 'Voce precisa enviar algum dado' },
@@ -55,7 +48,6 @@ export async function PUT(request, { params }) {
             )
         }
 
-        // Verificar se a franquia existe
         const franquiaExiste = await prisma.franquia.findUnique({
             where: { id }
         })
@@ -77,7 +69,6 @@ export async function PUT(request, { params }) {
             }
         })
 
-        // Retorna a resposta
         return NextResponse.json({
             franquia: franquia,
             msg: 'Franquia atualizada com sucesso!'
@@ -92,12 +83,10 @@ export async function PUT(request, { params }) {
     }
 }
 
-// DELETE - Deletar franquia
 export async function DELETE(request, { params }) {
     try {
         const id = parseInt(params.id)
 
-        // Verificar se a franquia existe
         const franquia = await prisma.franquia.findUnique({
             where: { id },
             include: {
@@ -114,7 +103,6 @@ export async function DELETE(request, { params }) {
             )
         }
 
-        // Verificar se tem funcionários vinculados
         if (franquia._count.funcionarios > 0) {
             return NextResponse.json(
                 { error: 'Não é possível deletar franquia com funcionários vinculados' },
