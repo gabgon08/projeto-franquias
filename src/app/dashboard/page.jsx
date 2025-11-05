@@ -1,12 +1,13 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Card, Row, Col, Table, Statistic, Spin, message, Alert, Layout, theme, Select, Space } from 'antd'
+import { Card, Row, Col, Table, Statistic, Spin, Alert, Layout, theme, Select, Space } from 'antd'
 import { DashboardOutlined, ShopOutlined, UserOutlined, DollarOutlined, WalletOutlined, WarningOutlined } from '@ant-design/icons'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
 import { LayoutTheme } from '../../theme/index'
 import styles from './dashboard.module.css'
 import common from '../../theme/common.module.css'
+import toast from 'react-hot-toast'
 
 export default function DashboardPage() {
 
@@ -44,7 +45,7 @@ export default function DashboardPage() {
 
         } catch (error) {
             console.error('Erro ao carregar dashboard:', error)
-            message.error('Erro ao carregar dados do dashboard')
+            toast.error('Erro ao carregar dados do dashboard')
         } finally {
             setLoading(false)
         }
