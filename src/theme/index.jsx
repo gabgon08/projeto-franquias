@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { ConfigProvider } from 'antd'
+import { Toaster } from 'react-hot-toast'
 
 const colors = {
   green: {
@@ -32,61 +33,82 @@ const colors = {
 export function LayoutTheme({ children }) {
 
   return (
-    <ConfigProvider
+    <>
+      <ConfigProvider
 
-      theme={{
-        token: {
-          fontFamily: 'var(--font-principal)',
-          colorPrimary: colors.steel[1],
-          colorText: colors.steel[1],
-          colorBgContainer: colors.steel[7],
-          colorTableBg: colors.steel[7],
-          colorBgLayout: colors.steel[6],
-          iconColor: colors.steel[3],
-          statisticTitleColor: colors.steel[1]
-        },
-        components: {
-          Table: {
+        theme={{
+          token: {
+            fontFamily: 'var(--font-principal)',
+            colorPrimary: colors.steel[1],
+            colorText: colors.steel[1],
             colorBgContainer: colors.steel[7],
-            headerBg: colors.steel[2],
-            headerColor: colors.steel[7],
-            headerSortActiveBg: colors.steel[4],
-            headerSortHoverBg: colors.steel[3],
-            rowHoverBg: colors.steel[5],
-            headerBorderRadius: 15,
+            colorTableBg: colors.steel[7],
+            colorBgLayout: colors.steel[6],
+            iconColor: colors.steel[3],
+            statisticTitleColor: colors.steel[1]
           },
-          Tooltip: {
-            colorBgSpotlight: colors.steel[1]
-          },
-          Button: {
-            primaryShadow: 0,
-            primaryColor: colors.steel[7],
-            dangerColor: colors.steel[7],
-          },
-          Modal: {
-            contentBg: colors.steel[7],
-            headerBg: colors.steel[7],
-            titleFontSize: 20,
-          },
-          Layout: {
-            headerBg: 'transparent'
-          },
-          Card: {
-            bodyPadding: 0
-          },
-          Statistic: {
-            titleFontSize: 17,
-          },
-          Select: {
-            optionActiveBg: colors.steel[6],
-            optionSelectedBg: colors.steel[2],
-            optionSelectedColor: colors.steel[7],
+          components: {
+            Table: {
+              colorBgContainer: colors.steel[7],
+              headerBg: colors.steel[2],
+              headerColor: colors.steel[7],
+              headerSortActiveBg: colors.steel[4],
+              headerSortHoverBg: colors.steel[3],
+              rowHoverBg: colors.steel[5],
+              headerBorderRadius: 15,
+            },
+            Tooltip: {
+              colorBgSpotlight: colors.steel[1]
+            },
+            Button: {
+              primaryShadow: 0,
+              primaryColor: colors.steel[7],
+              dangerColor: colors.steel[7],
+            },
+            Modal: {
+              contentBg: colors.steel[7],
+              headerBg: colors.steel[7],
+              titleFontSize: 20,
+            },
+            Layout: {
+              headerBg: 'transparent'
+            },
+            Card: {
+              bodyPadding: 0
+            },
+            Statistic: {
+              titleFontSize: 17,
+            },
+            Select: {
+              optionActiveBg: colors.steel[6],
+              optionSelectedBg: colors.steel[2],
+              optionSelectedColor: colors.steel[7],
+            }
           }
-        }
-      }}
-    >
-      {children}
-    </ConfigProvider>
+        }}
+      >
+        {children}
+      </ConfigProvider>
+      <Toaster
+        toastOptions={{
+          success: {
+            style: {
+              background: '#F1FFE3',
+              border: '2px solid #b7eb8f',
+              borderRadius: '2rem'
+            },
+            duration: 3000
+          },
+          error: {
+            style: {
+              background: '#FFE8E5',
+              border: '2px solid #FF9989',
+              borderRadius: '2rem'
+            },
+            duration: 3000
+          }
+        }} />
+    </>
   )
 }
 

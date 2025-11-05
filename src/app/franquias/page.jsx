@@ -7,6 +7,7 @@ import { Table, Button, Modal, Form, message, Input, Space, Popconfirm, Tooltip,
 import { PlusOutlined, ShopOutlined, EditOutlined, DeleteOutlined, SearchOutlined, FilterFilled } from '@ant-design/icons'
 import countries from 'i18n-iso-countries'
 import pt from 'i18n-iso-countries/langs/pt.json'
+import toast from 'react-hot-toast'
 
 countries.registerLocale(pt)
 
@@ -18,7 +19,6 @@ function Franquias() {
     const [editandoId, setEditandoId] = useState(null)
     const [filtroNome, setFiltroNome] = useState('')
     const [form] = Form.useForm()
-    const [messageApi, contextHolder] = message.useMessage()
     const paises = Object.entries(countries.getNames('pt', { select: 'official' }))
     const { Option } = Select
     const { Content } = Layout
@@ -33,7 +33,7 @@ function Franquias() {
             setFranquias(data)
 
         } catch (error) {
-            messageApi.error('Erro ao carregar franquias')
+            toast.error('Erro ao carregar franquias')
         } finally {
             setLoading(false)
         }
@@ -51,16 +51,16 @@ function Franquias() {
             })
 
             if (response.ok) {
-                messageApi.success(`Franquia ${editandoId ? 'atualizada' : 'criada'} com sucesso!`)
+                toast.success(`Franquia ${editandoId ? 'atualizada' : 'criada'} com sucesso!`)
                 setModalVisible(false)
                 form.resetFields()
                 setEditandoId(null)
                 carregarFranquias()
             } else {
-                messageApi.error('Erro ao salvar franquia')
+                toast.error('Erro ao salvar franquia')
             }
         } catch (error) {
-            messageApi.error('Erro ao salvar franquia')
+            toast.error('Erro ao salvar franquia')
         }
     }
 
@@ -68,13 +68,13 @@ function Franquias() {
         try {
             const response = await fetch(`/api/franquias/${id}`, { method: 'DELETE' })
             if (response.ok) {
-                messageApi.success('Franquia removida!')
+                toast.success('Franquia removida!')
                 carregarFranquias()
             } else {
-                messageApi.error('Erro ao remover franquia')
+                toast.error('Erro ao remover franquia')
             }
         } catch (error) {
-            messageApi.error('Erro ao remover franquia')
+            toast.error('Erro ao remover franquia')
         }
     }
 
@@ -206,7 +206,6 @@ function Franquias() {
             <Layout className={common.layout}>
 
                 <Content className={common.container}>
-                    {contextHolder}
 
                     <div
                         className={common.mediaTopBoxHeader}
