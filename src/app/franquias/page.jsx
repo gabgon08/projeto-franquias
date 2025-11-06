@@ -308,12 +308,6 @@ function Franquias() {
                                 <Input placeholder='Digite o nome' />
                             </Form.Item>
 
-                            <Form.Item
-                                name='cidade'
-                                label='Cidade'
-                                rules={[{ required: true, message: 'Campo obrigatório' }]}>
-                                <Input placeholder='Digite a cidade' />
-                            </Form.Item>
 
                             <Form.Item
                                 name='pais'
@@ -338,6 +332,13 @@ function Franquias() {
 
 
                                 </Select>
+                            </Form.Item>
+
+                            <Form.Item
+                                name='cidade'
+                                label='Cidade'
+                                rules={[{ required: true, message: 'Campo obrigatório' }]}>
+                                <Input placeholder='Digite a cidade' />
                             </Form.Item>
 
                             <Form.Item
