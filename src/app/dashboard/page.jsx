@@ -15,6 +15,7 @@ export default function DashboardPage() {
     const [dashboardData, setDashboardData] = useState(null)
     const { Header, Content } = Layout
     const { token } = theme.useToken()
+    const EMPTY_IMAGE_URL = 'https://img.icons8.com/555555/external-outline-andi-nur-abdillah/96/external-Empty-empty-state-(outline)-outline-andi-nur-abdillah.png'
 
     const [tipoRanking, setTipoRanking] = useState('funcionarios')
 
@@ -214,7 +215,7 @@ export default function DashboardPage() {
         return (
             <div className={styles.container}>
                 <div className={styles.loading}>
-                    <img src='https://img.icons8.com/555555/external-outline-andi-nur-abdillah/96/external-Empty-empty-state-(outline)-outline-andi-nur-abdillah.png' />
+                    <img src={EMPTY_IMAGE_URL} />
                     <p>Erro ao carregar dados do dashboard</p>
                 </div>
             </div>
