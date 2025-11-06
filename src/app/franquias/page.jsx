@@ -7,7 +7,7 @@ import { Table, Button, Modal, Form, Input, Space, Popconfirm, Tooltip, Select, 
 import { PlusOutlined, ShopOutlined, EditOutlined, DeleteOutlined, SearchOutlined, FilterFilled } from '@ant-design/icons'
 import countries from 'i18n-iso-countries'
 import pt from 'i18n-iso-countries/langs/pt.json'
-import toast from 'sonner'
+import { toast } from 'sonner'
 
 countries.registerLocale(pt)
 
@@ -59,6 +59,7 @@ function Franquias() {
                 toast.error('Erro ao salvar franquia')
             }
         } catch (error) {
+            console.error('Erro ao salvar franquia')
             toast.error('Erro ao salvar franquia')
         }
     }

@@ -7,7 +7,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cel
 import { LayoutTheme } from '../../theme/index'
 import styles from './dashboard.module.css'
 import common from '../../theme/common.module.css'
-import toast from 'sonner'
+import { toast } from 'sonner'
 
 export default function DashboardPage() {
 
