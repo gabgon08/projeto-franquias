@@ -214,6 +214,7 @@ export default function DashboardPage() {
         return (
             <div className={styles.container}>
                 <div className={styles.loading}>
+                    <img src='https://img.icons8.com/555555/external-outline-andi-nur-abdillah/96/external-Empty-empty-state-(outline)-outline-andi-nur-abdillah.png' />
                     <p>Erro ao carregar dados do dashboard</p>
                 </div>
             </div>
