@@ -5,6 +5,7 @@ import { LayoutTheme } from "./../theme/index.jsx";
 import { ConfigProvider } from "antd";
 import '@ant-design/v5-patch-for-react-19';
 import { Toaster } from "react-hot-toast";
+import ptBR from 'antd/locale/pt_BR'
 
 const quickFont = Quicksand({ subsets: ['latin'], weight: '500' })
 
@@ -15,7 +16,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ConfigProvider>
+    <ConfigProvider locale={ptBR}>
       <html lang="pt-BR">
         <body className={quickFont.className}>
           <Header />
