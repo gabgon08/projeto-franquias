@@ -13,7 +13,7 @@ export default function Home() {
   const { Meta } = Card
   const { token } = theme.useToken()
 
-  const text = 'O Sistema de Gerenciamento de Franquias foi desenvolvido para simplificar o controle de unidades e colaboradores em diferentes partes do mundo. De forma prática e intuitiva, permite cadastrar, editar e acompanhar franquias e funcionários, além de visualizar estatísticas importantes em um painel informativo.'
+  const text = 'O Sistema de Gerenciamento de Franquias foi desenvolvido para simplificar o controle de unidades e colaboradores em diferentes partes do mundo. De forma prática e intuitiva, permite cadastrar, editar e acompanhar franquias e funcionários, além de visualizar estatísticas importantes através de um painel informativo.'
 
   const itens = [{
     label: <span className={styles.footerCollapseLabel}>SOBRE</span>,
