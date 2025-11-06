@@ -1,84 +1,99 @@
 'use client'
 
 import React from 'react'
-import { Card, Row, Col, Layout, theme } from 'antd'
+import { Card, Row, Col, Layout, theme, Collapse } from 'antd'
 import { UserOutlined, ShopFilled, DashboardFilled } from '@ant-design/icons'
 import Link from 'next/link'
 import styles from './page.module.css'
-import common from './../theme/common.module.css'
 import { LayoutTheme } from './../theme/index'
 
 export default function Home() {
 
-  const { Header, Content } = Layout
+  const { Header, Content, Footer } = Layout
   const { Meta } = Card
   const { token } = theme.useToken()
 
+  const text = 'O Sistema de Gerenciamento de Franquias foi desenvolvido para simplificar o controle de unidades e colaboradores em diferentes partes do mundo. De forma prática e intuitiva, permite cadastrar, editar e acompanhar franquias e funcionários, além de visualizar estatísticas importantes em um painel informativo.'
+
+  const itens = [{
+    label: <span className={styles.footerCollapseLabel}>SOBRE</span>,
+    children: text,
+    showArrow: false
+  }]
+
   return (
     <LayoutTheme>
-      <Layout className={common.layout}>
+      <Layout className={styles.layout}>
+
         <Header className={styles.header}>
           <h1 className={styles.title}>Sistema de Gerenciamento de Franquias</h1>
           <p className={styles.subtitle}>Gerencie suas franquias e funcionários</p>
         </Header>
 
-        <Content className={common.container}>
-          <div className={styles.cardsContainer}>
-            <Row gutter={[32, 32]} justify="center" align='middle'>
+        <Content className={styles.content}>
+          <Row gutter={[32, 32]} className={styles.row}>
 
-              <Col xs={24} sm={12} lg={8}>
-                <Link href="/franquias">
-                  <Card
-                    className={styles.card}
-                    cover={<ShopFilled style={{ color: token.iconColor }} className={styles.cardCover} />}
-                    hoverable
-                  >
-                    <Meta
-                      title="Franquias"
-                      description="Gerenciar franquias da empresa"
-                      className={styles.cardMeta} />
+            <Col xs={24} sm={12} lg={8}>
+              <Link href="/franquias">
+                <Card
+                  className={styles.card}
+                  cover={<ShopFilled style={{ color: token.iconColor }} className={styles.cardCover} />}
+                  hoverable
+                >
+                  <Meta
+                    title="Franquias"
+                    description="Gerenciar franquias da empresa"
+                    className={styles.cardMeta} />
 
-                  </Card>
-                </Link>
-              </Col>
+                </Card>
+              </Link>
+            </Col>
 
-              <Col xs={24} sm={12} lg={8}>
-                <Link href="/funcionarios">
-                  <Card
-                    className={styles.card}
-                    cover={<UserOutlined style={{ color: token.iconColor }} className={styles.cardCover} />}
-                    hoverable
-                  >
-                    <Meta
-                      title="Funcionários"
-                      description="Gerenciar funcionários das franquias"
-                      className={styles.cardMeta} />
+            <Col xs={24} sm={12} lg={8}>
+              <Link href="/funcionarios">
+                <Card
+                  className={styles.card}
+                  cover={<UserOutlined style={{ color: token.iconColor }} className={styles.cardCover} />}
+                  hoverable
+                >
+                  <Meta
+                    title="Funcionários"
+                    description="Gerenciar funcionários das franquias"
+                    className={styles.cardMeta} />
 
-                  </Card>
-                </Link>
-              </Col>
+                </Card>
+              </Link>
+            </Col>
 
 
-              <Col xs={24} sm={12} lg={8}>
-                <Link href="/dashboard">
-                  <Card
-                    className={styles.card}
-                    cover={<DashboardFilled style={{ color: token.iconColor }} className={styles.cardCover} />}
-                    hoverable
-                  >
-                    <Meta
-                      title="Dashboard"
-                      description="Relatórios e indicadores (BI)"
-                      className={styles.cardMeta} />
+            <Col xs={24} sm={12} lg={8}>
+              <Link href="/dashboard">
+                <Card
+                  className={styles.card}
+                  cover={<DashboardFilled style={{ color: token.iconColor }} className={styles.cardCover} />}
+                  hoverable
+                >
+                  <Meta
+                    title="Dashboard"
+                    description="Relatórios e indicadores (BI)"
+                    className={styles.cardMeta} />
 
-                  </Card>
-                </Link>
-              </Col>
+                </Card>
+              </Link>
+            </Col>
 
-            </Row>
-          </div>
+          </Row>
 
         </Content>
+
+        <Footer className={styles.footer}>
+          <Collapse
+            className={styles.footerCollapse}
+            items={itens}
+            ghost
+          />
+        </Footer>
+
       </Layout>
     </LayoutTheme>
   )

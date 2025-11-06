@@ -1,12 +1,34 @@
-.header {
+.layout {
+    min-height: calc(100vh - 4rem);
+}
+
+.header,
+.content,
+.footer {
     display: flex;
-    flex-direction: column;
-    height: auto;
-    justify-content: center;
-    margin: auto;
+    width: 90vw;
+    max-width: 1300px;
     text-align: center;
+    margin: 0 auto;
+}
+
+.header,
+.footer {
+    flex-direction: column;
+    height: fit-content;
+    justify-content: center;
     align-items: center;
-    transition: all 0.5s ease;
+}
+
+.content,
+.title,
+.subtitle {
+    transition: all 0.13s ease-out;
+}
+
+.header {
+    margin-top: 4rem;
+    gap: 1rem;
 }
 
 .title {
@@ -15,21 +37,31 @@
 
 .subtitle {
     font-size: 1.3rem;
+    line-height: 2rem;
 }
 
-.cardsContainer {
-    padding: 4rem 0;
-    transition: all 0.5s ease;
+.content {
+    display: flex;
+    padding: 2rem 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.row {
+    justify-content: center;
+    width: 100%;
 }
 
 .card {
-    border-radius: 1.5rem;
-    padding: 2rem;
-    display: grid;
-    gap: 0;
-    transition: all 0.3s ease;
-    height: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    height: 210px;
+    gap: 1rem;
+    border: 0;
+    border-radius: 1.5rem;
+    transition: all 0.3s ease;
 }
 
 .card:hover {
@@ -41,9 +73,8 @@
 }
 
 .cardMeta {
-    text-align: center;
-    justify-content: center;
     font-size: 1rem;
+    padding: 0 10px;
 }
 
 .cardMeta :global(.ant-card-meta-title) {
@@ -51,16 +82,35 @@
     font-weight: bold;
 }
 
-@media(max-width: 500px) {
+.footer {
+    margin-bottom: 4rem;
+    padding: 0;
+}
+
+.footerCollapse {
+    font-size: 1rem;
+    max-width: 850px;
+}
+
+.footerCollapseLabel {
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.footerCollapseLabel:hover {
+    background-color: #ffffff57;
+}
+
+@media(max-width: 600px) {
+    .title {
+        font-size: 2.3rem;
+        line-height: 3rem;
+    }
+
     .subtitle {
-        line-height: 1.5;
-    }
-
-    .header {
-        gap: 1rem;
-    }
-
-    .cardsContainer {
-        padding-top: 2rem;
+        font-size: 1.1rem;
     }
 }

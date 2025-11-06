@@ -83,6 +83,9 @@ export function LayoutTheme({ children }) {
               optionActiveBg: colors.steel[6],
               optionSelectedBg: colors.steel[2],
               optionSelectedColor: colors.steel[7],
+            },
+            Collapse: {
+              headerBg: colors.steel[7]
             }
           }
         }}
