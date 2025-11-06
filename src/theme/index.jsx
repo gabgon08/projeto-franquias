@@ -91,6 +91,9 @@ export function LayoutTheme({ children }) {
       </ConfigProvider>
       <Toaster
         toastOptions={{
+          style: {
+            background: 'transparent'
+          },
           success: {
             style: {
               background: '#F1FFE3',
