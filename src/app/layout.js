@@ -23,7 +23,18 @@ export default function RootLayout({ children }) {
           <Toaster
             richColors
             position="top-center"
-            toastOptions={{ style: { fontSize: '1rem', padding: '8px', borderRadius: '2rem', opacity: '0.98' } }} />
+            toastOptions={{
+              style: {
+                justifyContent: 'center',
+                fontSize: '1rem',
+                padding: '8px',
+                borderRadius: '2rem',
+                opacity: '0.98',
+                textAlign: 'center',
+                whiteSpace: 'nowrap',
+              }
+            }}
+          />
           <LayoutTheme>
             {children}
           </LayoutTheme>
