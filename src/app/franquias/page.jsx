@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import common from './../../theme/common.module.css'
 import { LayoutTheme } from './../../theme/index'
-import { Table, Button, Modal, Form, Input, Space, Popconfirm, Tooltip, Select, theme, Layout } from 'antd'
+import { Table, Button, Modal, Form, Input, Space, Popconfirm, Tooltip, Select, theme, Layout, Empty } from 'antd'
 import { PlusOutlined, ShopOutlined, EditOutlined, DeleteOutlined, SearchOutlined, FilterFilled } from '@ant-design/icons'
 import countries from 'i18n-iso-countries'
 import pt from 'i18n-iso-countries/langs/pt.json'
@@ -280,7 +280,9 @@ function Franquias() {
                                 position: ['bottomCenter'],
                                 showSizeChanger: true,
                                 locale: { items_per_page: 'por página' }
-                            }} />
+                            }}
+                            locale={{ emptyText: <Empty description='Nenhum funcionário encontrado' image='https://img.icons8.com/bbcfdf/fluency-systems-regular/96/nothing-found.png' /> }}
+                        />
                     </div>
 
                     <Modal

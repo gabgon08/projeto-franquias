@@ -6,7 +6,6 @@ import { LayoutTheme } from './../../theme/index'
 import { Table, Button, Modal, Form, Input, InputNumber, Select, Space, Popconfirm, Tooltip, theme, Layout, Empty } from 'antd'
 import { PlusOutlined, UserOutlined, EditOutlined, DeleteOutlined, FilterFilled, SearchOutlined } from '@ant-design/icons'
 import toast from 'react-hot-toast'
-import NoDataIcon from '../'
 
 function Funcionarios() {
 
@@ -302,7 +301,7 @@ function Funcionarios() {
                                 showSizeChanger: true,
                                 locale: { items_per_page: 'por página' }
                             }}
-                            locale={{ emptyText: <Empty description='Nenhum funcionário encontrado' image='./../no_data.png' /> }}
+                            locale={{ emptyText: <Empty description='Nenhum funcionário encontrado' image='https://img.icons8.com/bbcfdf/fluency-systems-regular/96/nothing-found.png' /> }}
                         />
 
                     </div>
