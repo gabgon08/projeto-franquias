@@ -241,33 +241,36 @@ export default function DashboardPage() {
                     {/* Cards Totais */}
                     <Row gutter={[16, 16]}>
                         <Col xs={12} sm={12} md={6}>
-                            <Card className={styles.statCard} style={{ borderColor: dashColors.blue }}>
+                            <Card
+                                className={`${styles.statCard} ${styles.statCard1}`} style={{ borderColor: dashColors.blue }}>
                                 <Statistic
-                                    title={<span style={{ color: token.statisticTitleColor }}>Total de Franquias</span>}
+                                    title={<span className={styles.statCardTitle} style={{ color: token.statisticTitleColor }}>Total de Franquias</span>}
                                     value={dashboardData.totalFranquias}
-                                    prefix={<ShopOutlined style={{ color: dashColors.blue }} />}
+                                    prefix={<ShopOutlined className={styles.statCardPrefix} />}
                                     valueStyle={{ color: dashColors.blue }}
                                 />
                             </Card>
                         </Col>
 
                         <Col xs={12} sm={12} md={6}>
-                            <Card className={styles.statCard} style={{ borderColor: dashColors.green }}>
+                            <Card
+                                className={`${styles.statCard} ${styles.statCard2}`} style={{ borderColor: dashColors.green }}>
                                 <Statistic
-                                    title={<span style={{ color: token.statisticTitleColor }}>Total de Funcionários</span>}
+                                    title={<span className={styles.statCardTitle} style={{ color: token.statisticTitleColor }}>Total de Funcionários</span>}
                                     value={dashboardData.totalFuncionarios}
-                                    prefix={<UserOutlined style={{ color: dashColors.green }} />}
+                                    prefix={<UserOutlined className={styles.statCardPrefix} />}
                                     valueStyle={{ color: dashColors.green }}
                                 />
                             </Card>
                         </Col>
 
                         <Col xs={12} sm={12} md={6}>
-                            <Card className={styles.statCard} style={{ borderColor: dashColors.orange }}>
+                            <Card
+                                className={`${styles.statCard} ${styles.statCard3}`} style={{ borderColor: dashColors.orange }}>
                                 <Statistic
-                                    title={<span style={{ color: token.statisticTitleColor }}>Salário Médio</span>}
+                                    title={<span className={styles.statCardTitle} style={{ color: token.statisticTitleColor }}>Salário Médio</span>}
                                     value={dashboardData.salarioMedio}
-                                    prefix={<DollarOutlined style={{ color: dashColors.orange }} />}
+                                    prefix={<DollarOutlined className={styles.statCardPrefix} />}
                                     precision={2}
                                     valueStyle={{ color: dashColors.orange }}
                                     formatter={(valor) =>
@@ -281,11 +284,12 @@ export default function DashboardPage() {
                         </Col>
 
                         <Col xs={12} sm={12} md={6}>
-                            <Card className={styles.statCard} style={{ borderColor: dashColors.magenta }}>
+                            <Card
+                                className={`${styles.statCard} ${styles.statCard4}`} style={{ borderColor: dashColors.magenta }}>
                                 <Statistic
-                                    title={<span style={{ color: token.statisticTitleColor }}>Folha Salarial Total</span>}
+                                    title={<span className={styles.statCardTitle} style={{ color: token.statisticTitleColor }}>Folha Salarial Total</span>}
                                     value={dashboardData.folhaTotal}
-                                    prefix={<WalletOutlined style={{ color: dashColors.magenta }} />}
+                                    prefix={<WalletOutlined className={styles.statCardPrefix} />}
                                     precision={2}
                                     valueStyle={{ color: dashColors.magenta }}
                                     formatter={(valor) =>
@@ -315,7 +319,7 @@ export default function DashboardPage() {
                                         <XAxis dataKey="pais" />
                                         <YAxis />
                                         <Tooltip />
-                                        <Bar dataKey="total" fill="#417fb4" />
+                                        <Bar dataKey="total" fill={dashColors.blue} />
                                     </BarChart>
                                 </ResponsiveContainer>
                             </Card>
@@ -330,7 +334,7 @@ export default function DashboardPage() {
                                         <XAxis dataKey="cidade" />
                                         <YAxis />
                                         <Tooltip />
-                                        <Bar dataKey="total" fill="#417fb4" />
+                                        <Bar dataKey="total" fill={dashColors.blue} />
                                     </BarChart>
                                 </ResponsiveContainer>
                             </Card>

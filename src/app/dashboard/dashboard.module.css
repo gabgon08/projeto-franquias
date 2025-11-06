@@ -36,14 +36,42 @@
     text-align: center;
     border-radius: 1.5rem;
     border: 3px solid;
-    box-shadow: 0 0 8px 3px rgba(0, 0, 0, 0.09);
-    transition: all 0.3s ease;
+    box-shadow: 0 0 8px 3px rgba(0, 0, 0, 0.2);
     padding: 0.8rem 0;
 }
 
+.statCard,
+.statCard1,
+.statCard2,
+.statCard3,
+.statCard4 {
+    transition: all 0.3s ease;
+}
+
 .statCard:hover {
-    box-shadow: 0 0 8px 3px rgba(0, 0, 0, 0.20);
-    transform: scale(1.05);
+    transform: scale(1.04);
+}
+
+.statCard:hover :global(.ant-statistic-content-value),
+.statCard:hover .statCardTitle,
+.statCard:hover .statCardPrefix {
+    color: #e5edf6 !important;
+}
+
+.statCard1:hover {
+    background-color: #417fb4;
+}
+
+.statCard2:hover {
+    background-color: #419C14;
+}
+
+.statCard3:hover {
+    background-color: #E17E13;
+}
+
+.statCard4:hover {
+    background-color: #D32A87;
 }
 
 /* CONTEÚDO PRINCIPAL */
