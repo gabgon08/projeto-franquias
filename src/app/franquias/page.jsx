@@ -281,7 +281,7 @@ function Franquias() {
                                 showSizeChanger: true,
                                 locale: { items_per_page: 'por página' }
                             }}
-                            locale={{ emptyText: <Empty description='Nenhum funcionário encontrado' image='https://img.icons8.com/bbcfdf/fluency-systems-regular/96/nothing-found.png' /> }}
+                            locale={{ emptyText: <Empty description='Nenhuma franquia encontrada' image='https://img.icons8.com/bbcfdf/fluency-systems-regular/96/nothing-found.png' /> }}
                         />
                     </div>
 
