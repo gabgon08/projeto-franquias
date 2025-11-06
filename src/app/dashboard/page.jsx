@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Card, Row, Col, Table, Statistic, Spin, Alert, Layout, theme, Select, Space } from 'antd'
+import { Card, Row, Col, Table, Statistic, Spin, Alert, Layout, theme, Select, Space, Empty } from 'antd'
 import { DashboardOutlined, ShopOutlined, UserOutlined, DollarOutlined, WalletOutlined, WarningOutlined } from '@ant-design/icons'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
 import { LayoutTheme } from '../../theme/index'
@@ -15,7 +15,8 @@ export default function DashboardPage() {
     const [dashboardData, setDashboardData] = useState(null)
     const { Header, Content } = Layout
     const { token } = theme.useToken()
-    const EMPTY_IMAGE_URL = 'https://img.icons8.com/555555/external-outline-andi-nur-abdillah/96/external-Empty-empty-state-(outline)-outline-andi-nur-abdillah.png'
+    const EMPTY_IMAGE_URL_GRAY = 'https://img.icons8.com/555555/external-outline-andi-nur-abdillah/96/external-Empty-empty-state-(outline)-outline-andi-nur-abdillah.png'
+    const EMPTY_IMAGE_URL_BLUE = 'https://img.icons8.com/BBCFDF/external-outline-andi-nur-abdillah/96/external-Empty-empty-state-(outline)-outline-andi-nur-abdillah.png'
 
     const [tipoRanking, setTipoRanking] = useState('funcionarios')
 
@@ -215,7 +216,7 @@ export default function DashboardPage() {
         return (
             <div className={styles.container}>
                 <div className={styles.loading}>
-                    <img src={EMPTY_IMAGE_URL} />
+                    <img src={EMPTY_IMAGE_URL_GRAY} />
                     <p>Erro ao carregar dados do dashboard</p>
                 </div>
             </div>
@@ -404,6 +405,7 @@ export default function DashboardPage() {
                                         rowKey="id"
                                         pagination={false}
                                         size="small"
+                                        locale={{ emptyText: <Empty description='Nenhum dado encontrado' image={EMPTY_IMAGE_URL_BLUE} /> }}
                                     />
                                 </Card>
                             </Col>
@@ -417,6 +419,7 @@ export default function DashboardPage() {
                                         rowKey="id"
                                         pagination={false}
                                         size="small"
+                                        locale={{ emptyText: <Empty description='Nenhum dado encontrado' image={EMPTY_IMAGE_URL_BLUE} /> }}
                                     />
                                 </Card>
                             </Col>
@@ -453,6 +456,7 @@ export default function DashboardPage() {
                                         rowKey="id"
                                         pagination={false}
                                         size="small"
+                                        locale={{ emptyText: <Empty description='Nenhum dado encontrado' image={EMPTY_IMAGE_URL_BLUE} /> }}
                                     />
                                 </Card>
                             </Col>
