@@ -371,11 +371,16 @@ function Funcionarios() {
                                 <Select
                                     placeholder="Selecione uma franquia"
                                     showSearch
-                                    optionFilterProp="children"
-                                    options={franquias.map((franquia) => ({
-                                        value: franquia.id,
-                                        label: [`${franquia.nome} - ${franquia.cidade}`],
-                                    }))}
+                                    filterOption={(input, option) =>
+                                        (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                                    }
+                                    options={franquias
+                                        .slice()
+                                        .sort((a, b) => a.nome.localeCompare(b.nome))
+                                        .map((franquia) => ({
+                                            value: franquia.id,
+                                            label: `${franquia.nome} - ${franquia.cidade}`,
+                                        }))}
                                 />
 
                             </Form.Item>

@@ -321,16 +321,21 @@ function Franquias() {
                                 rules={[{ required: true, message: 'Campo obrigatório' }]}>
 
                                 <Select
-                                    showSearch
                                     placeholder='Selecione um país'
-                                    optionFilterProp='children'
+                                    showSearch
                                     filterOption={(input, option) =>
-                                        option.children.toLowerCase().includes(input.toLowerCase())
+                                        (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                                    }
+                                    options={paises
+                                        .slice()
+                                        .sort((a, b) => a[1].localeCompare(b[1]))
+                                        .map(([code, name]) => ({
+                                            value: code,
+                                            label: name
+                                        }))
                                     }
                                 >
-                                    {paises.map(([code, name]) => (
-                                        <Option key={code} value={name}>{name}</Option>
-                                    ))}
+
 
                                 </Select>
                             </Form.Item>
