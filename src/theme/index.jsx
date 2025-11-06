@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { ConfigProvider } from 'antd'
-import { Toaster } from 'react-hot-toast'
 
 const colors = {
   green: {
@@ -89,28 +88,6 @@ export function LayoutTheme({ children }) {
       >
         {children}
       </ConfigProvider>
-      <Toaster
-        toastOptions={{
-          style: {
-            background: 'transparent'
-          },
-          success: {
-            style: {
-              background: '#F1FFE3',
-              border: '2px solid #b7eb8f',
-              borderRadius: '2rem'
-            },
-            duration: 3000
-          },
-          error: {
-            style: {
-              background: '#FFE8E5',
-              border: '2px solid #FF9989',
-              borderRadius: '2rem'
-            },
-            duration: 3000
-          }
-        }} />
     </>
   )
 }
