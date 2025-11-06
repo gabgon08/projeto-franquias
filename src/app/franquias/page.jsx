@@ -330,7 +330,7 @@ function Franquias() {
                                         .slice()
                                         .sort((a, b) => a[1].localeCompare(b[1]))
                                         .map(([code, name]) => ({
-                                            value: code,
+                                            value: name,
                                             label: name
                                         }))
                                     }
