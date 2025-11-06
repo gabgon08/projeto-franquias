@@ -5,7 +5,7 @@ import common from './../../theme/common.module.css'
 import { LayoutTheme } from './../../theme/index'
 import { Table, Button, Modal, Form, Input, InputNumber, Select, Space, Popconfirm, Tooltip, theme, Layout, Empty } from 'antd'
 import { PlusOutlined, UserOutlined, EditOutlined, DeleteOutlined, FilterFilled, SearchOutlined } from '@ant-design/icons'
-import toast from 'react-hot-toast'
+import toast from 'sonner'
 
 function Funcionarios() {
 
