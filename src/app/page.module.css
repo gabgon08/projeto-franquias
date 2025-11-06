@@ -58,28 +58,38 @@
     justify-content: center;
     align-items: center;
     height: 210px;
-    gap: 1rem;
     border: 0;
+    gap: 1rem;
     border-radius: 1.5rem;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease-in-out;
 }
 
 .card:hover {
+    background-color: #2b445e;
     transform: scale(1.05);
+}
+
+.card:hover .cardCover,
+.card:hover .cardTitle,
+.card:hover .cardSubtitle {
+    color: #e5edf6 !important;
 }
 
 .cardCover {
     font-size: 3rem;
 }
 
-.cardMeta {
-    font-size: 1rem;
-    padding: 0 10px;
-}
-
-.cardMeta :global(.ant-card-meta-title) {
+.cardTitle {
     font-size: 1.3rem;
     font-weight: bold;
+    padding: 0 10px;
+    margin-bottom: 0.5rem;
+}
+
+.cardSubtitle {
+    color: #8F8F8F;
+    font-size: 1rem;
+    padding: 0 10px;
 }
 
 .footer {

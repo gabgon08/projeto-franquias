@@ -40,11 +40,8 @@ export default function Home() {
                   cover={<ShopFilled style={{ color: token.iconColor }} className={styles.cardCover} />}
                   hoverable
                 >
-                  <Meta
-                    title="Franquias"
-                    description="Gerenciar franquias da empresa"
-                    className={styles.cardMeta} />
-
+                  <h1 className={styles.cardTitle}>Franquias</h1>
+                  <p className={styles.cardSubtitle}>Gerenciar franquias da empresa</p>
                 </Card>
               </Link>
             </Col>
@@ -56,11 +53,8 @@ export default function Home() {
                   cover={<UserOutlined style={{ color: token.iconColor }} className={styles.cardCover} />}
                   hoverable
                 >
-                  <Meta
-                    title="Funcionários"
-                    description="Gerenciar funcionários das franquias"
-                    className={styles.cardMeta} />
-
+                  <h1 className={styles.cardTitle}>Funcionários</h1>
+                  <p className={styles.cardSubtitle}>Gerenciar funcionários das franquias</p>
                 </Card>
               </Link>
             </Col>
@@ -73,11 +67,8 @@ export default function Home() {
                   cover={<DashboardFilled style={{ color: token.iconColor }} className={styles.cardCover} />}
                   hoverable
                 >
-                  <Meta
-                    title="Dashboard"
-                    description="Relatórios e indicadores (BI)"
-                    className={styles.cardMeta} />
-
+                  <h1 className={styles.cardTitle}>Dashboard</h1>
+                  <p className={styles.cardSubtitle}>Relatórios e indicadores (BI)</p>
                 </Card>
               </Link>
             </Col>
