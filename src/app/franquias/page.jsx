@@ -20,7 +20,6 @@ function Franquias() {
     const [filtroNome, setFiltroNome] = useState('')
     const [form] = Form.useForm()
     const paises = Object.entries(countries.getNames('pt', { select: 'official' }))
-    const { Option } = Select
     const { Content } = Layout
     const { token } = theme.useToken()
 
